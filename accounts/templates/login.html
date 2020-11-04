@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+
+	<style>
+		a {
+			color:white;
+		}
+		body,
+		html {
+			margin: 0;
+			padding: 0;
+			height: 100%;
+			background-color: #f5f5f5;
+		}
+
+
+#login {
+    width: 40%;
+    padding: 73px;
+    margin-top: 7em;
+
+    box-shadow: 2em 2em 2em 2em #D3D3D3;
+}
+
+
+
+
+#username, #password {
+	padding: 1.2em;
+    width: 24em;
+    border-radius: 3px;
+    border: 1px solid royalblue;
+    color: black;
+}
+
+#username:focus, #password:focus {
+
+	box-shadow: 0 0 5pt 2pt #D3D3D3;
+  outline-width: 0px;
+  transition: 300ms ease-in-out all;
+
+}
+
+
+#submit {
+	width: 12em;
+    background-color: #05244d;
+    color: white;
+    padding: 6px;
+    margin-top: 1em;
+    border: 1px solid white;
+}
+
+#submit:hover {
+	background-color: royalblue;
+	transition: all ease-in-out 300ms;
+}
+
+	</style>
+
+</head>
+<body>
+
+		<nav class="navbar navbar-expand-lg" style="background-color:#03244d; color: white;">
+            <a class="navbar-brand" href="#">CMS</a>
+            <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon" ></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto" style="margin-left: 55%;">
+                <li class="nav-item active">
+                  <a class="nav-link" href="#">Login <span class="sr-only">(current)</span></a>
+                </li>
+            
+              </ul>          
+        
+            </div>
+          </nav>
+     
+<center>
+	<div id="login">
+		<div class="heading">
+		<h2>Login</h2>
+	</div>
+		<form method="POST" action="">
+			{% csrf_token %}
+			<input type="text" name="username" placeholder="Enter Your Username" id="username" required><br><br>
+			<input type="password" name="password"  placeholder="Enter Your Password" id="password" required> <br>
+			<input type="submit" id="submit" value="Login">
+		</form>
+	
+		</div>
+
+		{% for message in messages %}
+		<span style="color: black;">{{message}}</span>
+	{% endfor %}			
+
+
+	</div></center>
+
+
+					<div class="mt-4">
+					<div class="d-flex justify-content-center links" style="color: black;">
+						<span style="color: black;">Don't have an account?</span> <a style="color: black;" href="{% url 'register' %}" class="ml-2">Sign Up</a>
+					</div>
+
+			
+			
+				</div>
+			</div>
+		</div>
+</body>
+
+</html>
