@@ -23,7 +23,7 @@
  }
 
 .sidebar-heading {
-  background-color:#343a40!important;
+  background-color#343a40!important;
 }
 
 
@@ -109,7 +109,7 @@ a {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             <li class="nav-item active">
-              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" href="{% url 'edit_profile' %}">{{request.user}} <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">Log Out</a>
@@ -133,6 +133,7 @@ a {
 
       <div class="container-fluid">
         <h1 class="mt-4">Hello, {{request.user}}</h1>
+        <code>Last Login: {{request.user.last_login}}</code>
 
         <hr>
     <h2>Announcement</h2>

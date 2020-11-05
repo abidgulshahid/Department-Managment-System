@@ -30,6 +30,9 @@
                         <a href="#" data-toggle="collapse" aria-expanded="false">Home</a>
                       
                     </li>
+                        <li>
+                        <a href="{% url 'courses' %}">Courses</a>
+                    </li>
                     <li>
                         <a href="#">Attendence</a>
                         <a href="#" data-toggle="collapse" aria-expanded="false">Result</a>
@@ -79,28 +82,52 @@
                     </div>
                 </nav>
 
-                <h2>Courses</h2>
-                <table class="table table-sm">
-                  <tr>
-                    <th>Class Schedule </th>
-                    <th>Couse Work</th>
-                    <th>Subject Teacher</th>
-                    <th>Semester</th>
+                <h2>Announcement</h2>
+                <table class='table table-sm' >
+                  <tr> 
+                    <th>Date </th>
+                    <th>Message </th>
                   </tr>
-                
-                  {% for data  in DATA %}
-                    <tr>
-                
-                      <td>{{data.class_schedule}}</td>
-                      <td>{{data.course_work}}</td>
-                      <td>{{data.subject_teacher}}</td>
-                      <td>{{data.sem}}</td>
-                    </tr>
-                  {% endfor %}
-                
+        
+                {% for ann in announcments %}
+                <tr>
+                  <td>{{ann.date}}</td>
+                  <td>{{ann.msg}}</td>
+                </tr>
+                {% endfor  %}
                 </table>
                 <div class="line"></div>
 
+                <h2>FEE CHALLAN</h2>
+        
+        <table class='table table-sm' >
+          <tr>
+            <th>Challan No</th>
+            <th>Due Date</th>
+            <th>Admission FEE</th>
+            <th>Tuition Fee</th>
+            <th>Fine</th>
+            <th>Withholding Tax</th>
+            <th>Total Fee</th>
+            <th>Payment Date</th>
+                 <th>Status</th>
+
+          </tr>
+
+          <tr>  
+            <td>{{fee.challan_no}}</td>
+            <td>{{fee.due_date}}</td>
+            <td>{{fee.admission_fee}}</td>
+            <td>{{fee.tution_fee}}</td>
+            <td>{{fee.fine}}</td>
+            <td>{{fee.withholding_tax}}</td>
+            <td>{{fee.total_fee}}</td>
+            <td>{{fee.payment_date}}</td>
+            <td>{{fee.status}}</td>
+
+          </tr>
+
+</table>
                 <div class="line"></div>
 
                 <h2>Lorem Ipsum Dolor</h2>
@@ -132,5 +159,3 @@
          </script>
     </body>
 </html>
-
-
