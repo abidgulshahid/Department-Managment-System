@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-        <title>Collapsible sidebar using Bootstrap 3</title>
+        <title>GPGC | Student CMS</title>
     {% load static %}
 
          <!-- Bootstrap CSS CDN -->
@@ -26,10 +26,13 @@
 
                 <ul class="list-unstyled components">
                     <p>			Hello, {{request.user}}</p>
-                    <li class="active">
-                        <a href="#" data-toggle="collapse" aria-expanded="false">Home</a>
+                    <li>
+                        <a href="{% url 'home' %}" >Home</a>
                       
                     </li>
+                    <li class="active">                                            <a href="#">Courses</a>
+                    </li>
+
                     <li>
                         <a href="#">Attendence</a>
                         <a href="#" data-toggle="collapse" aria-expanded="false">Result</a>
