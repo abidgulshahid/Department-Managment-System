@@ -67,7 +67,7 @@ def home(request):
 		fee = "FEE Currently Not Available For You"
 	context = {"DATA": all_data, "announcments": announce, 'fee': fee}
 
-	return render(request, 'index4.html', context)
+	return render(request, 'home.html', context)
 
 
 @login_required(login_url='login')

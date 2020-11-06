@@ -41,9 +41,9 @@ a {
             </button>
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto" style="margin-left: 55%;">
+              <ul class="navbar-nav mr-auto" style="margin-left: 60%;">
                 <li class="nav-item active">
-                  <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="{% url 'index' %}">Home </a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">Admissions</a>
@@ -78,6 +78,8 @@ a {
 
           <div class="jumbotron jumbotron-fluid" style="background-color: #6fa1de12;">
             <div class="container">
+              <div class="row">
+                <div class="col-6">
                <h1>About the University</h1>
                <h3>Vision :</h3>
                <p>"To Be Among the Top Universities of the World through Education, Research and Innovation" </p>
@@ -101,11 +103,18 @@ a {
     10.&nbsp; Sustainability <br>
     
     </p>
-    
+  </div>
+
+
+
+    <div class="col-6">
     <h3>Campus Location</h3>
                 <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Govt%20Post%20Graduate%20College%20Lakki%20Marwat&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://2piratebay.org">uber0n</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
             
-        </div>
+              </div>
+            </div>
+
+              </div>
       </div>
 
       <!-- Footer -->
