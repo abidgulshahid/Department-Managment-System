@@ -20,6 +20,9 @@ from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+        path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    path('jet/dashboard/', include('jet.dashboard.urls',
+                                   'jet-dashboard')),  # Django JET dashboard URLS
 	path("", include('accounts.urls'), name='index'),
         path('superuser/admin/', admin.site.urls),
        # path('admin_panal/', include('admin_panal'), name='index')
