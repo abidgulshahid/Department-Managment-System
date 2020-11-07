@@ -17,7 +17,6 @@ django-downloadview==1.8
 django-ipware==1.1.0
 django-jet==1.0.8
 django-jinja==2.3.0
-django-jinja-bootstrap-form==4.1.2
 django-redis-cache==1.6.0
 django-redis-sessions==0.5.0
 django-restful-admin==1.1.3
