@@ -30,6 +30,6 @@ urlpatterns = [
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
-admin.sites.AdminSite.site_header = 'CMS'
-admin.sites.AdminSite.site_title = 'College Management System'
-admin.sites.AdminSite.index_title = 'Abid Gull Shahid'
+admin.site.site_header = 'CMS Admin Portal'
+admin.site.site_title = "CMS"
+admin.site.index_title = "Welcome to CMS Admin Portal"
