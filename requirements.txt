@@ -15,7 +15,6 @@ django-3-jet==1.0.8
 django-cors-headers==3.5.0
 django-downloadview==1.8
 django-ipware==1.1.0
-django-jet==1.0.8
 django-jinja==2.3.0
 django-redis-cache==1.6.0
 django-redis-sessions==0.5.0
