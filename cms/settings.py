@@ -31,8 +31,9 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+      'jet.dashboard',
     'jet',
-    'jet.dashboard',
+  
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -40,6 +41,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'accounts',
+    'django_extensions',
+     'crispy_forms',
+
    
 ]
 
@@ -138,7 +142,6 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 import dj_database_url 
 prod_db  =  dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(prod_db)
-JET_SIDE_MENU_COMPACT = True
 
 JET_THEMES = [
     {
@@ -173,3 +176,6 @@ JET_THEMES = [
     }
 
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+JET_SIDE_MENU_COMPACT = True

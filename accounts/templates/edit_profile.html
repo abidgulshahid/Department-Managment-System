@@ -88,12 +88,16 @@
                 <div class="line"></div>
 
                 <h2>Edit Profile</h2>
+                {% load crispy_forms_tags %}
+
                 <form method="POST">{% csrf_token %}
-                  {{userform.as_p}}
-                   {{profiles}}
-                   
-                   <button type='submit'>Save Changes</button>
-                 </form>
+                    <div class="form-row">
+                  {{userform | crispy}}
+                   {{profiles | crispy }}
+                 
+                   </div>
+                   <button type="submit" class="btn btn-primary">Edit Profile</button>
+                </form>
                 
                 <div class="line"></div>
 

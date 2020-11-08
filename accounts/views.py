@@ -58,7 +58,6 @@ def login(request):
 @login_required(login_url='login')
 def home(request):
 	global fee
-	print(dir(request.user))
 	all_data = BSCS.objects.all()
 	announce = announcments.objects.all()
 	try:
