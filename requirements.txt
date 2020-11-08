@@ -76,3 +76,4 @@ Werkzeug==0.15.4
 whitenoise==5.2.0
 wrapt==1.12.1
 WTForms==2.2.1
+django-crispy-forms==1.8.1     
