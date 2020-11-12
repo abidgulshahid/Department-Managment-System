@@ -18,13 +18,17 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-
+from .views import index,about,contact
 urlpatterns = [
         path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('jet/dashboard/', include('jet.dashboard.urls',
                                    'jet-dashboard')),  # Django JET dashboard URLS
                               
-	path("", include('accounts.urls'), name='index'),
+	# path("", include('accounts.urls'), name='index'),
+        path('', index, name="index"),
+    path('about/', about, name='about'),
+    path('contact/', contact, name= 'contact'),
+    path('student/', include('student.urls'),name="Student"),
         path('superuser/admin/', admin.site.urls),
        # path('admin_panal/', include('admin_panal'), name='index')
     

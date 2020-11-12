@@ -31,17 +31,22 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+      'jet',
       'jet.dashboard',
-    'jet',
-  
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'accounts',
+    # 'accounts',
      'crispy_forms',
+     'student',
+     'teacher',
+     'users',
+     'department',
+    'django_extensions',
+
 
    
 ]
@@ -58,11 +63,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'cms.urls'
+AUTH_USER_MODEL='users.Users'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        "DIRS": ["accounts/templates/"],
+        "DIRS": ["student/templates/"],
 
         'APP_DIRS': True,
         'OPTIONS': {

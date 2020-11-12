@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us </title>
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    {% load static %}
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+    <title>Document</title>
+<style type="text/css">
+body {
+  color: #8B9AA7;
+  font-family: Arial,sans-serif;
+}
+
+
+.carousel-inner{
+  height: 31em;
+}
+
+.navbar-custom{
+  background-color: #3f51b5;
+}
+
+a {
+  color: white;
+}
+
+a:hover {
+  color:white;
+  border-bottom: 1px solid #8B9AA7;
+
+}
+
+</style>
+</head>
+<body>
+  
+  </body>
+ 
+   
+
+          <nav class="navbar navbar-expand-lg" style="background-color:#03244d; color: white;">
+            <a class="navbar-brand" href="#">CMS</a>
+            <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon" ></span>
+            </button>
+          
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav mr-auto" style="margin-left: 60%;">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'index' %}">Home </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Admissions</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Academic
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Computer Sciecne</a>
+                    <a class="dropdown-item" href="#">Math</a>
+            
+                    <a class="dropdown-item" href="#">Political Science</a>
+                  </div>
+                </li>
+           
+             
+                                <li class="nav-item">
+                  <a class="nav-link" href="#announcments" >Contact Us <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'login'  %}">Student Portal</a>
+                </li>
+              </ul>          
+        
+            </div>
+          </nav>
+     
+
+
+    
+
+          <div class="jumbotron jumbotron-fluid" style="background-color: #ffffff;">
+            <div class="container">
+                <a id="announcments"></a>
+                <h2>About Us </h2>
+                <table class='table table-sm' >
+                  <tr> 
+                    <th>Name </th>
+                    <th>Department:  </th>
+                    <th>Batch No: </th>
+                    <th>Contact US</th>
+                  </tr>
+    
+                <tr>
+                  <td>Abid Gul Shahid</td>
+                  <td>BSCS</td>
+                  <td>BSCS-2017</td>
+                  <td>mail@mail.com</td>
+                </tr>
+                <tr>
+                    <td>Siddique Raza</td>
+                    <td>BSCS</td>
+                    <td>BSCS-2017</td>
+                    <td>mail@mail.com</td>
+                  </tr>
+
+                  <tr>
+                    <td>M. Hassan</td>
+                    <td>BSCS</td>
+                    <td>BSCS-2017</td>
+                    <td>mail@mail.com</td>
+                  </tr>
+
+                  <tr>
+                    <td>M. Danial</td>
+                    <td>BSCS</td>
+                    <td>BSCS-2017</td>
+                    <td>mail@mail.com</td>
+                  </tr>
+                </table>
+
+                <h3>Special Thanks To M.Ilyas </h3>
+                <hr>
+                <hr class="my-4">
+                <p>
+                    The Following Programming Languages, Frameworks and Web-tools were used in its creation.
+                </p>
+                <div align="center" class="list-group">
+            
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                              <h5 class="mb-1">Python</h5>
+                        </div>
+                        <p class="mb-1">Programming Language used for scripting backend.</small>
+                    </a>
+            
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                              <h5 align="left" class="mb-1">DJANGO</h5>
+                        </div>
+                        <p class="mb-1">A high-level Python web framework that enables rapid development of secure and maintainable websites.</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                              <h5 align="left"  class="mb-1">Jinja</h5>
+                        </div>
+                        <p class="mb-1">For making dynamic HTML web pages</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                              <h5 align="left"  class="mb-1">SQLite</h5>
+                        </div>
+                        <p class="mb-1">Used for Managing internal database using PHPlite-framework.</small>
+                    </a>
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                              <h5 align="left"  class="mb-1">Javascript</h5>
+                        </div>
+                        <p class="mb-1">Used for Frontend of Website.</small>
+                    </a>
+              
+                    <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                        <div class="d-flex w-100 justify-content-between">
+                              <h5 align="left"  class="mb-1">Heroku</h5>
+                        </div>
+                        <p class="mb-1">A free service used to host our web app</small>
+                    </a>
+                </div>
+            
+        </div>
+      </div>
+
+      <!-- Footer -->
+<footer class="page-footer font-small special-color-dark pt-4">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!-- Social buttons -->
+    <ul class="list-unstyled list-inline text-center">
+      <li class="list-inline-item">
+        <a class="btn-floating btn-fb mx-1">
+          <i class="fab fa-facebook-f"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-tw mx-1">
+          <i class="fab fa-twitter"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-gplus mx-1">
+          <i class="fab fa-google-plus-g"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-li mx-1">
+          <i class="fab fa-linkedin-in"> </i>
+        </a>
+      </li>
+      <li class="list-inline-item">
+        <a class="btn-floating btn-dribbble mx-1">
+          <i class="fab fa-dribbble"> </i>
+        </a>
+      </li>
+    </ul>
+    <!-- Social buttons -->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a href="#"> SADH</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+</body>
+</html>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+
+
