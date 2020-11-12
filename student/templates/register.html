@@ -2,28 +2,98 @@
 
 
   <meta charset="UTF-8">
+  <head>
   <title>Student Login | CMS </title>
     {% load static %}
- <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-  <link rel="stylesheet" href="{% static '../static/style.css'%}">
-	<script src="{% static '../static/script.js' %}"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	 
+<style>
+	<style type="text/css">
+body {
+  color: #8B9AA7;
+  font-family: Arial,sans-serif;
+}
 
 
+.carousel-inner{
+  height: 31em;
+}
 
+.navbar-custom{
+  background-color: #3f51b5;
+  color: black;
+}
+
+a {
+  color: white;
+}
+a:hover {
+  color:white;
+  border-bottom: 1px solid #8B9AA7;
+
+}
+
+</style>
 </head>
-<body>
+<body style="background-color: #ecf2f6;">
+	<nav class="navbar navbar-expand-lg fixed-top" data-spy="affix" data-offset-top="205" style="background-color: #03244d;">
+		<a class="navbar-brand" href="#">CMS</a>
+		<button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		  <span class="navbar-toggler-icon" style="color:white; border: #8B9AA7 1px solid;" >-_-</span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		  <ul class="navbar-nav mr-auto" style="margin-left: 60%;">
+
+			<li class="nav-item">
+			  <a class="nav-link" href="{% url 'about' %}" >About Us</a>
+			</li>
+
+			<li class="nav-item">
+			  <a class="nav-link" href="#">Admissions</a>
+			</li>
+			<li class="nav-item dropdown">
+			  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+				Academic
+			  </a>
+			  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+				<a class="dropdown-item" href="#">Computer Sciecne</a>
+				<a class="dropdown-item" href="#">Math</a>
+
+				<a class="dropdown-item" href="#">Political Science</a>
+			  </div>
+			</li>
+
+							<li class="nav-item">
+			  <a class="nav-link" href="{% url 'contact' %}" >Contact Us</a>
+			</li>
+
+
+
+
+			<li class="nav-item">
+			  <a class="nav-link" href="{% url 'login'  %}">Student Portal</a>
+			</li>
+		  </ul>
+
+		</div>
+	  </nav>
 <!-- partial:index.partial.html -->
 {% load crispy_forms_tags %}
-
-
+<div class="container">
+	<br><br><br>
+<h3>Student Registration Form</h3>
 <form method="post">{% csrf_token %}
 
 	{{ form | crispy }}
   
-	<input type="submit" value="Register" />
+	<button class="btn btn-primary">Register</button>
 
 	</form>
+</div>
+
 <!-- partial -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'></script>
 <script src="{% static '../static/morphin.js?r=182' %}"></script>
