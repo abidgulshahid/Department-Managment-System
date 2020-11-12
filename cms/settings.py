@@ -45,7 +45,7 @@ INSTALLED_APPS = [
      'teacher',
      'users',
      'department',
-    'django_extensions',
+    # 'django_extensions',
 
 
    
