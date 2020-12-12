@@ -7,7 +7,11 @@
 
         <title>GPGC | Student CMS</title>
     {% load static %}
-
+        <style>
+            body {
+                color:black;
+            }
+        </style>
          <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <!-- Our Custom CSS -->
@@ -34,7 +38,7 @@
                     </li>
 
                     <li>
-                        <a href="#">Attendence</a>
+                        <a href="{% url 'show_attendence' %}">Attendence</a>
                         <a href="#" data-toggle="collapse" aria-expanded="false">Result</a>
                         <!-- <ul class="collapse list-unstyled" id="pageSubmenu">
                             <li><a href="#">Page 1</a></li>
@@ -46,10 +50,10 @@
                         <a href="#">Transcript</a>
                     </li>
                     <li>
-                        <a href="{% url 'edit_profile' %}">Profile</a>
+                        <a href="#">Profile</a>
                     </li>
                     <li>
-                        <a href="{% url 'logout' %}">Logout</a>
+                        <a href="{% url 'logOut' %}">Logout</a>
                     </li>
                 </ul>
 
@@ -83,36 +87,36 @@
                 </nav>
 
                 <h2>Courses</h2>
-                <table class="table table-sm">
-                  <tr>
-                    <th>Class Schedule </th>
-                    <th>Couse Work</th>
-                    <th>Subject Teacher</th>
-                    <th>Semester</th>
-                  </tr>
-                
-                  {% for data  in DATA %}
+                <table class='table table-sm' >
                     <tr>
-                
-                      <td>{{data.class_schedule}}</td>
-                      <td>{{data.course_work}}</td>
-                      <td>{{data.subject_teacher}}</td>
-                      <td>{{data.sem}}</td>
+                      <th>Subject 1 </th>
+                      <th>Subject 2 </th>
+                      <th>Subject 3 </th>
+                      <th>Subject 4 </th>
+                      <th>Subject 5 </th>
+                      <th>Subject 6 </th>
+
                     </tr>
-                  {% endfor %}
-                
-                </table>
+
+
+                  <tr>
+                    <td>{{sub.subject1}}</td>
+                    <td>{{sub.subject2}}</td>
+                    <td>{{sub.subject3}}</td>
+                    <td>{{sub.subject4}}</td>
+                    <td>{{sub.subject5}}</td>
+                    <td>{{sub.subject6}}</td>
+                  </tr>
+
+                  </table>
                 <div class="line"></div>
 
                 <div class="line"></div>
 
-                <h2>Lorem Ipsum Dolor</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
                 <div class="line"></div>
 
-                <h3>Lorem Ipsum Dolor</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+       
             </div>
         </div>
 

@@ -45,6 +45,7 @@ INSTALLED_APPS = [
      'teacher',
      'users',
      'department',
+     'cms',
     # 'django_extensions',
 
 
@@ -68,7 +69,7 @@ AUTH_USER_MODEL='users.Users'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        "DIRS": ["student/templates/"],
+        "DIRS": ["student/templates/","teacher/templates/"],
 
         'APP_DIRS': True,
         'OPTIONS': {

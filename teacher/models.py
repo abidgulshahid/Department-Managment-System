@@ -14,7 +14,7 @@ class Teacher(models.Model):
     highest_qualification = models.SmallIntegerField(
         choices=QUALIFICATIONS, name='highest_qualification', null=True)
     # department = models.CharField(max_length=10, null=True)
-    nu_email = models.CharField(max_length=100)
+    nu_email = models.CharField(max_length=100,blank=True)
 
     # @classmethod
     # def create(cls, user=None, nu_email=None, **kwargs):
@@ -46,3 +46,4 @@ class Teacher(models.Model):
     #
     # def __unicode__(self):
     #     return u'%s' % self.pk
+

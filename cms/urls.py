@@ -18,20 +18,20 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
-from .views import index,about,contact
+from .views import *
 urlpatterns = [
-        path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
+    path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('jet/dashboard/', include('jet.dashboard.urls',
-                                   'jet-dashboard')),  # Django JET dashboard URLS
-                              
-	# path("", include('accounts.urls'), name='index'),
-        path('', index, name="index"),
+                                   'jet-dashboard')), 
+    path('', index, name="index"),
     path('about/', about, name='about'),
     path('contact/', contact, name= 'contact'),
     path('student/', include('student.urls'),name="Student"),
-        path('superuser/admin/', admin.site.urls),
-       # path('admin_panal/', include('admin_panal'), name='index')
-    
+    path('department/cs', computer, name='computer' ),
+    path('department/ps', political, name='political' ),
+    path('department/math', math, name='math' ),
+    path('department/admissions', admissions,name='admissions'),
+    path('superuser/admin/', admin.site.urls),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

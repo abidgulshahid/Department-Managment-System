@@ -26,7 +26,6 @@ class Student(models.Model):
     #
     #     return student_created
     students = models.OneToOneField('users.Users', on_delete=models.CASCADE, default=None)
-    degree =  models.CharField(null=True, max_length=500)
     std = models.ForeignKey('department.batch_no', on_delete=models.SET_NULL,default=None,blank=True, null=True)
     uid = models.AutoField(primary_key=True)
     def __str__(self):

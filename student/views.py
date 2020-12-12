@@ -8,12 +8,17 @@ from student.models import Student
 from users.models import Users
 from django.contrib.auth import logout as auth_logout
 from .forms import StudentForm
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 # Create your views here.
 
 def register(request):
 	form = StudentForm(request.POST)
 	if form.is_valid():
 		form.save()
+		email = form.cleaned_data.get('email')
+		messages.success(request, 'Account Created for '+email)
 		return redirect('login')
 			
 	context = {'form': form}
@@ -34,24 +39,32 @@ def login(request):
 		if request.method == 'POST':
 			email = request.POST.get('email')
 			password = request.POST.get('password')
+			try:
+				user = authenticate(request, email=email, password=password)
+				print ('---',dir(user))	
 
-			user = authenticate(request, email=email, password=password)
+				if user.is_student == True and user is not None:
+					auth_login(request, user)
+					return redirect('home')
+				elif user.is_superuser and user is not None:
+					auth_login(request, user)
+					return HttpResponseRedirect(reverse('admin:index'))
 
-			print ('---',dir(user))		
-			if user.is_student == False:
-				return render(request, 'thanks.html')
-
-			elif user is not None:
-				auth_login(request, user)
-				return redirect('home')
-			else:
-				messages.info(request, 'Username OR password is incorrect')
-
+				else:
+					return redirect('home')
+				# else:
+				# 	messages.info(request, 'Username OR password is incorrect')
+			except:
+				user = "Something Wrong"
 		context = {}
-		return render(request, 'login.html', context)
+		return render(request, 'register.html', context)
 
 @login_required(login_url='login')
 def home(request):
+	if request.user.is_student:
+		a= Student.add_to_class(str(request.user), value="ADDED")
+		print(a)
+	#print (std)
 	global sem,sub, batches, user_info
 	try:
 		user_info = Student.objects.get(students=request.user)
@@ -61,23 +74,44 @@ def home(request):
 	try:
 		batches = batch_no.objects.get(student=Student.objects.get(students=request.user))
 	except:
-		batches = "Batches Not Available At the Moment"
+		batches = "    \tYour not assigned to any batches"
 	try:
 		sem = Semester.objects.get(batchess=batches)
 	except:
-		sem = "Your are Not Assigned To any Semester"
-	try:
-		sub = subjects.objects.get(semester_subjects=sem)
-	except:
-		sub ="NO SUBJECTS"
+		sem = "  Your are Not Assigned To any Semester"
+
 	try:
 		attendence = Attendence.objects.get(student=user_info)
 	except:
 		attendence = "NOT AVAILABLE AT THE MOMENT"
-	print(attendence)
 #	d = department.objects.get(batches=batch_no.objects.get(student=Student.objects.get(students=request.user))).first()
-	context = {'u':user_info, 'b':batches,'sem':sem, 'sub':sub,'a':attendence}
+	context = {'u':user_info, 'b':batches,'sem':sem,'a':attendence}
 	return render(request, 'home.html', context)
+
+
+def courses(request):
+	try:
+		sub = subjects.objects.get(semester_subjects=sem)
+	except:
+		sub ="NO SUBJECTS"
+	context = {'sub':sub}
+	return render(request, 'courses.html',context)
+
+def show_attendence(request):
+	try:
+		attendence = Attendence.objects.get(student=user_info)
+	except:
+		attendence = "NOT AVAILABLE AT THE MOMENT"
+	context = {'a': attendence}
+	return render(request, 'attendence.html', context)
+
+def result(request):
+	pass
+
+def fee(request):
+	pass
+
+
 
 def logOut(request):
 	auth_logout(request)

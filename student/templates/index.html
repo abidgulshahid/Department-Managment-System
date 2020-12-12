@@ -59,17 +59,17 @@ a:hover {
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Admissions</a>
+                  <a class="nav-link" href="{% url 'admissions' %}">Admissions</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Academic
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Computer Sciecne</a>
-                    <a class="dropdown-item" href="#">Math</a>
+                    <a class="dropdown-item" href="{% url 'computer' %}">Computer Sciecne</a>
+                    <a class="dropdown-item" href="{% url 'math' %}">Math</a>
 
-                    <a class="dropdown-item" href="#">Political Science</a>
+                    <a class="dropdown-item" href="{% url 'political' %}">Political Science</a>
                   </div>
                 </li>
 
@@ -95,7 +95,19 @@ a:hover {
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
                     <div class="modal-body">
-                        <code> Under Construction </code><br>
+                      <table class='table table-sm' >
+                        <tr> 
+                          <th>Date </th>
+                          <th>Message </th>
+                        </tr>
+              
+                      {% for ann in announcments %}
+                      <tr>
+                        <td>{{ann.date}}</td>
+                        <td>{{ann.msg}}</td>
+                      </tr>
+                      {% endfor  %}
+                      </table>
                       <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
                     </div>
