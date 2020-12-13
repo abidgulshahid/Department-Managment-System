@@ -13,6 +13,7 @@ class UsersAdmin(UserAdmin):
             'fields': (
                 ('is_student',),
                 ('is_teacher',),
+                ('is_admin'),
 
 
 

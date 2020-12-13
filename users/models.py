@@ -29,6 +29,7 @@ class Users(AbstractUser):
     address =models.CharField(max_length=200,null=True )
     is_teacher = models.BooleanField(default=False, help_text='True if the User is a Teacher.')
     is_student = models.BooleanField(default=False, help_text='True if the User is a Student.')
+    is_admin = models.BooleanField(default=False, help_text='True if the User is a Admin.')
     GENDERS = [
         ('M', 'MALE'),
         ('F', 'FEMALE'),

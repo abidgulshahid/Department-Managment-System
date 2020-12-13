@@ -49,6 +49,8 @@ def login(request):
 				elif user.is_superuser and user is not None:
 					auth_login(request, user)
 					return HttpResponseRedirect(reverse('admin:index'))
+				elif user.is_admin and is_staff is not None: 
+					return HttpResponseRedirect(reverse('teacher:index'))
 
 				else:
 					return redirect('home')

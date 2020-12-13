@@ -46,6 +46,7 @@ INSTALLED_APPS = [
      'users',
      'department',
      'cms',
+     'hods',
     # 'django_extensions',
 
 
