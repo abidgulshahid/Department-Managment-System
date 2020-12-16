@@ -82,7 +82,7 @@ def register(request):
 # 		return render(request, 'login.html', context)
 
 @login_required(login_url='login')
-def home(request):
+def student(request):
 	if request.user.is_student:
 		a= Student.add_to_class(str(request.user), value="ADDED")
 		print(a)

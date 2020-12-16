@@ -30,6 +30,7 @@ urlpatterns = [
     path('contact/', contact, name= 'contact'),
     path('teacher/', include('teacher.urls'),name="Teacher"),
     path('student/', include('student.urls'),name="Student"),
+    path('hod/',include('hods.urls'), name='hods'),
     path('department/cs', computer, name='computer' ),
     path('department/ps', political, name='political' ),
     path('department/math', math, name='math' ),
