@@ -70,7 +70,14 @@ AUTH_USER_MODEL='users.Users'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        "DIRS": ["student/templates/","teacher/templates/"],
+            'DIRS': [
+            # os.path.join(BASE_DIR, 'templates'),
+            '/student',
+            '/teacher',
+            '/hods',
+            os.path.join(BASE_DIR, 'initial', 'templates'),
+
+        ],
 
         'APP_DIRS': True,
         'OPTIONS': {

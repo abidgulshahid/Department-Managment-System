@@ -19,13 +19,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from .views import *
+
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('jet/dashboard/', include('jet.dashboard.urls',
                                    'jet-dashboard')), 
     path('', index, name="index"),
+    path('login/',include('users.urls'), name='users'),
     path('about/', about, name='about'),
     path('contact/', contact, name= 'contact'),
+    path('teacher/', include('teacher.urls'),name="Teacher"),
     path('student/', include('student.urls'),name="Student"),
     path('department/cs', computer, name='computer' ),
     path('department/ps', political, name='political' ),

@@ -10,7 +10,8 @@ from django.contrib.auth import logout as auth_logout
 from .forms import StudentForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+from teacher.views import teacher_index
+from teacher.urls import *
 # Create your views here.
 
 def register(request):
@@ -26,40 +27,59 @@ def register(request):
 
 
 
-def login(request):
-	if request.user.is_authenticated and request.user.is_student:
-		return redirect('home')
-	# else if:
-	# 	return render(request, 'not_student.html')
-	if request.user.is_authenticated and request.user.is_student:
-		return redirect('home')
-	elif request.user.is_authenticated and not  request.user.is_student:
-		return render(request, 'thanks.html')
-	else:
-		if request.method == 'POST':
-			email = request.POST.get('email')
-			password = request.POST.get('password')
-			try:
-				user = authenticate(request, email=email, password=password)
-				print ('---',dir(user))	
+# def login(request):
+# 	# if request.user.is_authenticated and request.user.is_student:
+# 	# 	return redirect('home')
+# 	# elif request.user.is_authenticated and request.user.is_admin:
+# 	# 	return redirect('teacher')
+	
+# 	# elif request.user.is_authenticated and request.user.is_teacher:
+# 	# 	pass
 
-				if user.is_student == True and user is not None:
-					auth_login(request, user)
-					return redirect('home')
-				elif user.is_superuser and user is not None:
-					auth_login(request, user)
-					return HttpResponseRedirect(reverse('admin:index'))
-				elif user.is_admin and is_staff is not None: 
-					return HttpResponseRedirect(reverse('teacher:index'))
+# 	# else:
+# 	# 	print(request.user.is_authenticated)
+# 	# 	return render(request,'login.html')
+# 	# else if:
+# 	# 	return render(request, 'not_student.html')
+# 	# if request.user.is_authenticated and request.user.is_student:
+# 	# 	return redirect('home')
+# 	# elif request.user.is_authenticated and not  request.user.is_student:
+# 	# 	return render(request, 'thanks.html')
+# 	# else:
+# 		if request.method == 'POST':
+# 			email = request.POST.get('email')
+# 			password = request.POST.get('password')
+# 			try:
+# 				user = authenticate(request, email=email, password=password)
+# 				# print ('---',dir(user))	
+# 				# print('========',dir(request.user))
+# 				print("status: ", user.is_student)
+# 				print("status: ", user.is_admin)
+# 				print("status: ", user.is_superuser)
 
-				else:
-					return redirect('home')
-				# else:
-				# 	messages.info(request, 'Username OR password is incorrect')
-			except:
-				user = "Something Wrong"
-		context = {}
-		return render(request, 'register.html', context)
+# 				if user.is_student and user is not None:
+# 					auth_login(request, user)
+# 					return redirect('home')
+				
+# 				elif user.is_superuser and user is not None:
+# 					auth_login(request, user)
+# 					return HttpResponseRedirect(reverse('admin:index'))
+				
+# 				elif user.is_admin==True and user is not None: 
+# 					auth_login(request, user)
+# 					return HttpResponseRedirect(reverse('teacher'))
+
+# 				elif user.is_student == False  and user is not None:
+# 					auth_login(request,user)
+# 					return redirect('home') 
+# 				# else:
+# 				# 	return redirect('index')
+# 				else:
+# 					messages.info(request, 'Username OR password is incorrect')
+# 			except:
+# 				user = "Something Wrong"
+# 		context = {'message':messages}
+# 		return render(request, 'login.html', context)
 
 @login_required(login_url='login')
 def home(request):

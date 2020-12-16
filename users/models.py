@@ -41,7 +41,7 @@ class Users(AbstractUser):
 
 
     def __str__(self):
-        return self.email
+        return self.email or str(self.is_student) or str(self.is_teacher)
     
     @classmethod
     def create(cls, username, password, is_teacher=False, is_student=False, *args, **kwargs):
@@ -56,27 +56,27 @@ class Users(AbstractUser):
             user.groups.add(Group.objects.get(name='teacher_group'))
             print('Added ' + str(user) + ' in ' + 'teacher_group')
   
-
+        print(user)
         return user
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username']
-    # @classmethod
-    # def create(cls, username, password, is_teacher=False, is_maintainer=False, is_student=False, is_employee=False, is_faculty=False, employee=None, *args, **kwargs):
-    #
-    #     user = cls(username=username, is_teacher=is_teacher, is_maintainer=is_maintainer, is_student=is_student,
-    #                is_employee=is_employee, is_faculty=is_faculty, employee=employee, *args, **kwargs)
-    #     user.set_password('hassan')
-    #     user.save()
-    #     if user.is_staff:
-    #         user.groups.add(Group.objects.get(name='maintainer_group'))
-    #         print('Added ' + str(user) + ' in ' + 'maintainer_group')
-    #     if user.is_student:
-    #         user.groups.add(Group.objects.get(name='student_group'))
-    #         print('Added ' + str(user) + ' in ' + 'student_group')
-    #     if user.is_teacher:
-    #         user.groups.add(Group.objects.get(name='teacher_group'))
-    #         print('Added ' + str(user) + ' in ' + 'teacher_group')
-    #
-    #
-    #     return user
+    @classmethod
+    def create(cls, username, password, is_teacher=False,is_student=False, is_admin=False,  *args, **kwargs):
+    
+        user = cls(username=username, is_teacher=is_teacher, is_student=is_student,
+                   is_admin=is_admin, *args, **kwargs)
+        user.set_password('abid')
+        user.save()
+        if user.is_staff:
+            user.groups.add(Group.objects.get(name='maintainer_group'))
+            print('Added ' + str(user) + ' in ' + 'maintainer_group')
+        if user.is_student:
+            user.groups.add(Group.objects.get(name='student_group'))
+            print('Added ' + str(user) + ' in ' + 'student_group')
+        if user.is_teacher:
+            user.groups.add(Group.objects.get(name='teacher_group'))
+            print('Added ' + str(user) + ' in ' + 'teacher_group')
+    
+    
+        return user

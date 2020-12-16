@@ -1,0 +1,12 @@
+{% if request.user.is_superuser %}
+<h1>Welcome, {{request.user.username}}</h1>
+<p>Total Users: {{total_users}}</p>
+<p>Total Students: {{students}}</p>
+<p>Total Teachers: {{teacher}}</p>
+
+<a href="{% url 'logOut' %}">Logout ?</a>
+
+{% else  %}
+<h1>Your not a Super User</h1>
+<a href="{% url 'logOut' %}">Logout ?</a>
+{% endif %}

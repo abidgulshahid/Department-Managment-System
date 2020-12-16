@@ -13,39 +13,45 @@ from django.urls import reverse
 # Create your views here.
 
 
+def teacher_index(request):
+	return render(request,'teacher.html')
+
+def logOut(request):
+	auth_logout(request)
+	return redirect('login')
 
 
-def login(request):
-	if request.user.is_authenticated:
-		return redirect('home')
-	# else if:
-	# 	return render(request, 'not_student.html')
-	if request.user.is_authenticated:
-		return redirect('home')
+# def login(request):
+# 	if request.user.is_authenticated:
+# 		return redirect('home')
+# 	# else if:
+# 	# 	return render(request, 'not_student.html')
+# 	if request.user.is_authenticated:
+# 		return redirect('home')
 
-	else:
-		if request.method == 'POST':
-			email = request.POST.get('email')
-			password = request.POST.get('password')
-			try:
-				user = authenticate(request, email=email, password=password)
-				print ('---',dir(user))	
+# 	else:
+# 		if request.method == 'POST':
+# 			email = request.POST.get('email')
+# 			password = request.POST.get('password')
+# 			try:
+# 				user = authenticate(request, email=email, password=password)
+# 				print ('---',dir(user))	
 
-				if user.is_teacher == True and user is not None:
-					auth_login(request, user)
-					return redirect('home')
-				elif user.is_superuser and user is not None:
-					auth_login(request, user)
-					return HttpResponseRedirect(reverse('admin:index'))
+# 				if user.is_teacher == True and user is not None:
+# 					auth_login(request, user)
+# 					return redirect('home')
+# 				elif user.is_superuser and user is not None:
+# 					auth_login(request, user)
+# 					return HttpResponseRedirect(reverse('admin:index'))
 
-				else:
-					return redirect('home')
-				# else:
-				# 	messages.info(request, 'Username OR password is incorrect')
-			except:
-				user = "Something Wrong"
-		context = {}
-		return render(request, 'register.html', context)
+# 				else:
+# 					return redirect('home')
+# 				# else:
+# 				# 	messages.info(request, 'Username OR password is incorrect')
+# 			except:
+# 				user = "Something Wrong"
+# 		context = {}
+# 		return render(request, 'register.html', context)
 
 # @login_required(login_url='login')
 # def home(request):
