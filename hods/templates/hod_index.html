@@ -1,3 +1,71 @@
-<h1>Hello From HOD</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit-icons.min.js"></script>
+    <title>Welcome , {{request.user.username}}</title>
+</head>
+<body>
+    <div class="uk-container">
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-center">
+    
+            <div class="uk-navbar-center-left"><div>
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="#">Active</a></li>
+                    <li>
+                        <a href="#">Parent</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li><a href="#">Item</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div></div>
+            <a class="uk-navbar-item uk-logo" href="#">HOD, {{request.user.username}}</a>
+            <div class="uk-navbar-center-right"><div>
+                <ul class="uk-navbar-nav">
+                    <li><a href="{% url 'logOut' %}">Logout</a></li>
+                </ul>
+            </div></div>
+    
+        </div>
+    </nav>
+    <hr class="uk-divider-icon">
+    <h1>My Department: {{dept}}</h1>
+    <table class="uk-table uk-table-hover uk-table-divider">
+        <thead>
+            <tr>
+                <th>Teacher  Name</th>
+                <!-- <th></th>
+                <th>Table Heading</th> -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{dept_teacher}}</td>
+                <!-- <td>Table Data</td>
+                <td>Table Data</td> -->
+            </tr>
+            <!-- <tr>
+                <td>Table Data</td>
+                <td>Table Data</td>
+                <td>Table Data</td>
+            </tr>
+            <tr>
+                <td>Table Data</td>
+                <td>Table Data</td>
+                <td>Table Data</td>
+            </tr> -->
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
 
-<a href="{% url 'logOut' %}">Logout</a>

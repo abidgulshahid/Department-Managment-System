@@ -10,9 +10,8 @@ QUALIFICATIONS = (
 )
 
 class Teacher(models.Model):
-    t = models.OneToOneField('users.Users', on_delete=models.CASCADE, default=None)
-    highest_qualification = models.SmallIntegerField(
-        choices=QUALIFICATIONS, name='highest_qualification', null=True)
+    t = models.OneToOneField('users.Users', on_delete=models.CASCADE, default=None, blank=True,null=True)
+    highest_qualification = models.SmallIntegerField(choices=QUALIFICATIONS, name='highest_qualification', null=True)
     
     # department = models.CharField(max_length=10, null=True)
     nu_email = models.CharField(max_length=100,blank=True)

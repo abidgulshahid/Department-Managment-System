@@ -1,10 +1,69 @@
 {% if request.user.is_superuser %}
-<h1>Welcome, {{request.user.username}}</h1>
-<p>Total Users: {{total_users}}</p>
-<p>Total Students: {{students}}</p>
-<p>Total Teachers: {{teacher}}</p>
 
-<a href="{% url 'logOut' %}">Logout ?</a>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit-icons.min.js"></script>
+    <title>Welcome , {{request.user.username}}</title>
+</head>
+<body>
+    <div class="uk-container">
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-center">
+    
+            <div class="uk-navbar-center-left"><div>
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="#">Active</a></li>
+                    <li>
+                        <a href="#">Parent</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li><a href="#">Item</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div></div>
+            <a class="uk-navbar-item uk-logo" href="#">Admin, {{request.user.username}}</a>
+            <div class="uk-navbar-center-right"><div>
+                <ul class="uk-navbar-nav">
+                    <li><a href="{% url 'logOut' %}">Logout</a></li>
+                </ul>
+            </div></div>
+    
+        </div>
+    </nav>
+    <hr class="uk-divider-icon">
+    <h1>Analytica</h1>
+    <table class="uk-table uk-table-hover uk-table-divider">
+        <thead>
+            <tr>
+                <th>Total Users</th>
+                <th>Total Teachers</th>
+                <th>Total  Hods</th>
+                <th>Total  Students</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{total_users}}</td>
+                <td>{{teacher}}</td>
+                <td>{{hods}}</td>
+                <td>{{students}}</td>
+            </tr>
+    
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
 
 {% else  %}
 <h1>Your not a Super User</h1>

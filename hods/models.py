@@ -8,9 +8,9 @@ from department.models import batch_no
 # Create your models here.
 
 class HOD(models.Model):
-	HOD_Teachers = models.OneToOneField('users.Users', on_delete=models.CASCADE, default=None)
 	Department = models.OneToOneField('department.department', on_delete=models.CASCADE, default=None)
-
+	hod_teachers_availables = models.ManyToManyField( "users.Users", related_name='Teacher_in_Current_Department')
 	def __str__(self):
 		return str(self.Department)
+
 

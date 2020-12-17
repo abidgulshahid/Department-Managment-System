@@ -97,14 +97,14 @@ def login(request):
 @login_required(login_url='login')
 def admin_dashboard(request):
 
-    students = Student.objects.all()
-    print(dir(request.user))
+    students = Users.objects.all().filter(is_student=True).count()
     # teacher =  Users.objects.filter(is_teacher=Teacher.objects.all()).count()
-    teacher = Teacher.objects.all()
+    teacher = Users.objects.all().filter(is_teacher=True).count()
+    hods = Users.objects.all().filter(is_admin=True).count()
 
     u = Users.objects.all().count()
 
-    all_data = {"total_users": u, 'students': students, 'teacher': teacher}
+    all_data = {"total_users": u, 'students': students, 'teacher': teacher, 'hods':hods}
     return render(request, 'admin_dashboard.html', all_data)
 # @login_required(login_url='login')
 # def home(request):
