@@ -46,6 +46,9 @@
     <div class="uk-tile uk-tile-default uk-padding-large">
         <p>My Department: <b>{{teacher.dept}}</b></p>
        <p> Department HOD: <b>{{teacher.dept.department_hod}}</b></p>
+      
+       <p>Teaching From: <b>{{teacher.teacher_name.date_joined}}</b></p>
+       <p>Last Login : <b>{{teacher.teacher_name.last_login}}</b></p>
     </div>
 
     <hr class="uk-divider-icon">
@@ -53,15 +56,15 @@
     <table class="uk-table uk-table-hover uk-table-divider">
         <thead>
             <tr>
-                <th>Teacher  Name</th>
-                <th>Qualifcatoin</th>
-                <th>Email</th>
+                <th>Batches</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             <tr>
 
-                <td></td>
+                <td>{{teacher.dept.batches}}</td>
                 <td></td>
                 <td></td>
                 <!-- <td>Table Data</td> -->

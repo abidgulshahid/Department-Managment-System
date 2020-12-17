@@ -15,7 +15,7 @@ class Teacher(models.Model):
     dept =models.ForeignKey('department.department', on_delete=models.CASCADE, default=None, blank=True,null=True)
     # department = models.CharField(max_length=10, null=True)
     nu_email = models.CharField(max_length=100,blank=True)
-
+    batch = models.ForeignKey('department.batch_no', on_delete=models.CASCADE, default=None)
     # @classmethod
     # def create(cls, user=None, nu_email=None, **kwargs):
     #     if t is None:

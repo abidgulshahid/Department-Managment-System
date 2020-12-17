@@ -15,8 +15,12 @@ from django.urls import reverse
 
 def teacher_index(request):
 	teacher = Teacher.objects.get(teacher_name=request.user.id)
-	print (dir(teacher))
-	print(teacher.dept.department_hod)
+	dept = department.objects.get(teacher=request.user.is_teacher)
+	
+	# print (dir(teacher.dept.department_students))
+	# print(teacher.dept.department_students)
+
+
 	context= {'teacher':teacher}
 	return render(request,'teacher.html', context)
 
