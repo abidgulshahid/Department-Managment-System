@@ -14,7 +14,11 @@ from django.urls import reverse
 
 
 def teacher_index(request):
-	return render(request,'teacher.html')
+	teacher = Teacher.objects.get(teacher_name=request.user.id)
+	print (dir(teacher))
+	print(teacher.dept.department_hod)
+	context= {'teacher':teacher}
+	return render(request,'teacher.html', context)
 
 def logOut(request):
 	auth_logout(request)

@@ -7,10 +7,13 @@ from department.models import batch_no
 
 # Create your models here.
 
-class HOD(models.Model):
-	Department = models.OneToOneField('department.department', on_delete=models.CASCADE, default=None)
-	hod_teachers_availables = models.ManyToManyField( "users.Users", related_name='Teacher_in_Current_Department')
+class hod(models.Model):
+	hod_name = models.OneToOneField(
+	    'users.Users', on_delete=models.CASCADE, default=True)
+	department_name = models.OneToOneField(
+	    'department.department', on_delete=models.CASCADE, default=True)
+	department_teacher = models.ManyToManyField('teacher.Teacher',  default=None, blank=True)
+	department_students = models.ManyToManyField('student.Student', default=None, blank=True)
+	
 	def __str__(self):
-		return str(self.Department)
-
-
+		return str(self.department_name)

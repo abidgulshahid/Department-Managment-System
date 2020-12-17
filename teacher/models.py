@@ -10,9 +10,9 @@ QUALIFICATIONS = (
 )
 
 class Teacher(models.Model):
-    t = models.OneToOneField('users.Users', on_delete=models.CASCADE, default=None, blank=True,null=True)
+    teacher_name= models.ForeignKey('users.Users', on_delete=models.CASCADE, default=None, blank=True,null=True)
     highest_qualification = models.SmallIntegerField(choices=QUALIFICATIONS, name='highest_qualification', null=True)
-    
+    dept =models.ForeignKey('department.department', on_delete=models.CASCADE, default=None, blank=True,null=True)
     # department = models.CharField(max_length=10, null=True)
     nu_email = models.CharField(max_length=100,blank=True)
 
@@ -39,7 +39,7 @@ class Teacher(models.Model):
     # #     super(YourModel, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.t.username
+        return self.teacher_name.username
 
     # class Meta:
     #     ordering = ('-pk',)

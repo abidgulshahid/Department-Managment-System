@@ -40,7 +40,7 @@ class department(models.Model):
     department_hod = models.ForeignKey("users.Users", help_text="Current HOD of Department",
                                        name='department_hod', on_delete=models.CASCADE,blank=True, null=True,default=None)
     department_teachers = models.ManyToManyField(
-        "users.Users", related_name='teachers_in_department', blank=True)
+        "teacher.Teacher", related_name='teachers_in_department', blank=True)
     department_students = models.ManyToManyField(
         "student.Student", related_name='students_in_department',blank=True)
     # batches = models.OneToOneField("batch_no",on_delete=models.CASCADE, default=None)

@@ -20,6 +20,11 @@ STUDENT_YEAR_CHOICE = (
     (8, "8")
 )
 
+Departments = (
+    (1, 'Computer Science'),
+    (2, 'MATH')
+)
+
 
 class Users(AbstractUser):
     username = models.CharField(max_length=200, unique=True, null=True)
@@ -30,6 +35,11 @@ class Users(AbstractUser):
     is_teacher = models.BooleanField(default=False, help_text='True if the User is a Teacher.')
     is_student = models.BooleanField(default=False, help_text='True if the User is a Student.')
     is_admin = models.BooleanField(default=False, help_text='True if the User is a Admin.')
+
+    Departments = [
+        ('BS CS', "Computer Science"),
+        ('BS Math', "Math")
+    ]
     GENDERS = [
         ('M', 'MALE'),
         ('F', 'FEMALE'),
@@ -39,7 +49,7 @@ class Users(AbstractUser):
     gender = models.CharField(
         "Gender", name="gender", max_length=50, choices=GENDERS)
 
-
+    dept = models.CharField('Departments', choices=Departments, max_length=50)
     def __str__(self):
         return self.email or str(self.is_student) or str(self.is_teacher)
     

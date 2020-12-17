@@ -101,10 +101,10 @@ def admin_dashboard(request):
     # teacher =  Users.objects.filter(is_teacher=Teacher.objects.all()).count()
     teacher = Users.objects.all().filter(is_teacher=True).count()
     hods = Users.objects.all().filter(is_admin=True).count()
-
+    dept = department.objects.all().count()
     u = Users.objects.all().count()
 
-    all_data = {"total_users": u, 'students': students, 'teacher': teacher, 'hods':hods}
+    all_data = {"total_users": u, 'students': students, 'teacher': teacher, 'hods':hods,'dept':dept}
     return render(request, 'admin_dashboard.html', all_data)
 # @login_required(login_url='login')
 # def home(request):

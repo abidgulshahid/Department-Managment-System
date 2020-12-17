@@ -12,15 +12,19 @@ from django.urls import reverse
 from teacher.views import teacher_index
 from teacher.urls import *
 from department.models import *
+from hods.models import *
 # Create your views here.
 
 
 def hods(request):
-    dept = department.objects.filter(department_hod=request.user.id)
-    dept_teacher = department.objects.filter(department_teachers=request.user.id)
-    print(dept_teacher)
-    context = {'dept': dept, 'dept_teacher': dept_teacher}
-    return render(request, 'hod_index.html', context)
+	if request.user.is_admin:
+		dept = hod.objects.get(hod_name=request.user.pk)
+		s = Users.objects.get(student=Student.objects.filter())
+		print(dir(dept.hod_name))
+	else:
+		return "ERROR"
+	context = {'dept': dept}
+	return render(request, 'hod_index.html', context)
 
 
 def logOut(request):
