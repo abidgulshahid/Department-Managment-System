@@ -16,7 +16,7 @@ Click==7.0
 colorama==0.4.4
 colorclass==2.2.0
 commonmark==0.9.1
-cryptography==2.9.2
+cryptography==3.3.2
 defusedxml==0.6.0
 dicttoxml==1.7.4
 distlib==0.3.1
