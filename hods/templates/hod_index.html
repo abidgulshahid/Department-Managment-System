@@ -39,47 +39,129 @@
     </nav>
     <hr class="uk-divider-icon">
     <h1>My Department: {{dept}}</h1>
+    <hr class="uk-divider-icon">
+
     <table class="uk-table uk-table-hover uk-table-divider">
         <thead>
             <tr>
                 <th>Teacher  Name</th>
+                <th>Batches</th>
                 <th>Qualifcatoin</th>
                 <th>Email</th>
+
             </tr>
         </thead>
+     
+
         <tbody>
+
             <tr>
 
-                <td>{{dept.department_teacher}}</td>
-                <td>{{dept.department_teacher.get_highest_qualification_display}}</td>
-                <td>{{dept.department_teacher.nu_email}}</td>
-                <!-- <td>Table Data</td> -->
+                 <td>{{teacher}}</td>  
+
+                <td></td>
+                <td></td>
             </tr>
 
         </tbody>
-    </table>
+      
 
+    </table>    
+
+    <hr class="uk-divider-icon">
 
     <table class="uk-table uk-table-hover uk-table-divider">
         <thead>
             <tr>
                 <th>Student  Name</th>
-                <!-- <th>Qualifcatoin</th>
-                <th>Email</th> -->
+                <th>Student Batch</th>
+                <th>Email</th>
             </tr>
         </thead>
+            {% for student in students %}
         <tbody>
             <tr>
 
-                <td>{{dept.department_students}}</td>
-                <!-- <td>{{dept.department_teacher.get_highest_qualification_display}}</td>
-                <td>{{dept.department_teacher.nu_email}}</td> -->
-                <!-- <td>Table Data</td> -->
+                <td>{{student}}</td>
+                <td>{{student.std}}</td>
+                <td>{{student.students}}</td> 
             </tr>
 
         </tbody>
+        {% endfor %}
     </table>
 </div>
 </body>
 </html>
 
+
+ <!-- <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+     <title>Document</title>
+ </head>
+ <body>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">HOD, {{request.user.username}}</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Features</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logOut' %}">Logout</a>
+                  </li>
+                </ul>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'logOut' %}">Logout</a>
+                      </li>
+                    </ul>
+                <span class="navbar-text">
+                 This is a Head of {{dept}} Department Panal 
+                </span>
+              </div>
+            </div>
+          </nav>
+
+          <hr class="uk-divider-icon">
+          <h1>My Department: {{dept}}</h1>
+          <hr class="uk-divider-icon">
+      
+          <table class="table table-hover table-dark">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Teacher Batch</th>
+                <th scope="col">Teacher Education</th>
+                <th scope="col">Teacher Education</th>
+              </tr>
+            </thead>
+    
+
+            <tbody>
+              <tr>
+             
+     
+              </tr>
+
+            </tbody>
+       
+
+          </table>
+    </div>
+ </body>
+ </html>
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script> -->

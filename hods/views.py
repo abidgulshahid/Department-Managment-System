@@ -17,14 +17,18 @@ from hods.models import *
 
 
 def hods(request):
-	if request.user.is_admin:
-		dept = hod.objects.get(hod_name=request.user.pk)
-		s = Users.objects.get(student=Student.objects.filter())
-		print(dir(dept.hod_name))
-	else:
-		return "ERROR"
-	context = {'dept': dept}
-	return render(request, 'hod_index.html', context)
+    if request.user.is_admin:
+        dept = hod.objects.get(hod_name=request.user.id)
+        students = Student.objects.filter(hod=dept)
+        teachers = Teacher.objects.filter(hod=dept)
+        batches = batch_no.objects.filter(batch_depts=department.objects.get(hod=dept))
+        for teacher in teachers:
+            print(dir(teacher))
+
+    else:
+        dept = "User Not Found"
+    context = {'dept': dept, 'teacher': teacher, 'students': students}
+    return render(request, 'hod_index.html', context)
 
 
 def logOut(request):

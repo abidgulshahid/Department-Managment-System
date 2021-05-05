@@ -11,7 +11,7 @@ from django.contrib.auth import logout as auth_logout
 from student.forms import StudentForm
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from teacher.views import teacher_index
+from teacher.views import *
 from teacher.urls import *
 from hods.urls import *
 from hods.views import *
@@ -51,10 +51,10 @@ def login(request):
     # 	return render(request, 'thanks.html')
     # else:
     if request.method == 'POST':
-        email = request.POST.get('email')
+        username = request.POST.get('username')
         password = request.POST.get('password')
         try:
-            user = authenticate(request, email=email, password=password)
+            user = authenticate(request, username=username, password=password)
             # print ('---',dir(user))
             # print('========',dir(request.user))
             print("Student_status: ", user.is_student)
@@ -101,10 +101,12 @@ def admin_dashboard(request):
     # teacher =  Users.objects.filter(is_teacher=Teacher.objects.all()).count()
     teacher = Users.objects.all().filter(is_teacher=True).count()
     hods = Users.objects.all().filter(is_admin=True).count()
-    dept = department.objects.all().count()
+    dept = Dept.objects.all().count()
     u = Users.objects.all().count()
+    d = Class.objects.filter().count()
+    print(d)
 
-    all_data = {"total_users": u, 'students': students, 'teacher': teacher, 'hods':hods,'dept':dept}
+    all_data = {"total_users": u, 'students': students, 'teacher': teacher, 'hods':hods,'dept':dept,'class':d}
     return render(request, 'admin_dashboard.html', all_data)
 # @login_required(login_url='login')
 # def home(request):

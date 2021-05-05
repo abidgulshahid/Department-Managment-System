@@ -7,7 +7,10 @@ urlpatterns = [
     path('home/', views.student, name='student'),
 	path('home/courses', views.courses, name='courses'),
 	path('home/attendence',views.show_attendence, name='show_attendence'),
+	path('home/result',views.result, name='marks'),
 	path('home/fee',views.fee, name='fee'),
-	path('logout/', views.logOut, name='logOut'),
+	path('home/profile',views.student_profile, name='student_profile'),
+	path('home/profile/<slug:student>/update',views.update_student_profile, name='update_student_profile'),
+	path('logout/', views.logout, name='logOut'),
 
 ]

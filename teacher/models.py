@@ -1,49 +1,16 @@
 from django.db import models
 from users.models import Users
 from django.contrib.auth.models import Group
-
+from department.models import *
+import uuid
 # Create your models here.
-QUALIFICATIONS = (
-    (1, 'Bachelors'),
-    (2, 'Masters'),
-    (3, 'Doctrate')
-)
 
 class Teacher(models.Model):
-    teacher_name= models.ForeignKey('users.Users', on_delete=models.CASCADE, default=None, blank=True,null=True)
-    highest_qualification = models.SmallIntegerField(choices=QUALIFICATIONS, name='highest_qualification', null=True)
-    dept =models.ForeignKey('department.department', on_delete=models.CASCADE, default=None, blank=True,null=True)
-    # department = models.CharField(max_length=10, null=True)
-    nu_email = models.CharField(max_length=100,blank=True)
-    batch = models.ForeignKey('department.batch_no', on_delete=models.CASCADE, default=None)
-    # @classmethod
-    # def create(cls, user=None, nu_email=None, **kwargs):
-    #     if t is None:
-    #         username = None
-    #         password = None
-    #
-    #         username = kwargs['username']
-    #         password = kwargs['password']
-    #
-    #         u = Users.create(username=username, password=password,
-    #                         is_teacher=True, is_employee=True)
-    #         t = u
-    #
-    #     t = cls(user=Users, nu_email=nu_email)
-    #     t.save()
-    #     # t.groups.add(Group.objects.get(name='teacher_group'))
-    #     return t
-    #
-    # # def save(self, *args, **kwargs):
-    # #     created = self.id is None
-    # #     super(YourModel, self).save(*args, **kwargs)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    user = models.OneToOneField(Users, on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=100)
+    dept = models.ForeignKey('department.Dept', on_delete=models.CASCADE, default=1)
 
     def __str__(self):
-        return self.teacher_name.username
-
-    # class Meta:
-    #     ordering = ('-pk',)
-    #
-    # def __unicode__(self):
-    #     return u'%s' % self.pk
+        return self.name
 

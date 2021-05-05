@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit-icons.min.js"></script>
+    <title>Welcome , {{request.user.username}}</title>
+   <style>
+       body {
+        background: #f8f8f8;
+       }
+       </style>
+</head>
+<body>
+    <div class="uk-container">
+    <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="uk-navbar-center">
+    
+            <div class="uk-navbar-center-left"><div>
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="#">Active</a></li>
+                    <li>
+                        <a href="#">Parent</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a href="#">Active</a></li>
+                                <li><a href="#">Item</a></li>
+                                <li><a href="#">Item</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div></div>
+            <a class="uk-navbar-item uk-logo" href="#">Teacher, {{request.user.username}}</a>
+            <div class="uk-navbar-center-right"><div>
+                <ul class="uk-navbar-nav">
+                    <li><a href="{% url 'logOut' %}">Logout</a></li>
+                </ul>
+            </div></div>
+    
+        </div>
+    </nav>
+    <!-- <hr class="uk-divider-icon"> -->
+    <!-- <div class="uk-tile uk-tile-default uk-padding-large">
+        <p>My Department: <b>{{t.dept}}</b></p>
+       <p> Department HOD: <b></b></p>
+      
+       <p>Teaching From: <b>{{t.user.date_joined}}</b></p>
+       <p>Last Login : <b>{{t.user.last_login}}</b></p>
+    </div> -->
+
+    <hr class="uk-divider-icon">
+
+
+    <div class="uk-tile uk-tile-default uk-padding-large">
+            <h2> <code>{{stud}}</code> Attendence</h2>
+
+            <form>
+                <input type="text" name="">
+            </form>
+
+  
+
+</div>
+</body>
+</html>
+

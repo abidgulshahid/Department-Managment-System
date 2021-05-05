@@ -31,7 +31,7 @@
                 <ul class="list-unstyled components">
                     <p>			Hello, {{request.user}}</p>
                     <li>
-                        <a href="{% url 'home' %}" >Home</a>
+                        <a href="{% url 'student' %}" >Home</a>
                       
                     </li>
                     <li class="active">                                            <a href="#">Courses</a>
@@ -47,10 +47,9 @@
                         </ul> -->
                     </li>
                     <li>
-                        <a href="#">Transcript</a>
                     </li>
                     <li>
-                        <a href="#">Profile</a>
+                        <a href="{% url 'student_profile' %}">Profile</a>
                     </li>
                     <li>
                         <a href="{% url 'logOut' %}">Logout</a>
@@ -87,32 +86,46 @@
                 </nav>
 
                 <h2>Courses</h2>
-                <table class='table table-sm' >
-                    <tr>
-                      <th>Subject 1 </th>
-                      <th>Subject 2 </th>
-                      <th>Subject 3 </th>
-                      <th>Subject 4 </th>
-                      <th>Subject 5 </th>
-                      <th>Subject 6 </th>
-
+                <table class='table table-bordered' >
+                    <thead class="thead-dark">
+                        <tr>
+                   
                     </tr>
 
+                </thead>                   
 
+                <tbody>
+                    {% for ass in course %}
                   <tr>
-                    <td>{{sub.subject1}}</td>
-                    <td>{{sub.subject2}}</td>
-                    <td>{{sub.subject3}}</td>
-                    <td>{{sub.subject4}}</td>
-                    <td>{{sub.subject5}}</td>
-                    <td>{{sub.subject6}}</td>
-                  </tr>
+           
+                  <tr>
+                  </tbody>
+                    {% endfor %}
 
                   </table>
-                <div class="line"></div>
+                  <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Teacher </th>
+                        <th scope="col">Time</th>
+                      </tr>
+                    </thead>
 
-                <div class="line"></div>
+                    <tbody> 
+                        {% for ass in course %}
 
+                      <tr>
+                        <td>{{ass.course}}</td>
+                        <td>{{ass.teacher}}</td>
+                        {% for at in ass.assigntime_set.all %}
+                          <td>{{at.period}} {{at.day}}</td>
+                          {% endfor %}
+  
+                      </tr>
+                        {% endfor %}
+                    </tbody>
+                  </table>
 
                 <div class="line"></div>
 

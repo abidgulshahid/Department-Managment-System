@@ -24,6 +24,7 @@ urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('jet/dashboard/', include('jet.dashboard.urls',
                                    'jet-dashboard')), 
+
     path('', index, name="index"),
     path('login/',include('users.urls'), name='users'),
     path('about/', about, name='about'),

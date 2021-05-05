@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit-icons.min.js"></script>
+    <title>Welcome , {{request.user.username}}</title>
+    <style>
+        body {
+         background: #fafafa;;
+        }
+ 
+        #nav {
+            background-color: #03244d;
+            color:white;
+ 
+        }
+ 
+        #nav a{
+            color:white;
+        }
+ 
+        #nav h3 {
+            color:white;
+        }
+ 
+        #title {
+            border: 1px solid  #03244d;
+            border-radius: 5px;
+        }
+ 
+        footer {
+            border-top: 1px solid black;
+            margin-top: 2em;
+            text-align: center;
+        }
+ 
+        footer p {
+            margin-top: 2em;
+        }
+        </style>
+</head>
+<body>
+    <nav class="uk-navbar-container" uk-navbar id="nav" ">
+
+        <div class="uk-navbar-left">
+    
+            <ul class="uk-navbar-nav">
+                <li class="uk-active"><a href="#"><h3>CMS | Teacher Panel</h3></a></li>
+               
+            </ul>
+    
+        </div>
+    
+        <div class="uk-navbar-right">
+    
+            <ul class="uk-navbar-nav">
+                <li class="uk-active"><a href="#">{{request.user.teacher}}</a></li>
+                <li>
+                    <a href="#">Settings</a>
+
+                </li>
+                <li><a href="{% url 'logOut' %}">Logout</a></li>
+            </ul>
+    
+        </div>
+    
+    </nav>
+    <!-- <hr class="uk-divider-icon"> -->
+    <!-- <div class="uk-tile uk-tile-default uk-padding-large">
+        <p>My Department: <b>{{t.dept}}</b></p>
+       <p> Department HOD: <b></b></p>
+      
+       <p>Teaching From: <b>{{t.user.date_joined}}</b></p>
+       <p>Last Login : <b>{{t.user.last_login}}</b></p>
+    </div> -->
+
+    <hr class="uk-divider-icon">
+
+    <div class="uk-container">
+
+    <div class="uk-tile uk-tile-default uk-padding-large" id='title'>
+            <h2>Student <b>{{student.name}}</b> Marks </h2>
+             
+ <center>       
+<form method="POST", action='{% url 'take_marks' student.USN teacher.id %}'>
+    {% csrf_token %}
+    <div class="uk-margin">
+    <select class="uk-select uk-form-width-large" name="type">
+        <option>Internal Test 1 </option>
+        <option>Internal Test 2 </option>
+        <option>Mid </option>
+        <option>Terminal Exam </option>
+    </select>
+    </div>
+    <div class="uk-margin">
+
+    <input class="uk-input uk-form-width-large" type="text" name="marks">
+    </div>
+    <input type="submit" class="uk-button" name='submit'>
+</center>
+
+</form>
+  
+     
+
+</div>
+
+
+
+
+   
+</div>
+</body>
+</html>
+
+
+

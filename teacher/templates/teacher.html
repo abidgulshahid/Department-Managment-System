@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -9,91 +10,118 @@
     <title>Welcome , {{request.user.username}}</title>
    <style>
        body {
-        background: #f8f8f8;
+        background: #fafafa;;
+       }
+
+       #nav {
+           background-color: #03244d;
+           color:white;
+
+       }
+
+       #nav a{
+           color:white;
+       }
+
+       #nav h3 {
+           color:white;
+       }
+
+       #title {
+           border: 1px solid  #03244d;
+           border-radius: 5px;
+       }
+
+       footer {
+           border-top: 1px solid black;
+           margin-top: 2em;
+           text-align: center;
+       }
+
+       footer p {
+           margin-top: 2em;
        }
        </style>
 </head>
 <body>
-    <div class="uk-container">
-    <nav class="uk-navbar-container uk-margin" uk-navbar>
-        <div class="uk-navbar-center">
-    
-            <div class="uk-navbar-center-left"><div>
+        <nav class="uk-navbar-container" uk-navbar id="nav" ">
+
+            <div class="uk-navbar-left">
+        
                 <ul class="uk-navbar-nav">
-                    <li class="uk-active"><a href="#">Active</a></li>
-                    <li>
-                        <a href="#">Parent</a>
-                        <div class="uk-navbar-dropdown">
-                            <ul class="uk-nav uk-navbar-dropdown-nav">
-                                <li class="uk-active"><a href="#">Active</a></li>
-                                <li><a href="#">Item</a></li>
-                                <li><a href="#">Item</a></li>
-                            </ul>
-                        </div>
-                    </li>
+                    <li class="uk-active"><a href="#"><h3>CMS | Teacher Panel</h3></a></li>
+                   
                 </ul>
-            </div></div>
-            <a class="uk-navbar-item uk-logo" href="#">Teacher, {{request.user.username}}</a>
-            <div class="uk-navbar-center-right"><div>
+        
+            </div>
+        
+            <div class="uk-navbar-right">
+        
                 <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="#">{{request.user.teacher}}</a></li>
+                    <li>
+                        <a href="{% url 'teacher_profiles' %}">Settings</a>
+    
+                    </li>
                     <li><a href="{% url 'logOut' %}">Logout</a></li>
                 </ul>
-            </div></div>
-    
-        </div>
-    </nav>
+        
+            </div>
+        
+        </nav>
     <hr class="uk-divider-icon">
-    <div class="uk-tile uk-tile-default uk-padding-large">
-        <p>My Department: <b>{{teacher.dept}}</b></p>
-       <p> Department HOD: <b>{{teacher.dept.department_hod}}</b></p>
+    <div class="uk-container">
+    <div class="uk-tile uk-tile-default uk-padding-large" id="title" >
+        <p>My Department: <b>{{t.dept}}</b></p>
       
-       <p>Teaching From: <b>{{teacher.teacher_name.date_joined}}</b></p>
-       <p>Last Login : <b>{{teacher.teacher_name.last_login}}</b></p>
+       <p>Teaching From: <b>{{t.user.date_joined}}</b></p>
+       <p>Last Login : <b>{{t.user.last_login}}</b></p>
     </div>
 
     <hr class="uk-divider-icon">
-    <h2>My Batches</h2>
-    <table class="uk-table uk-table-hover uk-table-divider">
+
+
+    <div class="uk-tile uk-tile-default uk-padding-large" id="title">
+            <h2>Your Students</h2>
+
+        
+  
+      <table class="uk-table uk-table-hover uk-table-divider">
         <thead>
+            
             <tr>
-                <th>Batches</th>
-                <th></th>
-                <th></th>
+                <th>Student Batch</th>
+                <th>Course</th>
+                <th>Current Semester</th>
+                <th>Class Timing</th>
+
             </tr>
         </thead>
+        {% for data in teacher1 %}
         <tbody>
-            <tr>
 
-                <td>{{teacher.dept.batches}}</td>
-                <td></td>
-                <td></td>
-                <!-- <td>Table Data</td> -->
+            <tr>
+    
+           <td><a href="{% url 'teacher_stud' data.id %}"> {{data.class_id.id}} </a></td>
+           
+           <td> {{data.course}}</td>
+           <td>{{data.class_id.sem}}</td>
+           {% for ct in data.assigntime_set.all %}
+           <td> {{ct.period}} {{ct.day}}</td>
+
+           {% endfor %}
+ 
             </tr>
 
         </tbody>
-    </table>
+        {% endfor %}
 
+        </table>
 
-    <table class="uk-table uk-table-hover uk-table-divider">
-        <thead>
-            <tr>
-                <th>Student  Name</th>
-                <!-- <th>Qualifcatoin</th>
-                <th>Email</th> -->
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-
-                <td></td>
-                <!-- <td>{{dept.department_teacher.get_highest_qualification_display}}</td>
-                <td>{{dept.department_teacher.nu_email}}</td> -->
-                <!-- <td>Table Data</td> -->
-            </tr>
-
-        </tbody>
-    </table>
+</div> 
 </div>
-</body>
-</html>
+
+<footer>
+    <p>MADE WITH LOVE BY ABID</p>
+</footer>
 

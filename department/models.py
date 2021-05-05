@@ -1,123 +1,176 @@
 from django.db import models
 from student.models import *
 from teacher.models import *
-from users.models import *
+from users.models import Users
+import math
+from django.core.validators import MinValueValidator, MaxValueValidator
+
+import datetime
+
+time_slots = (
+    ('7:30 - 8:30', '7:30 - 8:30'),
+    ('8:30 - 9:30', '8:30 - 9:30'),
+    ('9:30 - 10:30', '9:30 - 10:30'),
+    ('11:00 - 11:50', '11:00 - 11:50'),
+    ('11:50 - 12:40', '11:50 - 12:40'),
+    ('12:40 - 1:30', '12:40 - 1:30'),
+    ('2:30 - 3:30', '2:30 - 3:30'),
+    ('3:30 - 4:30', '3:30 - 4:30'),
+    ('4:30 - 5:30', '4:30 - 5:30'),
+)
+
+DAYS_OF_WEEK = (
+    ('Monday', 'Monday'),
+    ('Tuesday', 'Tuesday'),
+    ('Wednesday', 'Wednesday'),
+    ('Thursday', 'Thursday'),
+    ('Friday', 'Friday'),
+    ('Saturday', 'Saturday'),
+)
+
+
+test_name = (
+    ('Internal test 1', 'Internal test 1'),
+    ('Internal test 2', 'Internal test 2'),
+    ('Mid', 'Mid'),
+    ('Terminal Exam', 'Terminal Exam'),
+)
 
 
 
+class Dept(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) 
+    name = models.CharField(max_length=100)
 
-class batch_no(models.Model):
-    batch_id = models.AutoField(primary_key=True)
-    sec_batch = models.CharField(
-        max_length=25, blank=True, null=True, help_text='pk')
-    batch = models.CharField(max_length=256,null=True)
-    section = models.CharField(
-        max_length=10, help_text='Section Name Etc A,B,C etc', null=True)
-    # students = models.ManyToManyField('student.Student')
-    limit = models.SmallIntegerField(default=40, blank=True, null=True)
-    depts = models.ForeignKey('department', on_delete=models.SET_NULL, default=None,blank=True,null=True)
-    # student_batches = models.ForeignKey('student.Student', on_delete=models.SET_NULL, default=None,blank=True,null=True)
-    std_br = models.ManyToManyField('student.Student')
-    def save(self, *args, **kwargs):
-        print(self.batch, self.section, self.sec_batch)
-        if self.sec_batch is None or self.batch + "-" + self.section != str(self.sec_batch):
-            self.sec_batch = str(self.batch) + "-" + str(self.section)
-        super(batch_no, self).save(*args, **kwargs)
+    def __str__(self):
+        return self.name
+
+
+
+class Course(models.Model):
+    id =models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) 
+    dept = models.ForeignKey(Dept, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50)
+    shortname = models.CharField(max_length=50, default='X')
+
+    def __str__(self):
+        return self.name
+
+
+class Class(models.Model):
+    # courses = models.ManyToManyField(Course, default=1)
+    id = models.CharField(primary_key='True', max_length=50)
+    dept = models.ForeignKey(Dept, on_delete=models.CASCADE)
+    section = models.CharField(max_length=100)
+    sem = models.IntegerField()
 
     class Meta:
-        unique_together = ('batch', 'section')
+        verbose_name_plural = 'classes'
 
     def __str__(self):
-        return self.sec_batch
+        d = Dept.objects.get(name=self.dept)
+        return '%s : %d %s' % (d.name, self.sem, self.section)
 
 
-class department(models.Model):
-    department_id = models.AutoField(primary_key=True)
-    department_name = models.CharField(
-        "Department Name", max_length=255, help_text="Name of Department of Campus", unique=True)
-    batches = models.ManyToManyField('batch_no',blank=True)
+class Assign(models.Model):
+    class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    teacher = models.ForeignKey('teacher.Teacher', on_delete=models.CASCADE)
 
-    department_hod = models.ForeignKey("users.Users", help_text="Current HOD of Department",
-                                       name='department_hod', on_delete=models.CASCADE,blank=True, null=True,default=None)
-    department_teachers = models.ManyToManyField(
-        "teacher.Teacher", related_name='teachers_in_department', blank=True)
-    department_students = models.ManyToManyField(
-        "student.Student", related_name='students_in_department',blank=True)
-    # batches = models.OneToOneField("batch_no",on_delete=models.CASCADE, default=None)
+    class Meta:
+        unique_together = (('course', 'class_id', 'teacher'),)
 
     def __str__(self):
-        return self.department_name
+        cl = Class.objects.get(id=self.class_id_id)
+        cr = Course.objects.get(id=self.course_id)
+        te = Teacher.objects.get(id=self.teacher_id)
+        return '%s : %s : %s' % (te.name, cr.shortname, cl)
 
 
 
-class degree(models.Model):
-    pass
-
-
-class Semester(models.Model):
-    SEMSESTER_CHOICES = (
-        (1, "SPRING"),
-        (2, "FALL"),
-        (3, "SUMMER")
-    )
-    Semesters = (
-        (1, '1'),
-        (2,'2'),
-        (3,'3'),
-        (4,'4'),
-        (5,'5'),
-        (6,'6'),
-        (7,'7'),
-        (8,'8')
-    )
-    semester = models.SmallIntegerField(choices=Semesters, name='semester',default='1')
-    semester_season = models.SmallIntegerField(
-        choices=SEMSESTER_CHOICES, name="semester_season")
-    semester_year = models.IntegerField(name="semester_year")
-    start_date = models.DateField(
-        name="start_date", default=datetime.date.today)
-    end_date = models.DateField(name="end_date", default=datetime.date.today)
-    teachers_available = models.ManyToManyField(
-        'teacher.Teacher', related_name="teachers_available", blank=True)
-    batchess = models.ManyToManyField('batch_no')
+class AssignTime(models.Model):
+    assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
+    period = models.CharField(max_length=50, choices=time_slots, default='11:00 - 11:50')
+    day = models.CharField(max_length=15, choices=DAYS_OF_WEEK)
 
     def __str__(self):
-        return str(self.semester)
+        return '%s %s %s' % (self.assign.course, self.period, self.day)
 
-
-class subjects(models.Model):
-    subject1 = models.CharField(max_length=100, default=None)
-    subject2 = models.CharField(max_length=100, default=None)
-    subject3 = models.CharField(max_length=100, default=None)
-    subject4 = models.CharField(max_length=100, default=None)
-    subject5 = models.CharField(max_length=100, default=None,blank=True)
-    subject6 = models.CharField(max_length=100, default=None,blank=True)
-    subject7 = models.CharField(max_length=100, default=None, blank=True)
-    semester_subjects = models.ForeignKey("Semester", help_text="Semester", on_delete=models.CASCADE,blank=True, null=True,default=None)
-
-
-class Attendence(models.Model):
-    ATTENDANCE_STATES = (
-        ('P', 'Present'),
-        ('A', 'Absent'),
-        ('L', 'Leave')
-    )
-    class_date = models.DateField(
-        name='class_date', blank=True, null=True, default=datetime.date.today)
-    state = models.CharField(choices=ATTENDANCE_STATES, max_length=256, default='P')
-    teacher  = models.ForeignKey('teacher.Teacher', on_delete=models.CASCADE, blank=True,  null=True)
-    student = models.ManyToManyField('student.Student',blank=True)
-    semester = models.ForeignKey('department.Semester', on_delete=models.CASCADE, blank=True, null=True)
+class Attendance(models.Model):
+    id  = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) 
+    assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
+    student=  models.ForeignKey('student.Student', on_delete=models.CASCADE)
+    attendance_date = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.class_date)
+        return "%s %s " % (self.assign.course, self.student)
+
+    class Meta:
+        ordering = ['-attendance_date']
+
+
+# class Marks(models.Model):
+#     assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
+#     student=  models.ForeignKey('student.Student', on_delete=models.CASCADE)
+#     marking_date = models.DateField()
+#     name = models.CharField(max_length=50, choices=test_name, default='Internal test 1')
+#     marks1 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+
+#     @property
+#     def total_marks(self):
+#         if self.name == 'Semester End Exam':
+#             return 100
+#         return 20
+
+#     def __str__(self):
+#         return "%s %s %s " % (self.assign.teacher,self.student, self.name)
 
 
 
-class announcments(models.Model):
-        msg = models.CharField(max_length=200, null=True)
-        date = models.DateField(null=True)
-     #   date = models.DateField(default=datetime.date.today)
-        
-        def __str__(self):
-            return self.msg
+class StudentCourse(models.Model):
+    student = models.ForeignKey('student.Student', on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+
+    class Meta:
+        unique_together = (('student', 'course'),)
+        verbose_name_plural = 'Marks'
+
+
+
+    def get_cie(self):
+        marks_list = self.marks_set.all()
+        m = []
+        for mk in marks_list:
+            m.append(mk.marks1)
+        cie = math.ceil(sum(m[:5]) / 2)
+        return cie
+
+class Marks(models.Model):
+    studentcourse = models.ForeignKey(StudentCourse, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, choices=test_name, default='Internal test 1')
+    marks1 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+
+    class Meta:
+        unique_together = (('studentcourse', 'name'),)
+
+    @property
+    def total_marks(self):
+        if self.name == 'Semester End Exam':
+            return 100
+        return 20
+
+
+class MarksClass(models.Model):
+    assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
+    name = models.CharField(max_length=50, choices=test_name, default='Internal test 1')
+    status = models.BooleanField(default='False')
+
+    class Meta:
+        unique_together = (('assign', 'name'),)
+
+    @property
+    def total_marks(self):
+        if self.name == 'Semester End Exam':
+            return 100
+        return 20

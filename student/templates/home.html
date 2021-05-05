@@ -27,7 +27,7 @@
                 </div>
 
                 <ul class="list-unstyled components">
-                    <p>			Hello, {{request.user}}</p>
+                    <p>			Hello, {{request.user.student}}</p>
                     <li class="active">
                         <a href="{% url 'student' %}" data-toggle="collapse" aria-expanded="false">Home</a>
 
@@ -38,19 +38,19 @@
 
                     <li>
 
-                        <a href="#">Attendence</a>
-                        <a href="#" data-toggle="collapse" aria-expanded="false">Result</a>
+                        <a href="{% url 'show_attendence' %}">Attendence</a>
+                        <a href="{% url 'marks' %}">Result</a>
                         <!-- <ul class="collapse list-unstyled" id="pageSubmenu">
                             <li><a href="#">Page 1</a></li>
                             <li><a href="#">Page 2</a></li>
                             <li><a href="#">Page 3</a></li>
                         </ul> -->
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="#">Transcript</a>
-                    </li>
+                    </li> -->
                     <li>
-                        <a href="#">Profile</a>
+                        <a href="{% url 'student_profile' %}">Profile</a>
                     </li>
                     <li>
                        <a href="{% url 'logOut' %}">Logout</a>
@@ -91,11 +91,11 @@
       <div class="card-body">
         <h3 class="card-title"><code>Profile Overview</code></h3>
         <h5 class="card-subtitle mb-2 text-muted" style="color:white;"><b>Username: {{request.user.username}}</b></h5>
-        <p class="card-text" style="color:white;">Email:   {{request.user}}</h5>
-        <p class="card-text" style="color:white;">Batche No: {{b}}
-          <br> Department: {{u.degree}}
+        <p class="card-text" style="color:white;">Email:   {{request.user.email}}</h5>
+        <p class="card-text" style="color:white;">Batche No: {{request.user.student.class_id.id}}
+          <br> Department: {{request.user.student.class_id.dept}}
 
-          <br> Current Semester: {{sem.semester}}
+          <br> Current Semester: {{request.user.student.class_id.sem}}
 
 
 </p>
@@ -164,7 +164,7 @@
 					<p>			Hello, {{user}}</p>
 					
                     <li class="active">
-                        <a href="{% url 'home' %}" data-toggle="collapse" aria-expanded="false">Home</a>
+                        <a href="{% url 'student' %}" data-toggle="collapse" aria-expanded="false">Home</a>
 
                     </li>
                         <li>

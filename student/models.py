@@ -1,36 +1,17 @@
 from django.db import models
 from users.models import Users
-from department.models import batch_no
+from department.models import *
 # Create your models here.
 
-class Student(models.Model):
-    @classmethod
-    def create(cls, first_name, last_name, email, password, *args, **kwargs):
-        print(first_name + last_name + email + password)
-        user_created = Users(first_name=first_name, last_name=last_name,
-                            password=password, email=email, is_student=True)
-        user_created.save()
-        # last_student = Student.objects.all().order_by('arn').last()
-        #
-        # if not last_student:
-        #     print("last student is empty")
-        #     last_arn_number = ((17 % 100)*1000000)+1
-        # else:
-        #     last_arn_number = last_student.arn + 1
-    
-        student_created = cls(use=user_created)
-    
-        student_created.groups.add(Group.objects.get(name='student_group'))
-        print("Returning created student")
-        print(student_created)
-    
-        return student_created
-    students = models.OneToOneField('users.Users', on_delete=models.CASCADE, default=True)
-    print(Users.is_student)
-    # students =  models.ManyToManyField(
-    #     'users.Users', related_name="Students", blank=True)
 
-    std = models.ForeignKey('department.batch_no', on_delete=models.SET_NULL,default=None,blank=True, null=True)
-    uid = models.AutoField(primary_key=True)
+
+class Student(models.Model):
+    USN =  models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)  
+    user = models.OneToOneField(Users, on_delete=models.CASCADE, null=True)
+    name = models.CharField(max_length=200)
+    class_id = models.ForeignKey('department.Class', on_delete=models.CASCADE, default=1)
+    DOB = models.DateField(default='1998-01-01')
+
     def __str__(self):
-        return self.students.username
+        return self.name
+

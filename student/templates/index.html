@@ -3,8 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit-icons.min.js"></script>
+    <title>GPGC Lakki Marwat</title>
+   <style>
+  
+       body {
+        background: #fafafa;;
+       }
+
+       #nav {
+           background-color: #03244d;
+           color:white;
+
+       }
+
+       #nav a{
+           color:white;
+       }
+
+       #nav h3 {
+           color:white;
+       }
+
+       #title {
+           border: 1px solid  #03244d;
+           border-radius: 5px;
+       }
+
+       footer {
+           border-top: 1px solid black;
+           margin-top: 2em;
+           text-align: center;
+       }
+
+       footer p {
+           margin-top: 2em;
+       }
+       </style>
+
+</head>
+
+
+
+<body >
+  
+      
+  <nav class="uk-navbar-container" uk-navbar id="nav" ">
+    <div class="uk-navbar-center">
+    
+            <div class="uk-navbar-center-left"><div>
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li>
+                    <li>
+                        <a href="#">Academic</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a style="color:black"  href="#">Computer Science</a></li>
+                                <li><a style="color:black"  href="#">Math</a></li>
+                                <li><a style="color:black"  href="#">Political Science</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div></div>
+            <a class="uk-navbar-item uk-logo" href="{% url 'login'  %}">College Managment System</a>
+            <div class="uk-navbar-center-right"><div>
+                <ul class="uk-navbar-nav">
+
+                    <li><a href="{% url 'admissions' %}">Admission</a></li>
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                </ul>
+            </div></div>
+    
+        </div>
+    </nav>
+
+
+    <!-- <div class="uk-visible-toggle" uk-slider="autoplay: false">
+			<div class="uk-position-relative">
+				<div class="uk-slider-container uk-box-shadow-medium uk-background-primary-light">
+					<ul class="uk-slider-items uk-child-width-1-1">
+						<li>
+							<div class="uk-grid-collapse" uk-grid>
+								<div class="uk-width-1-2@s">
+									<img src="https://source.unsplash.com/ELYUBrnvLtg/800x800" alt="Image">
+								</div>
+								<div class="uk-width-expand@s uk-flex uk-flex-middle">
+									<div class="uk-padding-large">
+										<h3 class="uk-text-uppercase uk-h5 uk-letter-spacing-small">Our Best Projects</h3>
+										<h2 class="uk-heading-small uk-margin-medium-top">Education</h2>
+										<div>
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+										</div>
+										<hr class="uk-margin-medium-top uk-separator-small">
+										<h3 class="uk-margin-remove uk-text-uppercase uk-h5 uk-letter-spacing-small">
+											<a href="#">View Details<span class="uk-margin-left" uk-icon="arrow-right"></span></a>
+										</h3>
+									</div>
+								</div> 
+							</div>
+						</li>
+						<li>
+							<div class="uk-grid-collapse" uk-grid>
+								<div class="uk-width-1-2@s">
+									<img src="https://source.unsplash.com/2LgJiWdDdO4/800x800" alt="Image">
+								</div>
+								<div class="uk-width-expand@s uk-flex uk-flex-middle">
+									<div class="uk-padding-large">
+										<h3 class="uk-text-uppercase uk-h5 uk-letter-spacing-small">Our Best Projects</h3>
+										<h2 class="uk-heading-small uk-margin-medium-top">Technology</h2>
+										<div>
+											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+										</div>
+										<hr class="uk-margin-medium-top uk-separator-small">
+										<h3 class="uk-margin-remove uk-text-uppercase uk-h5 uk-letter-spacing-small">
+											<a href="#">View Details<span class="uk-margin-left" uk-icon="arrow-right"></span></a>
+										</h3>
+									</div>
+								</div> 
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="uk-hidden@l">
+					<a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+					<a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
+				</div>
+				<div class="uk-visible@l">
+					<a class="uk-position-center-left-out uk-slidenav-large" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
+					<a class="uk-position-center-right-out uk-slidenav-large" href="#" uk-slidenav-next uk-slider-item="next"></a>
+				</div>
+			</div>
+    </div> -->
+    
+
+      <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="ratio: 7:3; animation: push; autoplay:true;"> 
+<div class="uk-visible-toggle" uk-slider="autoplay: true">
+      <ul class="uk-slideshow-items">
+          <li>
+              <img src="{% static '../static/1.jpg'%}" alt="" uk-cover>
+          </li>
+          <li>
+              <img src="{% static '../static/2.jpg'%}" alt="" uk-cover>
+          </li>
+          <li>
+              <img src="{% static '../static/3.jpg'%}" alt="" uk-cover>
+          </li>
+      </ul>
+  
+      <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
+      <a class="uk-position-center-right uk-position-small uk-hidden-hover" href="#" uk-slidenav-next uk-slideshow-item="next"></a>
+  </div>
+  </div> 
+
+
+  <h1 class="uk-heading-line"><span>WHAT OUR</span></h1>
+
+  <h1 class="uk-heading-line uk-text-center"><span>Academic is </span></h1>
+  
+  <h1 class="uk-heading-line uk-text-right"><span>OFFERING </span></h1>
+
+  <hr class="uk-divider-icon">
+
+
+<div class="uk-child-width-1-3@m" uk-grid uk-scrollspy="cls: uk-animation-slide-bottom; target: .uk-card; delay: 300; repeat: true">
+  <div>
+      <div class="uk-card uk-card-default uk-card-body ">
+          <h3 class="uk-card-title">Bottom</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+  </div>
+  <div>
+      <div class="uk-card uk-card-default uk-card-body" uk-scrollspy-class="uk-animation-slide-top">
+          <h3 class="uk-card-title">Top</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+  </div>
+  <div>
+      <div class="uk-card uk-card-default uk-card-body">
+          <h3 class="uk-card-title">Bottom</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+  </div>
+</div>
+<div class="uk-child-width-1-2@m uk-grid-match" uk-grid>
+  <div>
+      <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+          <h3 class="uk-card-title">Left</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+  </div>
+  <div>
+      <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+          <h3 class="uk-card-title">Right</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+      </div>
+  </div>
+</div>
+<div class="uk-section uk-section-muted">
+  <div class="uk-container">
+
+      <h3>Section</h3>
+
+      <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
+          <div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+          </div>
+          <div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+          </div>
+          <div>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+          </div>
+      </div>
+
+  </div>
+</div>
+<!-- <a class="uk-button uk-button-default" href="#modal-center" uk-toggle>Open</a> -->
+
+<div id="modal-center" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    </div>
+</div>
+
+</div>
+
+
+</div>
+<footer>
+  <p>MADE WITH LOVE BY ABID</p>
+</footer>
+
+
+</body>
+
+</html>
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMS | INDEX</title>
-    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+     <link rel="stylesheet" href="css/bootstrap.css"> 
     {% load static %}
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
@@ -59,7 +314,7 @@ a:hover {
                 </li>
 
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'admissions' %}">Admissions</a>
+                  <a class="nav-link" href="">Admissions</a>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -157,7 +412,7 @@ a:hover {
                 <div class="col-sm-12">
                   <div class="card-deck" >
                     <div class="card">
-                      <!-- <img src="..." class="card-img-top" alt="..."> -->
+                 <img src="..." class="card-img-top" alt="..."> 
                       <div class="card-body" >
                         <h5 class="card-title">Personalized Learning</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam facere delectus soluta, tempora, voluptatibus architecto illum fugiat accusantium fuga distinctio pariatur quae perferendis harum quis neque omnis voluptatum iusto officia.</p>
@@ -167,7 +422,7 @@ a:hover {
                       </div>
                     </div>
                     <div class="card">
-                      <!-- <img src="..." class="card-img-top" alt="..."> -->
+                      <!-- <img src="..." class="card-img-top" alt="..."> 
                       <div class="card-body">
                         <h5 class="card-title">Trusted Courses</h5>
                         <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae dolorum excepturi necessitatibus molestiae reiciendis consectetur amet fugit repellendus beatae laboriosam harum, est deserunt nesciunt reprehenderit eveniet rem mollitia rerum a.</p>
@@ -177,7 +432,7 @@ a:hover {
                       </div>
                     </div>
                     <div class="card">
-                      <!-- <img src="..." class="card-img-top" alt="..."> -->
+                      <!-- <img src="..." class="card-img-top" alt="..."> 
                       <div class="card-body">
                         <h5 class="card-title">Tools for Students
                         </h5>
@@ -230,13 +485,13 @@ a:hover {
           </table>
           </div>
           </div> -->
-      <!-- Footer -->
+      <!-- Footer -
 <footer class="page-footer font-small special-color-dark pt-4">
 
-  <!-- Footer Elements -->
+  <!-- Footer Elements 
   <div class="container">
 
-    <!-- Social buttons -->
+    <!-- Social buttons
     <ul class="list-unstyled list-inline text-center">
       <li class="list-inline-item">
         <a class="btn-floating btn-fb mx-1">
@@ -264,19 +519,19 @@ a:hover {
         </a>
       </li>
     </ul>
-    <!-- Social buttons -->
+   Social buttons
 
   </div>
-  <!-- Footer Elements -->
+ Footer Elements -->
 
-  <!-- Copyright -->
+  <!-- Copyright
   <div class="footer-copyright text-center py-3">© 2020 Copyright:
     <a href="#"> SADH</a>
   </div>
-  <!-- Copyright -->
+   Copyright 
 
 </footer>
-<!-- Footer -->
+< Footer
 </body>
 </html>
 
@@ -286,4 +541,4 @@ a:hover {
   $(document).ready(function(){
         $(".Modal").modal('show');
     });
-</script>
+</script> -->

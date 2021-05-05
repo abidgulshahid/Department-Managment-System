@@ -31,26 +31,26 @@
                 <ul class="list-unstyled components">
                     <p>			Hello, {{request.user}}</p>
                     <li>
-                        <a href="{% url 'home' %}" >Home</a>
+                        <a href="{% url 'student' %}" >Home</a>
                       
                     </li>
-                    <li class="active">                                            <a href="#">Courses</a>
+                    <li >                                            <a href="#">Courses</a>
                     </li>
 
                     <li>
-                        <a href="#">Attendence</a>
-                        <a href="#" data-toggle="collapse" aria-expanded="false">Result</a>
+                        <a class="active" href="#">Attendence</a>
+                        <a href="{% url 'marks' %}">Result</a>
                         <!-- <ul class="collapse list-unstyled" id="pageSubmenu">
                             <li><a href="#">Page 1</a></li>
                             <li><a href="#">Page 2</a></li>
                             <li><a href="#">Page 3</a></li>
                         </ul> -->
                     </li>
-                    <li>
+                    <!-- <li>
                         <a href="#">Transcript</a>
-                    </li>
+                    </li> -->
                     <li>
-                        <a href="#">Profile</a>
+                        <a href="{% url 'student_profile' %}">Profile</a>
                     </li>
                     <li>
                         <a href="{% url 'logOut' %}">Logout</a>
@@ -89,26 +89,22 @@
                 <h2>Attendence</h2>
                 <table class='table table-sm' >
                             <tr>
-                              <th>Name</th>
-                              <th>Status</th>
-                              <th>Date</th>
+                                <th>Subject</th>
+                                <th>Time</th>
+                                <th>Status</th>
                             </tr>
 
-
+                                {% for s in a %}
                           <tr>
-                            <td>{{request.user.username}}</td>
-                            <td>{{a.state}}</td>
-                            <td>{{a.class_date}}</td>
+                         
+                                <td>{{s.assign.course}}</td>
+                                <td><code>{{s.attendance_date}}</code></td>
+                     
 
                           </tr>
-
+                            {% endfor %}
                           </table>
-                <div class="line"></div>
-
-                <div class="line"></div>
-
-
-                <div class="line"></div>
+       
 
        
             </div>
