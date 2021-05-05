@@ -74,7 +74,7 @@ psutil==5.7.3
 psycopg2==2.8.4
 ptyprocess==0.6.0
 pwn==1.0
-pwntools==4.3.0
+pwntools==4.3.1
 pycodestyle==2.6.0
 pycparser==2.20
 pydot==1.4.1
