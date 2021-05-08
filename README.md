@@ -35,6 +35,4 @@ This is a College Management System Where Student can view their marks, attendan
 
 
 
-~ ~ ~
-Made By Abid Gul Shahid
-~ ~ ~
+**_Copyright By :_** Abid Gul Shahid
