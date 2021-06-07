@@ -14,3 +14,9 @@ class Teacher(models.Model):
     def __str__(self):
         return self.name
 
+class teacher_assignnment(models.Model):
+    assign = models.OneToOneField('department.assign', on_delete=models.CASCADE)
+    assignnment= models.CharField(max_length=2000)
+    assignment_date = models.DateField()
+
+    
