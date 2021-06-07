@@ -151,6 +151,8 @@ def take_marks(request,stud,teach):
 
 
 
+@login_required(login_url='login')
+
 
 @login_required(login_url='login')
 def logOut(request):
