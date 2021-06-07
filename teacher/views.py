@@ -156,7 +156,6 @@ def add_assigment(request):
     if request.method == "POST":
         today = datetime.date.today()
         assignment = request.POST.get('assignment')
-        
 
 
 @login_required(login_url='login')
