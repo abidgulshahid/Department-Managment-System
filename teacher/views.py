@@ -164,6 +164,7 @@ def add_assigment(request,t):
     if request.method == "POST":
         today = datetime.date.today()
         teach = Teacher.objects.get(user=request.user.id)
+        classs = Class.objects
         assi = Assign.objects.get(teacher_id=teach)
         assignment = request.POST.get('assignment')
         teacher_assignnment.objects.create(assign=assi, assignnment=assignment, assignment_date=today)
