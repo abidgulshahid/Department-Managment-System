@@ -152,6 +152,10 @@ def take_marks(request,stud,teach):
 
 
 @login_required(login_url='login')
+def add_assigment(request):
+    if request.method == "POST":
+        today = datetime.date.today()
+        
 
 
 @login_required(login_url='login')
