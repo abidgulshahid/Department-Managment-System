@@ -155,6 +155,7 @@ def take_marks(request,stud,teach):
 def add_assigment(request):
     if request.method == "POST":
         today = datetime.date.today()
+        assignment = request.POST.get('assignment')
         
 
 
