@@ -87,11 +87,11 @@
      <div class="uk-tile uk-tile-default uk-padding-large" id="title">
              <h2>Add Assignment</h2>
  
-             <form method="POST" action='{% url 'update_profile' teacher.id %}'>
+             <form method="POST" action=''>
                 {% csrf_token %}
                 <div class="uk-margin">
             
-                    <input class="uk-input uk-form-width-large"  placeholder="first_name" type="text" name="assignment">
+                    <textarea name="assignment" id="" cols="80" rows="5"></textarea>
                     </div>    
 
                     <div class="uk-margin">

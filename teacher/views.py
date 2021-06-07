@@ -153,7 +153,9 @@ def take_marks(request,stud,teach):
 
 @login_required(login_url='login')
 def view_assignments_page(request):
-    return render(request, 'add_assignment.html')
+    teacher = get_object_or_404(Teacher, user=request.user.id)
+    context= {"t":teacher}
+    return render(request, 'add_assignment.html', context)
 
 @login_required(login_url='login')
 def add_assigment(request):
