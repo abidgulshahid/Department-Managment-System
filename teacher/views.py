@@ -152,6 +152,10 @@ def take_marks(request,stud,teach):
 
 
 @login_required(login_url='login')
+def view_assignments_page(request):
+    return render(request, 'add_assignment.html')
+
+@login_required(login_url='login')
 def add_assigment(request):
     if request.method == "POST":
         today = datetime.date.today()
