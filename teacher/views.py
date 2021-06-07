@@ -12,7 +12,7 @@ from django.urls import reverse
 from django.http import HttpResponse
 import datetime
 # from hods.models import hod
-from .models import Teacher
+from .models import Teacher, teacher_assignnment
 # Create your views here.
 
 @login_required(login_url='login')
@@ -162,6 +162,11 @@ def add_assigment(request):
     if request.method == "POST":
         today = datetime.date.today()
         assignment = request.POST.get('assignment')
+        teacher = request.POST.get('teacher')
+        teacher_assignnment.objects.create(assign=teacher, assignment=assignment, assignment_date=today)
+        return HttpResponse("Assignment Created")
+
+
 
 
 @login_required(login_url='login')
