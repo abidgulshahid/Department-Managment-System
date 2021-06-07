@@ -1,5 +1,5 @@
 from django.db import models
-from django.db.models.fields.related import ManyToManyField, OneToOneField
+from django.db.models.fields.related import ForeignKey, ManyToManyField, OneToOneField
 from users.models import Users
 from django.contrib.auth.models import Group
 from department.models import *
@@ -16,8 +16,6 @@ class Teacher(models.Model):
         return self.name
 
 class teacher_assignnment(models.Model):
-    assign = OneToOneField(Teacher, on_delete=models.CASCADE)
+    assign = ForeignKey('department.Class', on_delete=models.CASCADE)
     assignnment= models.CharField(max_length=2000)
     assignment_date = models.DateField()
-
-    

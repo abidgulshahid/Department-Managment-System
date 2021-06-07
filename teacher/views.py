@@ -154,19 +154,19 @@ def take_marks(request,stud,teach):
 @login_required(login_url='login')
 def view_assignments_page(request):
     assi = Assign.objects.get(teacher = request.user.teacher)
-    print(dir(assi))
-    print(assi.teacher_id)
+   
     teacher = get_object_or_404(Teacher, user=request.user.id)
-    context= {"t":assi}
+    context= {"t":teacher}
     return render(request, 'add_assignment.html', context)
 
 @login_required(login_url='login')
 def add_assigment(request,t):
     if request.method == "POST":
-        assi = Assign.objects.get(teacher_id=t)
         today = datetime.date.today()
+        teach = Teacher.objects.get(user=request.user.id)
+        assi = Assign.objects.get(teacher_id=teach)
         assignment = request.POST.get('assignment')
-        teacher_assignnment.objects.create(assign=assi, assignment=assignment, assignment_date=today)
+        teacher_assignnment.objects.create(assign=assi, assignnment=assignment, assignment_date=today)
         return HttpResponse("Assignment Created")
 
 
