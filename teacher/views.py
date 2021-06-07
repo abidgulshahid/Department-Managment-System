@@ -158,7 +158,7 @@ def view_assignments_page(request):
     return render(request, 'add_assignment.html', context)
 
 @login_required(login_url='login')
-def add_assigment(request):
+def add_assigment(request,t):
     if request.method == "POST":
         today = datetime.date.today()
         assignment = request.POST.get('assignment')
