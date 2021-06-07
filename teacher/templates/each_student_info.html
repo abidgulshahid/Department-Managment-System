@@ -103,7 +103,9 @@
                     <tr> 
                         <td>{{student}}</td>
                         <td>{{student.class_id.id}}</td>
-                        <td>{{assi.course}}</td>
+                        {% for ass in assi %}
+                        <td>{{ass.course}}</td>
+                         {% endfor %}
                         <td>{{att.attendance_date}}</td>
 
                     {% endfor  %}

@@ -60,8 +60,13 @@ def view_teacher_students(request, classid):
 @login_required(login_url='login')
 def each_student_info(request,student):
     t  = Teacher.objects.get(user=request.user.id)
-    assi = Assign.objects.get(teacher = t)
+    assi = Assign.objects.filter(teacher_id = t)
+    for ax in assi:
+        print(ax)
+
+ 
     attendance = Attendance.objects.filter(assign=assi)
+
     # for a in attendance:
     #     print(dir(a))
     #     print(dir(a.assign))
@@ -70,7 +75,7 @@ def each_student_info(request,student):
         at = st.attendance_set.filter(assign=assi)
     # each_mark = Marks.objects.filter(student=st)
     # print(each_mark)
-    return render(request,'each_student_info.html', {"student":st,'at':at,'assi':assi})
+    return render(request,'each_student_info.html', {"student":st,'at':'at','assi':'assi'})
 
 
 # def teacher_view_students(request,id):
@@ -152,11 +157,11 @@ def take_marks(request,stud,teach):
 
 
 @login_required(login_url='login')
-def view_assignments_page(request, stud,t):
+def view_assignments_page(request):
     assi = Assign.objects.get(teacher = request.user.teacher)
    
     teacher = get_object_or_404(Teacher, user=request.user.id)
-    context= {"t":t, 'stud':stud}
+    context= {"t":teacher}
     return render(request, 'add_assignment.html', context)
 
 @login_required(login_url='login')
