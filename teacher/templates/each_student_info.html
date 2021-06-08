@@ -100,10 +100,10 @@
             </h1>
 
                 <tbody>
-                    {% for att in at %}
+                    
                     <tr> 
                         <td>{{student}}</td>
-                        <td>{{student.class_id.id}}</td>
+                        <td>{{student.class_id.id}}</td>{% for std in student %}
                         <td>{{assi.course}}</td>
                         <td>{{att.attendance_date}}</td>
 
