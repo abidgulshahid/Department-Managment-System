@@ -181,6 +181,7 @@ def add_assigment(request,assi):
             return HttpResponse("Something Error", insert_query)
 
 
+
 @login_required(login_url='login')
 def view_assignments(request):
     teach = Teacher.objects.get(user=request.user.id)
@@ -191,6 +192,7 @@ def view_assignments(request):
     print('===',get_assignment_data)
     context = {'get_assignment':get_assignment_data}
     return render(request, 'view_assignments.html',context)
+
 
 
 @login_required(login_url='login')

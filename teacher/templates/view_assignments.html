@@ -2,6 +2,8 @@
 
 
 {% for gsd in get_assignment %}
-    {{gsd.assigntime_set.all}}
-
+    {% for ta in  gsd.teacher_assignnment_set.all %}
+        {{ta.assign}}<br>
+        {{ta.assignnment}}<br>
+    {% endfor %}
 {% endfor %}
