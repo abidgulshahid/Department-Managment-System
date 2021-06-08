@@ -104,7 +104,9 @@
                     <tr> 
                         <td>{{student}}</td>
                         <td>{{student.class_id.id}}</td>
-                        <td>{{student}}</td>
+                        {% for asd in att % }
+                        <td>{{asd}}</td>
+                        {% endfor %}
                         <td>{{att.attendance_date}}</td>
 
                     {% endfor  %}
