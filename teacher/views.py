@@ -116,8 +116,8 @@ def update_profile(request,teacher):
 @login_required(login_url='login')
 def view_student_attendence(request,stud,teach):
     today = datetime.date.today()
-    assi = Assign.objects.get(teacher_id=teach)
-    student = Student.objects.get(USN=stud)
+    assi = Assign.objects.filter(teacher_id=teach)
+    student = Student.objects.filter(USN=stud)
 
     if Attendance.objects.filter(assign=assi, student=student, attendance_date=today).exists():
         print ("Already Exist")
@@ -158,15 +158,15 @@ def take_marks(request,stud,teach):
 
 
 @login_required(login_url='login')
-def view_assignments_page(request):
-    assi = Assign.objects.get(teacher = request.user.teacher)
+def view_assignments_page(request,s):
+    assi = Assign.objects.filter(teacher = request.user.teacher)
    
     teacher = get_object_or_404(Teacher, user=request.user.id)
     context= {"t":teacher}
     return render(request, 'add_assignment.html', context)
 
 @login_required(login_url='login')
-def add_assigment(request,t):
+def add_assigment(request,t,s):
     if request.method == "POST":
         today = datetime.date.today()
         teach = Teacher.objects.get(user=request.user.id)
