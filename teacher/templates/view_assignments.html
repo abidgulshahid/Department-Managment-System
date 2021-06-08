@@ -83,7 +83,7 @@
 
 
     <div class="uk-tile uk-tile-default uk-padding-large" id="title">
-            <h2>{{student}} Info</h2>
+            <h2>Your Assignments Info</h2>
 
 
             <table class="uk-table uk-table-divider">
@@ -91,23 +91,28 @@
                     <tr>
                         <th>Assignment</th>
                         <th>Date</th>
+                        <th>Class</th>
                   
 
                     </tr>
                 </thead>
-               <h1>                    {{assi}}
+               <h1>                    
             </h1>
 
                 <tbody>
                     {% for gsd in get_assignment %}
                     {% for ta in  gsd.teacher_assignnment_set.all %}
-                    <tr> 
-                        <td> {{ta.assign}}</td>
+                    <tr>  
                         <td> {{ta.assignnment}}</td>
-                  
+                        <td> {{ta.assignment_date}}</td>
+                      
+                        <td>{{ta.assign.class_id}}</td>
+
+                        <td> <a href=""><button class="uk-button uk-button-danger">Delete</button></a> </td>
 
                         {% endfor %}
                         {% endfor %}
+
                         
         <td>  </td>
 
