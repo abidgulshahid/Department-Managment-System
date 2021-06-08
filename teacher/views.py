@@ -174,7 +174,7 @@ def add_assigment(request,assi):
         assignment = request.POST.get('assignment')
         t = request.POST.get('teacher')
         print(today, teach, assi, assignment, t)
-        insert_query=  teacher_assignnment.objects.create(assign=t, assignnment=assignment, assignment_date=today)
+        insert_query=  teacher_assignnment.objects.create(assign=assi, assignnment=assignment, assignment_date=today)
         if insert_query:
             return HttpResponse("Assignment Created")
         else:
