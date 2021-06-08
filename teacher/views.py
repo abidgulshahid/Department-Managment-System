@@ -83,7 +83,7 @@ def each_student_info(request,student):
 # def teacher_view_students(request,id):
 #     std = Student.objects.get(pk=request.user.id)
 #     print('asdas',std)
-#     context = {'std':std}
+#     context = {'std':std} 
 #     return render(request,'teacher_students.html', context)
 @login_required(login_url='login')
 def teacher_profile(request):  
