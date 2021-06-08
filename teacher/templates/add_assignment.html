@@ -85,7 +85,7 @@
  
  
      <div class="uk-tile uk-tile-default uk-padding-large" id="title">
-             <h2>Add Assignment</h2>
+             <h2>Add Assignment {{assi}}</h2>
  
              <form method="POST" action=''>
                 {% csrf_token %}
@@ -97,9 +97,10 @@
                  
 
                         <div class="uk-margin">
-            
-                            <input class="uk-input uk-form-width-large" value="{{t.id}}" placeholder="last_name" type="hidden" name="teacher">
-                            </div>     
+                           
+                            <input class="uk-input uk-form-width-large" value="{{assi}}" placeholder="last_name" type="hidden" name="teacher">
+                        
+                        </div>     
     
                
 
