@@ -65,6 +65,7 @@ def each_student_info(request,student):
         ax = ax
     
 
+
  
     attendance = Attendance.objects.filter(assign=ax)
     print(attendance)
