@@ -16,6 +16,6 @@ class Teacher(models.Model):
         return self.name
 
 class teacher_assignnment(models.Model):
-    assign = ForeignKey('department.Class', on_delete=models.CASCADE)
+    assign = ForeignKey('department.Assign', on_delete=models.CASCADE)
     assignnment= models.CharField(max_length=2000)
     assignment_date = models.DateField()
