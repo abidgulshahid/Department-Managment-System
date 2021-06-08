@@ -166,11 +166,11 @@ def view_assignments_page(request,t):
     return render(request, 'add_assignment.html', context)
 
 @login_required(login_url='login')
-def add_assigment(request,s,t):
+def add_assigment(request,assi):
     if request.method == "POST":
         today = datetime.date.today()
         teach = Teacher.objects.get(user=request.user.id)
-        assi = Assign.objects.get(teacher_id=teach)
+        assi = Assign.objects.get(class_id=assi)
         assignment = request.POST.get('assignment')
         teacher_assignnment.objects.create(assign=assi, assignnment=assignment, assignment_date=today)
         return HttpResponse("Assignment Created")
