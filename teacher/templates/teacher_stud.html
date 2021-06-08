@@ -59,9 +59,13 @@
                 <ul class="uk-navbar-nav">
                     <li class="uk-active"><a href="#">{{request.user.teacher}}</a></li>
                     <li>
+                        <a href="{% url 'view_assignments_page' s.class_id.id  %}">Add Assignment</a>
+                    </li>
+                    <li>
                         <a href="{% url 'teacher_profiles' %}">Settings</a>
     
                     </li>
+
                     <li><a href="{% url 'logOut' %}">Logout</a></li>
                 </ul>
         
