@@ -60,7 +60,7 @@ def view_teacher_students(request, classid):
 @login_required(login_url='login')
 def each_student_info(request,student):
     t  = Teacher.objects.get(user=request.user.id)
-    assi = Assign.objects.filter(teacher_id = t)
+    assi = Assign.objects.filter(teacher = t)
     for ax in assi:
         ax = ax
     
@@ -74,6 +74,8 @@ def each_student_info(request,student):
     for st in student:
 
         at = st.attendance_set.filter()
+        for asd in at:
+            print(asd)
         print("---============", at)
     # each_mark = Marks.objects.filter(student=st)
     # print(each_mark)
