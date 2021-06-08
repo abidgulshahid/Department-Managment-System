@@ -71,6 +71,7 @@ def each_student_info(request,student):
 
     student = Student.objects.filter(USN=student)
     for st in student:
+
         at = st.attendance_set.filter()
         print("---============", at)
     # each_mark = Marks.objects.filter(student=st)
