@@ -62,7 +62,7 @@ def view_teacher_students(request, classid):
 def each_student_info(request,student):
     t  = Teacher.objects.get(user=request.user.id)
     print(student)
-    assi = Assign.objects.filter(teacher = request.user.teacher).order_by()
+    assi = Assign.objects.get(teacher = request.user.teacher).filter()
     print(assi)
     for ax in assi:
         ax = ax
