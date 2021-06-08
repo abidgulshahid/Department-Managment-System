@@ -1,1 +1,7 @@
 <h1>ASDAS</h1>
+
+
+{% for gsd in get_assignment %}
+    {{gsd.assigntime_set.all}}
+
+{% endfor %}

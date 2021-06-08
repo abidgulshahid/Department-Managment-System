@@ -183,7 +183,11 @@ def add_assigment(request,assi):
 
 @login_required(login_url='login')
 def view_assignments(request):
-    get_assignment_data = teacher_assignnment.objects.filter(teacher=request.user.id)
+    teach = Teacher.objects.get(user=request.user.id)
+    get_assignment_data = Assign.objects.filter(teacher=teach)    
+    for gsd in get_assignment_data:
+        print(dir(gsd))
+        print(gsd.teacher_assignnment_set.all())
     print('===',get_assignment_data)
     context = {'get_assignment':get_assignment_data}
     return render(request, 'view_assignments.html',context)
