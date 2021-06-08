@@ -87,7 +87,7 @@
      <div class="uk-tile uk-tile-default uk-padding-large" id="title">
              <h2>Add Assignment for the Batch: {{assi}}</h2>
  
-             <form method="POST" action='{% url 'add_assigment' assi %}'>
+             <form method="POST" action='{% url 'add_assigment' ass.teacher.id %}'>
                 {% csrf_token %}
                 <div class="uk-margin">
             
