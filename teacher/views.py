@@ -62,7 +62,7 @@ def each_student_info(request,student):
     t  = Teacher.objects.get(user=request.user.id)
     assi = Assign.objects.filter(teacher_id = t)
     for ax in assi:
-        print(ax)
+        ax = ax
 
  
     attendance = Attendance.objects.filter(assign=assi)
@@ -75,7 +75,7 @@ def each_student_info(request,student):
         at = st.attendance_set.filter(assign=assi)
     # each_mark = Marks.objects.filter(student=st)
     # print(each_mark)
-    return render(request,'each_student_info.html', {"student":st,'at':'at','assi':'assi'})
+    return render(request,'each_student_info.html', {"student":st,'at':'at','assi':ax})
 
 
 # def teacher_view_students(request,id):
