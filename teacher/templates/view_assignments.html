@@ -1,9 +1,138 @@
-<h1>ASDAS</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit-icons.min.js"></script>
+    <title>Welcome , {{request.user.username}}</title>
+    <style>
+        body {
+         background: #fafafa;;
+        }
+ 
+        #nav {
+            background-color: #03244d;
+            color:white;
+ 
+        }
+ 
+        #nav a{
+            color:white;
+        }
+ 
+        #nav h3 {
+            color:white;
+        }
+ 
+        #title {
+            border: 1px solid  #03244d;
+            border-radius: 5px;
+        }
+ 
+        footer {
+            border-top: 1px solid black;
+            margin-top: 2em;
+            text-align: center;
+        }
+ 
+        footer p {
+            margin-top: 2em;
+        }
+        </style>
+</head>
+<body>
+    <nav class="uk-navbar-container" uk-navbar id="nav" ">
+
+            <div class="uk-navbar-left">
+        
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="#"><h3>CMS | Teacher Panel</h3></a></li>
+                   
+                </ul>
+        
+            </div>
+        
+            <div class="uk-navbar-right">
+        
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="#">{{request.user.teacher}}</a></li>
+                    <li>
+                        <a href="{% url 'teacher_profiles' %}">Settings</a>
+    
+                    </li>
+                    <li><a href="{% url 'logOut' %}">Logout</a></li>
+                </ul>
+        
+            </div>
+        
+        </nav>
+    <!-- <hr class="uk-divider-icon"> -->
+    <!-- <div class="uk-tile uk-tile-default uk-padding-large">
+        <p>My Department: <b>{{t.dept}}</b></p>
+       <p> Department HOD: <b></b></p>
+      
+       <p>Teaching From: <b>{{t.user.date_joined}}</b></p>
+       <p>Last Login : <b>{{t.user.last_login}}</b></p>
+    </div> -->
+
+    <div class="uk-container">
+    <hr class="uk-divider-icon">
 
 
-{% for gsd in get_assignment %}
-    {% for ta in  gsd.teacher_assignnment_set.all %}
-        {{ta.assign}}<br>
-        {{ta.assignnment}}<br>
-    {% endfor %}
-{% endfor %}
+    <div class="uk-tile uk-tile-default uk-padding-large" id="title">
+            <h2>{{student}} Info</h2>
+
+
+            <table class="uk-table uk-table-divider">
+                <thead>
+                    <tr>
+                        <th>Assignment</th>
+                        <th>Date</th>
+                  
+
+                    </tr>
+                </thead>
+               <h1>                    {{assi}}
+            </h1>
+
+                <tbody>
+                    {% for gsd in get_assignment %}
+                    {% for ta in  gsd.teacher_assignnment_set.all %}
+                    <tr> 
+                        <td> {{ta.assign}}</td>
+                        <td> {{ta.assignnment}}</td>
+                  
+
+                        {% endfor %}
+                        {% endfor %}
+                        
+        <td>  </td>
+
+        <td>  </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+
+            <h2><code></code></h2>
+        
+  
+     
+
+</div>
+
+
+
+   
+</div>
+<footer>
+    <p>MADE WITH LOVE BY ABID</p>
+</footer>
+
+
+</body>
+</html>
+
