@@ -158,7 +158,7 @@ def take_marks(request,stud,teach):
 
 
 @login_required(login_url='login')
-def view_assignments_page(request,s):
+def view_assignments_page(request,s,t):
     assi = Assign.objects.filter(teacher = request.user.teacher)
    
     teacher = get_object_or_404(Teacher, user=request.user.id)
