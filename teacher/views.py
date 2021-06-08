@@ -172,6 +172,7 @@ def add_assigment(request,assi):
         teach = Teacher.objects.get(user=request.user.id)
         assi = Assign.objects.get(class_id=assi,teacher=teach)
         assignment = request.POST.get('assignment')
+        t = request.POST.get('teacher')
         teacher_assignnment.objects.create(assign=assi, assignnment=assignment, assignment_date=today)
         return HttpResponse("Assignment Created")
 
