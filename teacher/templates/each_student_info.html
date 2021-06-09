@@ -100,10 +100,13 @@
               
                 <tbody>
                     <tr> 
+                        {% for atnd in at %}
                             <td>{{student}}</td>
                             <td>{{student.class_id}}</td>
                             <td>{{student.course}}</td>
-                            <td>{{s}}</td>
+                            <td>{{at.attendance_date}}</td>
+
+                            {% endfor  %}
                             
                     </tr>
                    
