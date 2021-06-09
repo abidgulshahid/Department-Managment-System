@@ -11,6 +11,7 @@ from django.contrib.auth import logout as auth_logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.http import HttpResponse
+from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 import datetime
 # from hods.models import hod
 from .models import Teacher, teacher_assignnment
@@ -62,7 +63,7 @@ def view_teacher_students(request, classid):
 def each_student_info(request,student):
     t  = Teacher.objects.get(user=request.user.id)
     print(student)
-    assi = Assign.objects.get(teacher = request.user.teacher)
+    assi = Assign.objects.all().filter(teacher = request.user.teacher)
     print(assi)
     for ax in assi:
         ax = ax
