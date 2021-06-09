@@ -72,7 +72,7 @@ def each_student_info(request,student):
     atnd = Attendance.objects.filter(student=student)
     count_atnd  = atnd.count()
     perc_atnd = count_atnd / 48 * 100
-    print(perc_atnd)
+    print(int(perc_atnd))
     for azx in atnd:
         print(dir(azx))
     print(atnd )
@@ -83,7 +83,7 @@ def each_student_info(request,student):
       
     # each_mark = Marks.objects.filter(student=st)
     # print(each_mark)
-    return render(request,'each_student_info.html', {"student":st,'at':atnd,'assi':assi})
+    return render(request,'each_student_info.html', {"student":st,'at':atnd,'assi':assi, 'perc_atnd': int(perc_atnd)})
 
 
 # def teacher_view_students(request,id):
