@@ -96,25 +96,15 @@
 
                     </tr>
                 </thead>
-               <h1>                  {{assi}}
-            </h1>
-
-                <tbody>
-                    {% for att in at %}
-                    <tr> 
-                        <td>{{student}}</td>
-                        <td>{{student.class_id.id}}</td>
+         
               
-                        <td>{{att}}</td>
-            
-                        <td>{{att.attendance_date}}</td>
+                <tbody>
+                    <tr> 
+                            <td>{{student}}</td>
+                            <td>{{student.class_id}}</td>
+                            <td>{{student.course}}</td>
 
-                    {% endfor  %}
-                        
-                        
-        <td>  </td>
-
-        <td>  </td>
+                            
                     </tr>
                    
                 </tbody>
