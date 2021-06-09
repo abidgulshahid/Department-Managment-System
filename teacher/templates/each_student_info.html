@@ -82,7 +82,8 @@
 
 
     <div class="uk-tile uk-tile-default uk-padding-large" id="title">
-            <h2>{{student}} Info</h2>
+            <h2>{{student}} Info </h2><code >Total Attendence Percentage: </code>
+            
 
 
             <table class="uk-table uk-table-divider">
@@ -103,7 +104,7 @@
                         {% for atnd in at %}
                             <td>{{student}}</td>
                             <td>{{student.class_id}}</td>
-                            <td>{{student.course}}</td>
+                            <td>{{atnd.assign.course}}</td>
                             <td>{{atnd.attendance_date}}</td>
 
                             {% endfor  %}

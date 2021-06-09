@@ -70,6 +70,9 @@ def each_student_info(request,student):
         print('+++++++++++++++++++',ax.attendance_set.filter(student=student))
  
     atnd = Attendance.objects.filter(student=student)
+    count_atnd  = atnd.count()
+    perc_atnd = count_atnd / 48 * 100
+    print(perc_atnd)
     for azx in atnd:
         print(dir(azx))
     print(atnd )
