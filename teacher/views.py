@@ -66,7 +66,7 @@ def each_student_info(request,student):
     try:
         assi = Assign.objects.get(teacher = t)
     except Assign.MultipleObjectsReturned:
-        assi = Assign.objects.filter(teacher=t)
+        assi = Assign.objects.filter(teacher=request.user.teacher)
 
 
 
