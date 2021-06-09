@@ -64,12 +64,14 @@ def each_student_info(request,student):
     t  = Teacher.objects.get(user=request.user.id)
     print(student)
     try:
-        assi = Assign.objects.get(teacher = t)
+        assi = Assign.objects.filter(teacher = t)
     except Assign.MultipleObjectsReturned:
-        assi = Assign.objects.filter(teacher=request.user.teacher)
+        assi = Assign.objects.filter(teacher=pk)
 
 
-
+    for ax in assi:
+        print(ax.pk)
+        print(dir(ax))
  
     attendance = Attendance.objects.filter(assign=assi)
 
