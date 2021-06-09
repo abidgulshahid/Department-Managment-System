@@ -99,9 +99,9 @@
                 </thead>
          
               
-                <tbody>
+                <tbody> {% for atnd in at %}
                     <tr> 
-                        {% for atnd in at %}
+                       
                             <td>{{student}}</td>
                             <td>{{student.class_id}}</td>
                             <td>{{atnd.assign.course}}</td>

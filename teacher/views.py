@@ -64,11 +64,8 @@ def each_student_info(request,student):
     t  = Teacher.objects.get(user=request.user.id)
     print(student)
     assi = Assign.objects.filter(teacher= request.user.teacher)
-
-
     for ax in assi:
         print('+++++++++++++++++++',ax.attendance_set.filter(student=student))
- 
     atnd = Attendance.objects.filter(student=student)
     count_atnd  = atnd.count()
     perc_atnd = count_atnd / 48 * 100
@@ -78,9 +75,7 @@ def each_student_info(request,student):
     print(atnd )
     student = Student.objects.filter(USN=student)
     for st in student:
-
         at = st.attendance_set.filter(assign=assi).all()
-      
     # each_mark = Marks.objects.filter(student=st)
     # print(each_mark)
     return render(request,'each_student_info.html', {"student":st,'at':atnd,'assi':assi, 'perc_atnd': int(perc_atnd)})
