@@ -151,9 +151,9 @@ def result(request):
 	student = Student.objects.get(user=request.user.id)
 	course = Class.objects.get(student=student)
 	ass = Assign.objects.filter(class_id=course)	
-	std_course = StudentCourse.objects.filter(student=request.user.student)
-	for std in std_course:
-		print(dir(std))
+	std_course = Markss.objects.filter(assign__in=ass, student=student)
+	print(std_course)
+
 	# mk = Marks.objects.filter(student_id = request.user.student)
 
 	# for m in mk:

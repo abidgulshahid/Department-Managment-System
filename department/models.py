@@ -110,21 +110,21 @@ class Attendance(models.Model):
         ordering = ['-attendance_date']
 
 
-# class Marks(models.Model):
-#     assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
-#     student=  models.ForeignKey('student.Student', on_delete=models.CASCADE)
-#     marking_date = models.DateField()
-#     name = models.CharField(max_length=50, choices=test_name, default='Internal test 1')
-#     marks1 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
+class Markss(models.Model):
+    assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
+    student=  models.ForeignKey('student.Student', on_delete=models.CASCADE)
+    marking_date = models.DateField()
+    name = models.CharField(max_length=50, choices=test_name, default='Internal test 1')
+    marks1 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
 
-#     @property
-#     def total_marks(self):
-#         if self.name == 'Semester End Exam':
-#             return 100
-#         return 20
+    @property
+    def total_marks(self):
+        if self.name == 'Semester End Exam':
+            return 100
+        return 20
 
-#     def __str__(self):
-#         return "%s %s %s " % (self.assign.teacher,self.student, self.name)
+    def __str__(self):
+        return "%s %s %s " % (self.assign.teacher,self.student, self.name)
 
 
 

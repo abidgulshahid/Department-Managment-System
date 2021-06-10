@@ -158,25 +158,31 @@ def teacher_view_marks(request,stud,teach):
     context = {"student":student, 'teacher':teach}
 
     return render(request, 'teacher_students_marks.html',context)
-
 @login_required(login_url='login')
+
 def take_marks(request,stud,teach):
+    global stds
     if request.method== "POST":
+        global stds
+
         today = datetime.date.today()
-        assi = Assign.objects.filter(teacher_id=teach)
+        assi = Assign.objects.filter(teacher_id=teach,student=stud)
         student = Student.objects.get(USN=stud)
         for ax in assi:
             ax =ax
-        std = StudentCourse.objects.filter(student=stud,course=ax.course)
+        std = StudentCourse.objects.filter(student=stud)
         type = request.POST.get('type')
         marks= request.POST.get('marks')
         today = datetime.date.today()
-        
-        for sc in std:
-            pass
+        for stds in std:
+            stds =stds 
+       
 
-        tm = Marks.objects.create(studentcourse=sc, name=type, marks1=marks)
-        return HttpResponse("CREATED")
+        tm = Markss.objects.create(assign=ax,student=student, marking_date=today, name=type, marks1=marks)
+        if tm:
+            return HttpResponse("CREATED")
+        else:
+            return HttpResponse("ERROR")
 
 
 

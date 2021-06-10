@@ -81,3 +81,4 @@ admin.site.register(AssignTime)
 admin.site.register(Attendance)
 admin.site.register(StudentCourse, StudentCourseAdmin)
 
+admin.site.register(Markss)
