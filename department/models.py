@@ -20,10 +20,10 @@ time_slots = (
 )
 
 DAYS_OF_WEEK = (
-    ('Monday', 'Monday'),
-    ('Tuesday', 'Tuesday'),
-    ('Wednesday', 'Wednesday'),
-    ('Thursday', 'Thursday'),
+    ('Monday-Wednesday', 'Monday-Wednesday'),
+    ('Thursday-Sat', 'Thursday-Sat'),
+    ('Monday-Tuesday', 'Monday-Tuesday'),
+    ('Thursday-Friday', 'Thursday-Friday'),
     ('Friday', 'Friday'),
     ('Saturday', 'Saturday'),
 )
@@ -90,8 +90,8 @@ class Assign(models.Model):
 
 class AssignTime(models.Model):
     assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
-    period = models.CharField(max_length=50, choices=time_slots, default='11:00 - 11:50')
-    day = models.CharField(max_length=15, choices=DAYS_OF_WEEK)
+    period = models.CharField(max_length=500, choices=time_slots, default='11:00 - 11:50')
+    day = models.CharField(max_length=150, choices=DAYS_OF_WEEK)
 
     def __str__(self):
         return '%s %s %s' % (self.assign.course, self.period, self.day)
