@@ -180,10 +180,3 @@ class MarksClass(models.Model):
 
 
 
-class Announcement(models.Model):
-    
-    message = models.CharField(max_length=5000)
-    message_date = datetime.date.today()
-
-    def __str__(self):
-        return "%s %s " % (self.message,self.message_date)
