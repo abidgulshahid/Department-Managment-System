@@ -1,3 +1,5 @@
+# Importing Essentials Libraries
+
 from typing import OrderedDict
 from django.shortcuts import render, redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
@@ -17,6 +19,7 @@ import datetime
 from .models import Teacher, teacher_assignnment
 # Create your views here.
 
+# Showing The Home Page of 
 @login_required(login_url='login')
 def teacher_index(request):
     teacher1 = get_object_or_404(Teacher, user=request.user.id)
@@ -59,25 +62,36 @@ def view_teacher_students(request, classid):
     return render(request, 'teacher_stud.html', {'s':ass,'teach':teach})
 
 
+
+# Showing Each Student Attendance and Marks
 @login_required(login_url='login')
 def each_student_info(request,student):
     t  = Teacher.objects.get(user=request.user.id)
     print(student)
     assi = Assign.objects.filter(teacher= request.user.teacher)
+    course = Course.objects.filter(assign__in=assi)
+    
     for ax in assi:
         print('+++++++++++++++++++',ax.attendance_set.filter(student=student))
     atnd = Attendance.objects.filter(student=student)
+
+    # Calculating the Total Attendance By the Individual Student
     count_atnd  = atnd.count()
     perc_atnd = count_atnd / 48 * 100
     print(int(perc_atnd))
     for azx in atnd:
         print(dir(azx))
     print(atnd )
+
+
     student = Student.objects.filter(USN=student)
+
     for st in student:
+        print("LAST", dir(st))
         at = st.attendance_set.filter(assign=assi).all()
     # each_mark = Marks.objects.filter(student=st)
     # print(each_mark)
+    print(course)
     return render(request,'each_student_info.html', {"student":st,'at':atnd,'assi':assi, 'perc_atnd': int(perc_atnd)})
 
 
@@ -118,18 +132,19 @@ def update_profile(request,teacher):
 @login_required(login_url='login')
 def view_student_attendence(request,stud,teach):
     today = datetime.date.today()
-    assi = Assign.objects.filter(teacher_id=teach)
-    student = Student.objects.filter(USN=stud)
+    assign = Assign.objects.filter(teacher_id=request.user.teacher)
+    student = Student.objects.get(USN=stud)
+    course = Course.objects.get(student=student)
+    for ax in assign:
+        ax = ax
+    # if Attendance.objects.get(assign=assi,attendance_date=today) is today:
+    #     print ("Already Exist")
+    #     return HttpResponse("Already TAKE the attendence")
 
-    if Attendance.objects.filter(assign=assi, student=student, attendance_date=today).exists():
-        print ("Already Exist")
-        return HttpResponse("Already TAKE the attendence")
-
-    else:
-        att = Attendance.objects.create(assign=assi, student=student, attendance_date=today)
-        att.save()
+    # else:
+    att = Attendance.objects.create(assign=ax, student=student, attendance_date=today)
+    att.save()
     
-
     context  = {"stud":'Attendence Taken','student':student}
     return render(request, 'teacher_stud.html', context)
     

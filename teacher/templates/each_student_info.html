@@ -82,7 +82,14 @@
 
 
     <div class="uk-tile uk-tile-default uk-padding-large" id="title">
-            <h2>{{student}} Info </h2><code >Total Attendence Percentage: {{perc_atnd}}%</code>
+        <div class="uk-tile uk-tile-default uk-padding-large" id="title" >
+            <p>Student Name: <b>{{student}}</b></p>
+          
+           <p>Total Attendence Percentage: <b>{{perc_atnd}}%</b></p>
+           <p>Last Login : <b>{{student.user.last_login}}</b></p>
+           <td> <a href=""><button class="uk-button uk-button-danger">Export <b>{{student}}</b> data to CSV</button></a> </td>
+
+        </div>
             
 
 
@@ -103,7 +110,7 @@
                     <tr> 
                        
                             <td>{{student}}</td>
-                            <td>{{student.class_id}}</td>
+                            <td>{{student.class_id.id}}</td>
                             <td>{{atnd.assign.course}}</td>
                             <td>{{atnd.attendance_date}}</td>
 
