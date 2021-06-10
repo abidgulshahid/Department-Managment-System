@@ -158,8 +158,8 @@ def teacher_view_marks(request,stud,teach):
     context = {"student":student, 'teacher':teach}
 
     return render(request, 'teacher_students_marks.html',context)
-@login_required(login_url='login')
 
+@login_required(login_url='login')
 def take_marks(request,stud,teach):
     global stds
     if request.method== "POST":
@@ -184,6 +184,10 @@ def take_marks(request,stud,teach):
         else:
             return HttpResponse("ERROR")
 
+
+@login_required(login_url='login')
+def take_marks(request,stud,teach):
+    pass
 
 
 @login_required(login_url='login')
