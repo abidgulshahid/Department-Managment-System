@@ -19,7 +19,7 @@ import datetime
 from .models import Teacher, teacher_assignnment
 # Create your views here.
 
-# Showing The Home Page of 
+# Showing The Home Page of Teacher and Showing Their Students As Well
 @login_required(login_url='login')
 def teacher_index(request):
     teacher1 = get_object_or_404(Teacher, user=request.user.id)
@@ -43,6 +43,8 @@ def teacher_index(request):
 
     # context = {'teacher': t,'s':'s'}
     # return render(request, 'teacher.html', context)
+
+    
 @login_required(login_url='login')
 def teacher_home(request, teacher_id, choice):
     teacher = get_object_or_404(Teacher, id=teacher_id)
