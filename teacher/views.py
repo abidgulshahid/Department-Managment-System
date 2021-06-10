@@ -161,15 +161,21 @@ def teacher_view_marks(request,stud,teach):
 
 @login_required(login_url='login')
 def take_marks(request,stud,teach):
-
     if request.method== "POST":
         today = datetime.date.today()
-        assi = Assign.objects.get(teacher_id=teach)
+        assi = Assign.objects.filter(teacher_id=teach)
         student = Student.objects.get(USN=stud)
+        for ax in assi:
+            ax =ax
+        std = StudentCourse.objects.filter(student=stud,course=ax.course)
         type = request.POST.get('type')
         marks= request.POST.get('marks')
         today = datetime.date.today()
-        # tm = Marks.objects.create(assign=assi, student=student,marking_date=today, name=type, marks1=marks)
+        
+        for sc in std:
+            pass
+
+        tm = Marks.objects.create(studentcourse=sc, name=type, marks1=marks)
         return HttpResponse("CREATED")
 
 
