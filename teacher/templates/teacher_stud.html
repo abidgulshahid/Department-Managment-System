@@ -115,7 +115,7 @@
                 {% endfor %} 
 
             </table>
-            <center> <a href="{% url 'teacher_view_marks' teach.id %}"><button class="uk-button uk-button-danger">Promote</button></a></center>
+            <center> <a href="{% url 'teacher_view_marks' stud.class_id teach.id %}"><button class="uk-button uk-button-danger">Promote</button></a></center>
             <h2><code>{{student}} {{stud}}</code></h2>
         
   
