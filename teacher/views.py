@@ -44,7 +44,7 @@ def teacher_index(request):
     # context = {'teacher': t,'s':'s'}
     # return render(request, 'teacher.html', context)
 
-    
+
 @login_required(login_url='login')
 def teacher_home(request, teacher_id, choice):
     teacher = get_object_or_404(Teacher, id=teacher_id)
@@ -90,11 +90,11 @@ def each_student_info(request,student):
 
     for st in student:
         print("LAST", dir(st))
-        at = st.attendance_set.filter(assign=assi).all()
+        at = st.attendance_set.filter(assign__in=assi, student__in=student)
     # each_mark = Marks.objects.filter(student=st)
     # print(each_mark)
     print(course)
-    return render(request,'each_student_info.html', {"student":st,'at':atnd,'assi':assi, 'perc_atnd': int(perc_atnd)})
+    return render(request,'each_student_info.html', {"student":st,'at':at,'assi':assi, 'perc_atnd': int(perc_atnd)})
 
 
 # def teacher_view_students(request,id):
