@@ -87,70 +87,32 @@
                 </nav>
 
                 <h2>Marks</h2>
-                <table class="table">
-                    <thead class="thead-dark">
-                      <tr>
-                        <th scope="col">Subject</th>
-                         
-                        <th scope="col">{{mk.name }} </th>
-<!-- 
-                        <th scope="col">Internal Mark 2 </th>
-                        <th scope="col">Mid  </th>
-                        <th scope="col">Final</th> -->
-
-                      </tr>
-                    </thead>
-                  
-<h1>{{mark}}</h1>
-
-                    <tbody> 
-                        {{mark.get_cie}}
-                          {% for marks in mark %}
-                    {% for mk in  marks.marks_set.filter %}
-
-                   <tr> 
-                
-
-                
-                            <td>{{marks.course}}</td>
-                            <td>{{mk.marks1}}</td>
-                         
-                      </tr>  
-
-                         {% endfor %}
-                          <!-- <td>{{marks.marks1}}</td> -->
-                            
-                          {% endfor %}
-                    </tbody>
-                  </table>
-                          
-       
 
        
 
                 <table class="table">
+
+
                   
+ 
+                    {% for marks in mark %}
+
+
+                       <tbody>
                     <tr>
-                        {% for marks in mark %}
-                        <center><th>{{marks.assign.course}}</th></center>
-                        
+                        <th>{{marks.assign.course}}</th>
+
+                        <th>{{marks.name}}</th>
+                        <td>{{marks.marks1}}</td>
                     </tr>
 
-                    <tr>
-                        <td>Internal Marks</td>
-                        <td>Internal Marks 2</td>
-                        <td>MIDS</td>
-                        <td>Exam</td>
-                        <td></td>
-                    </tr>
 
-                    <tr>
-                        <td>{{marks.name}}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                {% endfor %}
+                </tbody>
+                    
+                    {% endfor %}
+
+                   
+               
                 </table>
             </div>
         </div>

@@ -117,6 +117,8 @@ class Markss(models.Model):
     name = models.CharField(max_length=50, choices=test_name, default='Internal test 1')
     marks1 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
 
+
+
     @property
     def total_marks(self):
         if self.name == 'Semester End Exam':

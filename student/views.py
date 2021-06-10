@@ -154,8 +154,7 @@ def result(request):
 	std_course = Markss.objects.filter(assign__in=ass, student=student)
 	print(std_course)
 	for std_x in std_course:
-		print(dir(std_x))
-		print(std_x.assign.course)
+		print(std_x)
 
 	# mk = Marks.objects.filter(student_id = request.user.student)
 
