@@ -210,6 +210,9 @@ def view_assignments(request):
     context = {'get_assignment':get_assignment_data}
     return render(request, 'view_assignments.html',context)
 
+@login_required(login_url='login')
+def delete_assignments(request):
+    pass
 
 
 @login_required(login_url='login')
