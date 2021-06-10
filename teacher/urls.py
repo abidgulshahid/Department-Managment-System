@@ -13,6 +13,8 @@ urlpatterns = [
     path('<slug:assi>/added',views.add_assigment,name='add_assigment'),
     path('get_assignments_data', views.view_assignments, name='view_assignments'),
 
+    path('promote/', views.promote_students, name='promote_students'),
+
     path('marks/<slug:stud>/<slug:teach>/', views.teacher_view_marks, name='teacher_view_marks'),
     path('marks/<slug:stud>/<slug:teach>/take', views.take_marks, name='take_marks'),
     path('profile', views.teacher_profile, name='teacher_profiles'),

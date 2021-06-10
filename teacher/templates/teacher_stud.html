@@ -86,7 +86,8 @@
     <div class="uk-container">
 
     <div class="uk-tile uk-tile-default uk-padding-large" id="title">
-            <h2>Your Students <code><a href="{% url 'view_assignments_page' s.class_id.id  %}">Add ?</a></code></h2> 
+            <h2>Your Students  <a href="{% url 'promote_students' %}"><button class="uk-button uk-button-danger">Promote Your Students</button></a>
+            </h2> 
 
 
             <table class="uk-table uk-table-divider">
@@ -111,11 +112,10 @@
         <td> <a href="{% url 'teacher_view_marks' stud.USN teach.id %}  "><button class="uk-button uk-button-secondary">Take Marks</button></a> </td>
                     </tr>
                    
-                </tbody>
+                </tbody>          
                 {% endfor %} 
 
             </table>
-            <center> <a href="{% url 'teacher_view_marks' stud.class_id teach.id %}"><button class="uk-button uk-button-danger">Promote</button></a></center>
             <h2><code>{{student}} {{stud}}</code></h2>
         
   

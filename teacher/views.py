@@ -186,7 +186,7 @@ def take_marks(request,stud,teach):
 
 
 @login_required(login_url='login')
-def take_marks(request,stud,teach):
+def promote_students(request,stud,teach):
     pass
 
 

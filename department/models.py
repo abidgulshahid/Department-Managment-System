@@ -2,6 +2,7 @@ from django.db import models
 from student.models import *
 from teacher.models import *
 from users.models import Users
+import datetime
 import math
 from django.core.validators import MinValueValidator, MaxValueValidator
 
@@ -176,3 +177,13 @@ class MarksClass(models.Model):
         if self.name == 'Semester End Exam':
             return 100
         return 20
+
+
+
+class Announcement(models.Model):
+    
+    message = models.CharField(max_length=5000)
+    message_date = datetime.date.today()
+
+    def __str__(self):
+        return "%s %s " % (self.message,self.message_date)

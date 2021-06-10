@@ -139,7 +139,19 @@
 				</div>
 			</div>
     </div> -->
-    
+    <div id="modal-example" uk-modal>
+      <div class="uk-modal-dialog uk-modal-body">
+          <h2 class="uk-modal-title">Announcement</h2>
+          {% for anon in announcments %}
+          <p>{{anon.msg}}<code>{{anon.date}}</code></p>
+          
+          {% endfor %}
+          <p class="uk-text-right">
+              <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+              <button class="uk-button uk-button-primary" type="button">Save</button>
+          </p>
+      </div>
+  </div>
 
       <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="ratio: 7:3; animation: push; autoplay:true;"> 
 <div class="uk-visible-toggle" uk-slider="autoplay: true">
@@ -247,7 +259,16 @@
 </body>
 
 </html>
+<script>
+  var util = UIkit.util;
 
+util.on(document, 'DOMContentLoaded', function () {
+  var modalEl = util.$('#modal-example');
+  UIkit.modal(modalEl).show();
+});
+
+
+</script>
 
 
 

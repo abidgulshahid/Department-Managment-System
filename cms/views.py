@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from .models import announcments
 
 def index(request):
-    announce = announcments.objects.all()
+    announce = announcments.objects.all().order_by('msg')
     context = {"announcments": announce}
     return render(request, 'index.html', context)
 
