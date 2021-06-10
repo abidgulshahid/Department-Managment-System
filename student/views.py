@@ -153,6 +153,9 @@ def result(request):
 	ass = Assign.objects.filter(class_id=course)	
 	std_course = Markss.objects.filter(assign__in=ass, student=student)
 	print(std_course)
+	for std_x in std_course:
+		print(dir(std_x))
+		print(std_x.assign.course)
 
 	# mk = Marks.objects.filter(student_id = request.user.student)
 
@@ -161,9 +164,8 @@ def result(request):
 	# 	print('marks', m.marks1)
 	# 	print('teacher',m.assign.teacher, m.assign.course)
 
-	for ad in ass:
-		print(ad.course)
-	context = {'mark':std_course, 'subject':ad}
+
+	context = {'mark':std_course}
 	return render(request,'marks.html', context)
 
 

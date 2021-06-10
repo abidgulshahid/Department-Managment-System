@@ -164,10 +164,10 @@ def take_marks(request,stud,teach):
     global stds
     if request.method== "POST":
         global stds
+        student = Student.objects.get(USN=stud)
 
         today = datetime.date.today()
-        assi = Assign.objects.filter(teacher_id=teach,student=stud)
-        student = Student.objects.get(USN=stud)
+        assi = Assign.objects.filter(class_id=student.class_id,teacher_id=teach)
         for ax in assi:
             ax =ax
         std = StudentCourse.objects.filter(student=stud)
