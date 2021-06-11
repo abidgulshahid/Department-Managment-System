@@ -16,6 +16,8 @@ class Teacher(models.Model):
         return self.name
 
 class teacher_assignnment(models.Model):
-    assign = ForeignKey('department.Assign', on_delete=models.CASCADE)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    assign = ForeignKey('department.Assign', on_delete=models.CASCADE, unique=False)
     assignnment= models.CharField(max_length=2000)
     assignment_date = models.DateField()
+    deadline_date = models.DateField()
