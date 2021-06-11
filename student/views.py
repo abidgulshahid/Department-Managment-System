@@ -1,3 +1,4 @@
+from teacher.models import teacher_assignnment
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login as auth_login
@@ -127,6 +128,17 @@ def courses(request):
 			print(i.day)
 	context = {"course":ass, 'time':'ass_time'}
 	return render(request, 'courses.html', context)
+
+@login_required(login_url='login')
+def show_attendance(request):
+	student = Student.objects.get(user=request.user.id)
+	course = Class.objects.get(student=student)
+	assign = Assign.objects.filter(class_id = course)
+	view_assignment = teacher_assignnment.objects.filter(assign__in=assign)
+
+	context = {"view_assignment":view_assignment}
+	return render(request, 'show_assignment.html', context)
+
 
 @login_required(login_url='login')
 def show_attendence(request):
