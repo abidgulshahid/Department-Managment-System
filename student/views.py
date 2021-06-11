@@ -147,6 +147,9 @@ def show_attendence(request):
 	import datetime
 	today = datetime.date.today()
 	s  = Attendance.objects.filter(attendance_date=today)
+	perc_attendance  = s.count()
+	total_perc_attendance  = perc_attendance / 48 * 100 
+
 	print(s)
 
 	# if Attendance.objects.filter(attendance_date=today).exists():
@@ -155,7 +158,7 @@ def show_attendence(request):
 	# 	status = "Absent "
 
 
-	context = {'a': attendence}
+	context = {'a': attendence, 'total_attendannce': int(total_perc_attendance)}
 	return render(request, 'attendence.html', context)
 	
 @login_required(login_url='login')
