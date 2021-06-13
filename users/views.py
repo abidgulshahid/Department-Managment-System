@@ -15,6 +15,9 @@ from teacher.views import *
 from teacher.urls import *
 from hods.urls import *
 from hods.views import *
+from rest_framework import viewsets, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 # Create your views here.
 

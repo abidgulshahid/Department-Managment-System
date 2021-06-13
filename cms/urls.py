@@ -19,6 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
 from .views import *
+from student.urls import *
 
 urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
@@ -37,6 +38,8 @@ urlpatterns = [
     path('department/math', math, name='math' ),
     path('department/admissions', admissions,name='admissions'),
     path('superuser/admin/', admin.site.urls),
+    path('api/v1/',include('users.urls'), name='department_api'),
+    
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

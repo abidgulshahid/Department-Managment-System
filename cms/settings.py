@@ -47,6 +47,10 @@ INSTALLED_APPS = [
      'department',
      'cms',
      'hods',
+     'rest_framework',
+     'corsheaders',
+
+
     # 'django_extensions',
 
 
@@ -57,6 +61,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
 
@@ -194,3 +199,4 @@ JET_THEMES = [
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 JET_SIDE_MENU_COMPACT = True
+CORS_ORIGIN_ALLOW_ALL = True

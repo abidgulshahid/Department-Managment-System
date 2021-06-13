@@ -228,7 +228,7 @@ def view_assignments(request):
 
 @login_required(login_url='login')
 def delete_assignments(request):
-    pass
+    teach = Teacher.objects.get(user=request.user.id)
 
 
 @login_required(login_url='login')
