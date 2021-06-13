@@ -39,7 +39,6 @@ urlpatterns = [
     path('department/math', math, name='math' ),
     path('department/admissions', admissions,name='admissions'),
     path('superuser/admin/', admin.site.urls),
-    path('api-auth/', include('rest_framework.urls'))  ,
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
