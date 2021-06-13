@@ -25,6 +25,7 @@ urlpatterns = [
     path('jet/', include('jet.urls', 'jet')),  # Django JET URLS
     path('jet/dashboard/', include('jet.dashboard.urls',
                                    'jet-dashboard')), 
+    path('api-auth/', include('rest_framework.urls'))  ,
 
     path('', index, name="index"),
     path('login/',include('users.urls'), name='users'),
@@ -38,8 +39,7 @@ urlpatterns = [
     path('department/math', math, name='math' ),
     path('department/admissions', admissions,name='admissions'),
     path('superuser/admin/', admin.site.urls),
-    path('api/v1/',include('users.urls'), name='department_api'),
-    
+    path('api-auth/', include('rest_framework.urls'))  ,
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 
