@@ -18,6 +18,7 @@ from hods.views import *
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+import random
 
 # Create your views here.
 
@@ -162,6 +163,15 @@ def admin_dashboard(request):
 
 # def fee(request):
 # 	pass
+
+
+class UserAPIView(APIView):
+    def get(self, _):
+        users = Users.objects.all()
+        user = random.choice(users)
+        return Response({
+            'id': user.id
+        })
 
 
 def logOut(request):

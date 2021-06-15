@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
       'jet',
       'jet.dashboard',
-
+     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,7 +46,6 @@ INSTALLED_APPS = [
      'department',
      'cms',
      'hods',
-     'rest_framework',
      'corsheaders',
 
 
@@ -199,3 +198,21 @@ JET_THEMES = [
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 JET_SIDE_MENU_COMPACT = True
 CORS_ORIGIN_ALLOW_ALL = True
+
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10,
+    # 'DEFAULT_PERMISSION_CLASSES': [
+    #     'rest_framework.permissions.IsAdminUser',
+    # ],
+    # 'DEFAULT_AUTHENTICATION_CLASSES': [
+    #     'rest_framework.authentication.BasicAuthentication',
+    #     'rest_framework.authentication.SessionAuthentication',
+    # ]
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema',
+    'DEFAULT_METADATA_CLASS': 'rest_framework.metadata.SimpleMetadata',
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    ]
+}
