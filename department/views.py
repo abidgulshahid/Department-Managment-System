@@ -11,7 +11,6 @@ from django.http import HttpResponse
 class UserAPIView(APIView):
     def get(self, _):
         users = Users.objects.all()
+        c = users.count()
         user = random.choice(users)
-        return response ({
-            'is_teacher' : 'True'
-        })
+        return HttpResponse(user, c)
