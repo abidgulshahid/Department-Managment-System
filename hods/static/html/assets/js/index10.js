@@ -46,36 +46,7 @@ $(function() {
             left: 6,
         },
     });
-
-    var chart = c3.generate({
-        bindto: '#chart-donut', // id of chart wrapper
-        data: {
-            columns: [
-                // each columns data
-                ['data1', 63],
-                ['data2', 37]
-            ],
-            type: 'donut', // default type of chart
-            colors: {
-                'data1': '#6574cd',
-                'data2': '#939edc',
-            },
-            names: {
-                // name of each serie
-                'data1': 'Students',
-                'data2': 'Teachers '
-            }
-        },
-        axis: {
-        },
-        legend: {
-            show: true, //hide legend
-        },
-        padding: {
-            bottom: 20,
-            top: 0
-        },
-    });
+    console.log("{{  students }}")
 
     // Total Revenue
     var plot = $.plot('#University_Survey', [{

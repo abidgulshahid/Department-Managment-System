@@ -14,18 +14,29 @@ from teacher.urls import *
 from department.models import *
 from hods.models import *
 from django.contrib.auth.decorators import login_required
-
+from django.http import JsonResponse
 # Create your views here.
+
+def hod_login(request):
+    pass
+
 
 @login_required(login_url='login')
 def hods(request):
     students = Student.objects.all().count()
     teachers = Teacher.objects.all().count()
     courses = Course.objects.all().count()
+    std_latest = Student.objects.all().last()
+    print(std_latest)
     dep = Dept.objects.filter()
     for d in dep:
         s = d.teacher_set.all()
         print(s)
+    
+    res = {
+        'total': int(students)
+    }
+  
     context  = {'students':students, 'teachers':teachers, 'courses':courses, 'dep':dep}
     return render(request, 'hod_index.html',context)
 
