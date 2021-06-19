@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+<head> 
     {% load static %}
 <title>DMS | University Analytics</title>
 <meta charset="utf-8">
@@ -520,8 +520,8 @@
                     <img src="{% static '../static/assets/images/user.png' %}" class="user-photo" alt="User Profile Picture">
                 </div>
                 <div class="dropdown">
-                    <span>Welcome,</span>
-                    <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Louis Pierce</strong></a>
+                    <span><b>Welcome,</b> </span>
+                    <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Back, {{request.user.get_full_name}} </strong></a>
                     <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
                         <li><a href="page-profile.html"><i class="icon-user"></i>My Profile</a></li>
                         <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
@@ -668,17 +668,17 @@
                                     <div class="carousel-item active">
                                         <div class="card-value float-right text-muted"><i class="wi wi-fog"></i></div>
                                         <h3 class="mb-1">12°C</h3>
-                                        <div>London</div>
+                                        <div>Islamabad</div>
                                     </div>
                                     <div class="carousel-item">
                                         <div class="card-value float-right text-muted"><i class="wi wi-day-cloudy"></i></div>
                                         <h3 class="mb-1">18°C</h3>
-                                        <div>New York</div>
+                                        <div>Peshawar</div>
                                     </div>
                                     <div class="carousel-item">
                                         <div class="card-value float-right text-muted"><i class="wi wi-sunrise"></i></div>
                                         <h3 class="mb-1">37°C</h3>
-                                        <div>New Delhi</div>
+                                        <div>Lakki Marwat</div>
                                     </div>
                                 </div>
                             </div>

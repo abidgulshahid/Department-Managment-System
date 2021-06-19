@@ -1,3 +1,4 @@
+from io import open_code
 from django.db import models
 from student.models import *
 from teacher.models import *
@@ -179,4 +180,6 @@ class MarksClass(models.Model):
         return 20
 
 
-
+class Semester(models.Model):
+    classes = models.ForeignKey(Class, on_delete=models.CASCADE)
+    course = models.ForeignKey(Course, on_delete=models.CASCADE)
