@@ -57,11 +57,13 @@ def view_teacher_students(request, classid):
     teach = Teacher.objects.get(user=request.user.id)
     print(teach)
     ass = Assign.objects.get(id=classid)
+    course = Course.objects.get(assign=ass)
+
     for x in ass.class_id.student_set.filter():
         print(dir(x))
 
 
-    return render(request, 'teacher_stud.html', {'s':ass,'teach':teach})
+    return render(request, 'teacher_stud.html', {'s':ass,'teach':teach,'course':course})
 
 
 
