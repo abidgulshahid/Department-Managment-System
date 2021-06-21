@@ -216,7 +216,7 @@ def add_assigment(request,assi):
 
 
 @login_required(login_url='login')
-def view_assignments(request):
+def view_assignments(request,s):
     teach = Teacher.objects.get(user=request.user.id)
     get_assignment_data = Assign.objects.filter(teacher=teach)    
     for gsd in get_assignment_data:

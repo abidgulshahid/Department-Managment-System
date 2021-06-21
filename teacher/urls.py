@@ -11,7 +11,8 @@ urlpatterns = [
     path('<slug:t>/', views.view_assignments_page, name='view_assignments_page'),
 
     path('<slug:assi>/added',views.add_assigment,name='add_assigment'),
-    path('get_assignments_data', views.view_assignments, name='view_assignments'),
+
+    path('get_assignments_data/', views.view_assignments, name='view_assignments'),
 
     path('promote/', views.promote_students, name='promote_students'),
 
