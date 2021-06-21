@@ -236,3 +236,4 @@ def logOut(request):
     auth_logout(request)
     return redirect('login')
 
+
