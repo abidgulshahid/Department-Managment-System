@@ -24,7 +24,15 @@
     </style>
 </head>
 <body class="bg-gray-100 font-family-karla flex">
-
+    <div class="page-loader-wrapper">
+        <div class="loader">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+            <div class="bar4"></div>
+            <div class="bar5"></div>
+        </div>
+    </div>
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-6">
             <a href="index.html" class="text-white text-2xl font-semibold uppercase hover:text-gray-300">Teacher</a>
@@ -333,138 +341,3 @@
 </body>
 </html>
 
-
-<!-- 
- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/css/uikit.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit-icons.min.js"></script>
-    <title>Welcome , {{request.user.username}}</title>
-   <style>
-       body {
-        background: #fafafa;;
-       }
-
-       #nav {
-           background-color: #03244d;
-           color:white;
-
-       }
-
-       #nav a{
-           color:white;
-       }
-
-       #nav h3 {
-           color:white;
-       }
-
-       #title {
-           border: 1px solid  #03244d;
-           border-radius: 5px;
-       }
-
-       footer {
-           border-top: 1px solid black;
-           margin-top: 2em;
-           text-align: center;
-       }
-
-       footer p {
-           margin-top: 2em;
-       }
-       </style>
-</head>
-<body>
-        <nav class="uk-navbar-container" uk-navbar id="nav" ">
-
-            <div class="uk-navbar-left">
-        
-                <ul class="uk-navbar-nav">
-                    <li class="uk-active"><a href="#"><h3>CMS | Teacher Panel</h3></a></li>
-                   
-                </ul>
-        
-            </div>
-        
-            <div class="uk-navbar-right">
-        
-                <ul class="uk-navbar-nav">
-                    <li class="uk-active"><a href="#">{{request.user.teacher}}</a></li>
-                    <li>
-                        <a href="#">Add Assignment</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'view_assignments' %}">View Your Assignments</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'teacher_profiles' %}">Settings</a>
-    
-                    </li>
-                    <li><a href="{% url 'logOut' %}">Logout</a></li>
-                </ul>
-        
-            </div>
-        
-        </nav>
-    <hr class="uk-divider-icon">
-    <div class="uk-container">
-    <div class="uk-tile uk-tile-default uk-padding-large" id="title" >
-        <p>My Department: <b>{{t.dept}}</b></p>
-      
-       <p>Teaching From: <b>{{t.user.date_joined}}</b></p>
-       <p>Last Login : <b>{{t.user.last_login}}</b></p>
-    </div>
-
-    <hr class="uk-divider-icon">
-
-
-    <div class="uk-tile uk-tile-default uk-padding-large" id="title">
-            <h2>Your Students</h2>
-
-        
-  
-      <table class="uk-table uk-table-hover uk-table-divider">
-        <thead>
-            
-            <tr>
-                <th>Student Batch</th>
-                <th>Course</th>
-                <th>Current Semester</th>
-                <th>Class Timing</th>
-
-            </tr>
-        </thead>
-        {% for data in teacher1 %}
-        <tbody>
-
-            <tr>
-    
-           <td><a href="{% url 'teacher_stud' data.id %}"> {{data.class_id.id}} </a></td>
-           
-           <td> {{data.course}}</td>
-           <td>{{data.class_id.sem}}</td>
-           {% for ct in data.assigntime_set.all %}
-           <td> {{ct.period}} {{ct.day}}</td>
-
-           {% endfor %}
- 
-            </tr>
-
-        </tbody>
-        {% endfor %}
-
-        </table>
-
-</div> 
-</div>
-<hr class="uk-divider-icon">
-
-<footer>
-    <p>MADE WITH LOVE BY ABID</p>
-</footer>
- -->
