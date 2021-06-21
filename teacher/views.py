@@ -126,13 +126,13 @@ def update_profile(request,teacher):
 
 
 @login_required(login_url='login')
-def view_student_attendence(request,stud,teach):
+def view_student_attendence(request,stud,course,teach):
     today = datetime.date.today()
     print(stud)
     teacher = Teacher.objects.get(user=request.user.id)
     student = Student.objects.get(USN=stud)
-    course = Course.objects.filter()
-    assign = Assign.objects.filter(course__in=course,teacher=teacher)
+    
+    assign = Assign.objects.filter(class_id=student.class_id,course=course,teacher=teacher)
 
 
     for ax in assign:
@@ -149,7 +149,7 @@ def view_student_attendence(request,stud,teach):
     return HttpResponse('Attendance Taken'+str(student))
     
 @login_required(login_url='login')
-def teacher_view_marks(request,stud,teach):
+def teacher_view_marks(request,stud,course,teach):
     today = datetime.date.today()
     teach = Teacher.objects.get(user=request.user.id)
     student = Student.objects.get(USN=stud)

@@ -107,9 +107,9 @@
                         <td>  {{stud.class_id.id}}   </td>
                         <td>{{stud.class_id.sem}}    </td>
                         
-        <td> <a href="{% url 'student_attendence' stud.USN course.name teach.id %}  "><button class="uk-button uk-button-secondary">Attendence</button></a> </td>
+        <td> <a href="{% url 'student_attendence' stud.USN course.id teach.id %}  "><button class="uk-button uk-button-secondary">Attendence</button></a> </td>
 
-        <td> <a href="{% url 'teacher_view_marks' stud.USN  teach.id %}  "><button class="uk-button uk-button-secondary">Take Marks</button></a> </td>
+        <td> <a href="{% url 'teacher_view_marks' stud.USN course.id teach.id %} "><button class="uk-button uk-button-secondary">Take Marks</button></a> </td>
                     </tr>
                    
                 </tbody>          
