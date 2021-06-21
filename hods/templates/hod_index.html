@@ -193,7 +193,7 @@
 
             </li> -->
                         <li><a href="javascript:void(0);" class="right_toggle icon-menu" title="Right Menu"><i class="icon-bubbles"></i><span class="notification-dot bg-pink">2</span></a></li>
-                        <li><a href="page-login.html" class="icon-menu"><i class="icon-power"></i></a></li>
+                        <li><a href="{% url 'logOut' %}" class="icon-menu"><i class="icon-power"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -527,7 +527,7 @@
                         <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
                         <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
                         <li class="divider"></li>
-                        <li><a href="page-login.html"><i class="icon-power"></i>Logout</a></li>
+                        <li><a href="{% url 'logOut' %}"><i class="icon-power"></i>Logout</a></li>
                     </ul>
                 </div>                
             </div>  

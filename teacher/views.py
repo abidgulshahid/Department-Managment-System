@@ -129,20 +129,18 @@ def view_student_attendence(request,stud,teach):
     print(stud)
     teacher = Teacher.objects.get(user=request.user.id)
     student = Student.objects.get(USN=stud)
+    course = Course.objects.filter()
+    assign = Assign.objects.filter(course__in=course,teacher=teacher)
 
-    assign = Assign.objects.get(class_id=student.class_id,teacher=teacher)
-    print(dir(student))
-    print(student.class_id)
-    print(student.studentcourse_set.filter())
 
-    # for ax in assign:
-    #     ax = ax
-    if Attendance.objects.filter(assign=assign, student=student,attendance_date=today).exists():
+    for ax in assign:
+        ax = ax
+    if Attendance.objects.filter(assign=ax, student=student,attendance_date=today).exists():
         print ("Already Exist")
         return HttpResponse("Already TAKE the attendence")
 
     else:
-        att = Attendance.objects.create(assign=assign, student=student, attendance_date=today)
+        att = Attendance.objects.create(assign=ax, student=student, attendance_date=today)
         att.save()
     # stud_ass = Assign.objects.filter(teacher_id=teach)
     # context  = {"stud":'Attendence Taken','student':student, 's':stud_ass}
