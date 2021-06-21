@@ -15,6 +15,8 @@ from department.models import *
 from hods.models import *
 from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
+from django.http import HttpResponse
+
 # Create your views here.
 
 def hod_login(request):
@@ -23,22 +25,27 @@ def hod_login(request):
 
 @login_required(login_url='login')
 def hods(request):
-    students = Student.objects.all().count()
-    teachers = Teacher.objects.all().count()
-    courses = Course.objects.all().count()
-    std_latest = Student.objects.all().last()
-    print(std_latest)
-    dep = Dept.objects.filter()
-    for d in dep:
-        s = d.teacher_set.all()
-        print(s)
+    if request.user.is_superuser:
+        students = Student.objects.all()
+        student_counts = students.count()
+        teachers = Teacher.objects.all().count()
+        courses = Course.objects.all().count()
+        for s in students:
+            attendance = s.attendance_set.all().count()
+            print(attendance)
+        dep = Dept.objects.filter()
+        for d in dep:
+            s = d.teacher_set.all()
+            print(s)
     
-    res = {
-        'total': int(students)
-    }
+        res = {
+            'total': int(student_counts)
+        }
   
-    context  = {'students':students, 'teachers':teachers, 'courses':courses, 'dep':dep}
-    return render(request, 'hod_index.html',context)
+        context  = {'students':student_counts, 'teachers':teachers, 'courses':courses, 'dep':dep, 'los':students}
+        return render(request, 'hod_index.html',context)
+    else:
+        return HttpResponse("<h2 style='color:red;'>Your Not Autorized To View This Page. </h2><p> Please Contact the Administrator</p>")
 
 
 def logOut(request):
