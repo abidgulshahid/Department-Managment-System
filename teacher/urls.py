@@ -18,7 +18,8 @@ urlpatterns = [
    
     # get_assigment is used to view teacter's submitted Assignments and Delete is for to Delete Their Assignments
     path('get_assignments_data/', views.get_submitted_assignments, name='view_assignments'),
-    path('delete_assignmet/<slug:ta>/', views.delete_assignments, name='delete_assignments'),
+    path('delete_assignmet/<slug:ta>/deleted', views.delete_assignments, name='delete_assignments'),
+
 
     path('promote/', views.promote_students, name='promote_students'),
     # Marks Routes
