@@ -95,6 +95,7 @@
                             <tr>
                                 <th>Assignments</th>
                                 <th>Date</th>
+                                <th>Deadline</th>
                                 <th>Teacher</th>
                             </tr>
 
@@ -103,10 +104,15 @@
                          
                                 <td>{{view_assignments.assignnment}}</td>
                                 <td>{{view_assignments.assignment_date}}</td>
-                                <td>{{view_assignments.assign.teacher}}</td>
-                     
+                                <td>{{view_assignments.deadline_date}}</td>
 
+                                <td>{{view_assignments.assign.teacher}}</td>
+                                <form>
+                                <td>  <input type="file" class="btn btn-warning" name='submit'></td>
+                                <td>  <input type="submit" class="btn btn-warning" value="Upload Your Assignment" name='submit'></td>
+                                    </form>
                           </tr>
+
                             {% endfor %}
                           </table>
        

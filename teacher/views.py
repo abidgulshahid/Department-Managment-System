@@ -203,11 +203,14 @@ def add_assigment(request,assi):
     if request.method == "POST":
         today = datetime.date.today()
         teach = Teacher.objects.get(user=request.user.id)
-        assi = Assign.objects.get(class_id=assi,teacher=teach)
+        assi = Assign.objects.filter(class_id=assi,teacher=teach)
+        for ax in assi:
+            ax =ax
         assignment = request.POST.get('assignment')
         t = request.POST.get('teacher')
+        deadline = request.POST.get('datetime')
         print(today, teach, assi, assignment, t)
-        insert_query=  teacher_assignnment.objects.create(assign=assi, assignnment=assignment, assignment_date=today)
+        insert_query=  teacher_assignnment.objects.create(assign=ax, assignnment=assignment, assignment_date=today, deadline_date=deadline)
         if insert_query:
             return HttpResponse("Assignment Created")
         else:
@@ -216,7 +219,7 @@ def add_assigment(request,assi):
 
 
 @login_required(login_url='login')
-def view_assignments(request,s):
+def view_assignments(request,t):
     teach = Teacher.objects.get(user=request.user.id)
     get_assignment_data = Assign.objects.filter(teacher=teach)    
     for gsd in get_assignment_data:
@@ -226,9 +229,15 @@ def view_assignments(request,s):
     context = {'get_assignment':get_assignment_data}
     return render(request, 'view_assignments.html',context)
 
+
 @login_required(login_url='login')
-def delete_assignments(request):
+def delete_assignments(request,ta):
     teach = Teacher.objects.get(user=request.user.id)
+    d_ass = teacher_assignnment.objects.get(id=ta)
+    get_assignment_data = Assign.objects.filter(teacher=teach)    
+    del_query = teacher_assignnment.objects.get(id=d_ass.id).delete()
+    return HttpResponse("HERE"+ str(del_query))
+    
 
 
 @login_required(login_url='login')

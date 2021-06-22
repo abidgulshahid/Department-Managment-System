@@ -182,7 +182,7 @@ def result(request):
 	context = {'mark':std_course}
 	return render(request,'marks.html', context)
 
-
+@login_required(login_url='login')
 def student_profile(request):
 	student = Student.objects.get(user=request.user.id)
 
@@ -191,7 +191,7 @@ def student_profile(request):
 	context = {'student':student}
 	return render(request, "student_profile.html", context)
 
-
+@login_required(login_url='login')
 def update_student_profile(request, student):
 	if request.method == "POST":
 		print(student)
@@ -210,7 +210,9 @@ def update_student_profile(request, student):
 		return HttpResponse("HACKED")
 
 
-
+@login_required(login_url='login')
+def upload_assignment(request):
+	pass
 
 def fee(request):
 	pass

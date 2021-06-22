@@ -90,7 +90,8 @@
                 <thead>
                     <tr>
                         <th>Assignment</th>
-                        <th>Date</th>
+                        <th>Assignment Creation Date</th>
+                        <th>Deadline</th>
                         <th>Class</th>
                   
 
@@ -105,10 +106,11 @@
                     <tr>  
                         <td> {{ta.assignnment}}</td>
                         <td> {{ta.assignment_date}}</td>
+                        <td> {{ta.deadline_date}}</td>
                       
                         <td>{{ta.assign.class_id}}</td>
 
-                        <td> <a href=""><button class="uk-button uk-button-danger">Delete</button></a> </td>
+                        <td> <a href="{% url 'delete_assignments' ta.id %}"><button class="uk-button uk-button-danger">Delete</button></a> </td>
 
                         {% endfor %}
                         {% endfor %}

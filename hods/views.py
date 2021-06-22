@@ -48,6 +48,18 @@ def hods(request):
         return HttpResponse("<h2 style='color:red;'>Your Not Autorized To View This Page. </h2><p> Please Contact the Administrator</p>")
 
 
+@login_required(login_url='login')
+def wfhod(request,listofstudents):
+    student = Student.objects.get(USN=listofstudents)
+    warning_from = request.user.username
+    warning_message = "Dear, "+student+" Warning: Apki Attendance Low hain Kindly Ap Apni Attedance Sahi Karay Warna Drop Hgy"
+
+    query = warning.objects.create(warning_from=warning_from,warning_message=warning_message, student=student)
+    if query:
+        return HttpResponse("Warning From HOD Sent to "+str(query))
+    else:
+        return HttpResponse("ERROR")
+
 def logOut(request):
     auth_logout(request)
     return redirect('login')

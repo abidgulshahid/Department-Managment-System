@@ -750,6 +750,7 @@
                                             <th>Date Of Admit</th>
                                             <th>Attendance %</th>
                                             <th>Department</th>
+                                            <th>Message</th>
                                             <th>Edit</th>
                                         </tr>
                                     </thead>
@@ -764,6 +765,7 @@
                                                 <span class="label label-sm label-success">{{listofstudents.attendance_set.all.count}} %</span>
                                             </td>
                                             <td>{{listofstudents.class_id.dept}}</td>
+                                            <td><a href="{% url 'wfhod' listofstudents.USN %}"><button class="btn btn-danger">Send a Warning</button></a></td>
                                             <td>
                                                 <a href="javascript:void(0)"><i class="fa fa-check"></i></a>
                                                 <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>

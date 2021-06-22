@@ -17,3 +17,8 @@ from users.models import Users
 	
 # 	def __str__(self):
 # 		return str(self.department_name)
+
+class warning(models.Model):
+    warning_from  = models.CharField(max_length=200)
+    warning_message = models.CharField(max_length=3000)
+    student = models.ForeignKey('student.Student', on_delete=models.CASCADE)
