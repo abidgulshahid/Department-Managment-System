@@ -20,6 +20,7 @@ from .models import Teacher, teacher_assignnment
 # Create your views here.
 
 # Showing The Home Page of Teacher and Showing Their Students As Well
+global ax
 @login_required(login_url='login')
 def teacher_index(request):
     teacher1 = get_object_or_404(Teacher, user=request.user.id)
@@ -192,19 +193,21 @@ def promote_students(request,stud,teach):
 
 @login_required(login_url='login')
 def view_assignments_page(request,class_id,course):
+    ax = ''
     ass = Assign.objects.filter(class_id=class_id, course=course)
     for ax in ass:
         ax =ax 
+        print(dir(ax))
     teacher = get_object_or_404(Teacher, user=request.user.id)
     context= {"t":teacher, 'assi':ax}
     return render(request, 'add_assignment.html', context)
 
 @login_required(login_url='login')
-def add_assigment(request,assi):
+def add_assigment(request,class_id,course):
     if request.method == "POST":
         today = datetime.date.today()
         teach = Teacher.objects.get(user=request.user.id)
-        assi = Assign.objects.filter(class_id=assi,teacher=teach)
+        assi = Assign.objects.filter(class_id=class_id,course=course,teacher=teach)
         for ax in assi:
             ax =ax
         assignment = request.POST.get('assignment')
@@ -220,13 +223,16 @@ def add_assigment(request,assi):
 
 
 @login_required(login_url='login')
-def view_assignments(request,t):
+def get_submitted_assignments(request):
     teach = Teacher.objects.get(user=request.user.id)
-    get_assignment_data = Assign.objects.filter(teacher=teach)    
-    for gsd in get_assignment_data:
-        print(dir(gsd))
-        print(gsd.teacher_assignnment_set.all())
-    print('===',get_assignment_data)
+    get_assignment_data = Assign.objects.filter(teacher=teach)
+    if get_assignment_data is not '':
+        for gsd in get_assignment_data:
+            print(dir(gsd))
+            print(gsd.teacher_assignnment_set.all())
+            print('===',get_assignment_data)
+    else:
+        get_assignment_data = 'No Assignments'
     context = {'get_assignment':get_assignment_data}
     return render(request, 'view_assignments.html',context)
 

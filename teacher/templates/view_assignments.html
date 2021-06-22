@@ -89,6 +89,7 @@
             <table class="uk-table uk-table-divider">
                 <thead>
                     <tr>
+                        <th>Subject Name</th>
                         <th>Assignment</th>
                         <th>Assignment Creation Date</th>
                         <th>Deadline</th>
@@ -104,6 +105,7 @@
                     {% for gsd in get_assignment %}
                     {% for ta in  gsd.teacher_assignnment_set.all %}
                     <tr>  
+                        <td>{{ta.assign.course.name}}</td>
                         <td> {{ta.assignnment}}</td>
                         <td> {{ta.assignment_date}}</td>
                         <td> {{ta.deadline_date}}</td>

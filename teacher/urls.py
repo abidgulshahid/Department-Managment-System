@@ -13,10 +13,11 @@ urlpatterns = [
 
 
     path('<slug:class_id>/<slug:course>/', views.view_assignments_page, name='view_assignments_page'),
-    path('<slug:class_id>/<slug:course>/added/',views.add_assigment,name='add_assigment'),
+    path('/add/<slug:class_id>/<slug:course>/added/',views.add_assigment,name='add_assigment'),
 
-
-    path('get_assignments_data/<slug:t>/', views.view_assignments, name='view_assignments'),
+   
+    # get_assigment is used to view teacter's submitted Assignments and Delete is for to Delete Their Assignments
+    path('get_assignments_data/', views.get_submitted_assignments, name='view_assignments'),
     path('delete_assignmet/<slug:ta>/', views.delete_assignments, name='delete_assignments'),
 
     path('promote/', views.promote_students, name='promote_students'),
