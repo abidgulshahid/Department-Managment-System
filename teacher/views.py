@@ -191,11 +191,12 @@ def promote_students(request,stud,teach):
 
 
 @login_required(login_url='login')
-def view_assignments_page(request,t):
-    ass = Assign.objects.filter(class_id=t)
-    
+def view_assignments_page(request,class_id,course):
+    ass = Assign.objects.filter(class_id=class_id, course=course)
+    for ax in ass:
+        ax =ax 
     teacher = get_object_or_404(Teacher, user=request.user.id)
-    context= {"t":teacher, 'assi':t}
+    context= {"t":teacher, 'assi':ax}
     return render(request, 'add_assignment.html', context)
 
 @login_required(login_url='login')
@@ -228,7 +229,6 @@ def view_assignments(request,t):
     print('===',get_assignment_data)
     context = {'get_assignment':get_assignment_data}
     return render(request, 'view_assignments.html',context)
-
 
 @login_required(login_url='login')
 def delete_assignments(request,ta):

@@ -181,5 +181,9 @@ class MarksClass(models.Model):
 
 
 class Semester(models.Model):
+    student = models.ForeignKey('student.Student', on_delete=models.CASCADE)
     classes = models.ForeignKey(Class, on_delete=models.CASCADE)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    mark  = models.ForeignKey(Markss, on_delete=models.CASCADE)
+
+

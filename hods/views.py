@@ -28,6 +28,10 @@ def hods(request):
     if request.user.is_superuser:
         students = Student.objects.all()
         student_counts = students.count()
+        perc_atnd = student_counts / 48 * 100
+
+        each_attendance = Attendance.objects.filter(student__in=students)
+        print(each_attendance)
         teachers = Teacher.objects.all().count()
         courses = Course.objects.all().count()
         for s in students:
@@ -42,7 +46,7 @@ def hods(request):
             'total': int(student_counts)
         }
   
-        context  = {'students':student_counts, 'teachers':teachers, 'courses':courses, 'dep':dep, 'los':students}
+        context  = {'students':student_counts,'each_perc':int(perc_atnd), 'teachers':teachers, 'courses':courses, 'dep':dep, 'los':students}
         return render(request, 'hod_index.html',context)
     else:
         return HttpResponse("<h2 style='color:red;'>Your Not Autorized To View This Page. </h2><p> Please Contact the Administrator</p>")
@@ -52,7 +56,7 @@ def hods(request):
 def wfhod(request,listofstudents):
     student = Student.objects.get(USN=listofstudents)
     warning_from = request.user.username
-    warning_message = "Dear, "+student+" Warning: Apki Attendance Low hain Kindly Ap Apni Attedance Sahi Karay Warna Drop Hgy"
+    warning_message = "Dear, ",student," Warning: Apki Attendance Low hain Kindly Ap Apni Attedance Sahi Karay Warna Drop Hgy"
 
     query = warning.objects.create(warning_from=warning_from,warning_message=warning_message, student=student)
     if query:
