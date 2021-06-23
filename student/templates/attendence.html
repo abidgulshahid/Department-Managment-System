@@ -88,7 +88,9 @@
                     </div>
                 </nav>
 
-                <h2>Attendence {{total_attendannce}} %</h2>
+                <center><h4>Attendence {{total_attendannce}} %</h4>     </center>                    
+                 <div id="chart-donut" style="height: 200px"></div>
+
                 <table class='table table-sm' >
                             <tr>
                                 <th>Subject</th>
@@ -105,7 +107,8 @@
                      
 
                           </tr>
-                            {% endfor %}
+                          {% endfor %}
+
                           </table>
        
 
@@ -119,6 +122,8 @@
 
         <!-- jQuery CDN -->
          <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+         <script src="{% static '../static/html/assets/bundles/c3.bundle.js' %}"></script>
+
          <!-- Bootstrap Js CDN -->
          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -129,8 +134,42 @@
                      $(this).toggleClass('active');
                  });
              });
+
+             var chart = c3.generate({
+        
+        bindto: '#chart-donut', // id of chart wrapper
+        data: {
+          
+            columns: [
+                // each columns data
+                ['data1', "{{present}}"],
+                ['data2', "{{absent}}"]
+            ],
+            type: 'pie', // default type of chart
+            colors: {
+                'data1': 'lightblue',
+                'data2': 'lightgreen',
+            },
+            names: {
+                // name of each serie
+                'data1': 'Present',
+                'data2': 'Absent '
+            }
+        },
+        axis: {
+        },
+        legend: {
+            show: true, //hide legend
+        },
+        padding: {
+            bottom: 20,
+            top: 0
+        },
+    });
+   
          </script>
     </body>
+
 </html>
 
 
