@@ -7,6 +7,7 @@ from django.contrib import messages
 from department.models import *
 from student.models import Student
 from users.models import Users
+from hods.models import warning
 from django.contrib.auth import logout as auth_logout
 from .forms import StudentForm
 from django.http import HttpResponseRedirect
@@ -131,7 +132,11 @@ def courses(request):
 
 @login_required(login_url='login')
 def show_attendance(request):
+
 	student = Student.objects.get(user=request.user.id)
+	warnings = warning.objects.filter(student=student)
+	print(warnings)
+
 	course = Class.objects.get(student=student)
 	assign = Assign.objects.filter(class_id = course)
 	view_assignment = teacher_assignnment.objects.filter(assign__in=assign)
@@ -208,6 +213,8 @@ def update_student_profile(request, student):
 		update_query.save()
 		
 		return HttpResponse("HACKED")
+
+
 
 
 @login_required(login_url='login')

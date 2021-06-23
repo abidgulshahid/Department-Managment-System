@@ -730,6 +730,13 @@
                     </div>
                 </div>
             </div>
+            {% if messages %}
+            <p class="messages">
+                {% for message in messages %}
+                <p  {% if message.tags %} class=" btn-success {{ message.tags }} " {% endif %}> <center><h3 class="btn btn-success">Message Has Been Sent.</h3></center> </p>
+                {% endfor %}
+            </p>
+            {% endif %}
             <div class="row clearfix">
                 <div class="col-lg-4 col-md-12">
               
@@ -740,6 +747,12 @@
                             <h2>New Student List</h2>
                         </div>
                         <div class="body">
+           
+                        
+
+                            
+                            <!-- <button type="button" class="btn btn-round btn-warning" data-toggle="modal" data-target=".feed-post-modal">Feed Post modal</button> -->
+
                             <div class="table-responsive">
                                 <table class="table table-striped mb-0">
                                     <thead>
@@ -755,7 +768,9 @@
                                         </tr>
                                     </thead>
                                     {% for listofstudents in los %}
+                                 
                                     <tbody>
+                                        
                                         <tr>
                                             <td>{{listofstudents.USN}}</td>
                                             <td>{{listofstudents.name}}</td>
@@ -765,115 +780,57 @@
                                                 <span class="label label-sm label-success">{{listofstudents.attendance_set.all.count}} %</span>
                                             </td>
                                             <td>{{listofstudents.class_id.dept}}</td>
-                                            <td><a href="{% url 'wfhod' listofstudents.USN %}"><button class="btn btn-danger">Send a Warning</button></a></td>
-                                            <td>
+                                            <td><a   href=""  class="btn btn-danger btn-round" data-toggle="modal" data-target=".feed-post-modal{{listofstudents}}" >Send a Warning</button></a>
+                                       
+                                                <td>
                                                 <a href="javascript:void(0)"><i class="fa fa-check"></i></a>
                                                 <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
+
+                                            </td> 
+                                            <div id="modal-div">                                                               
+                                                <form method="POST"  action="{% url 'wfhod' listofstudents.USN %}">
+                                                    {% csrf_token %}
+                                                <div class="modal fade feed-post-modal{{listofstudents}}"   tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body">
+                                                                <div class="d-flex mb-3">
+                                                                    <div class="icon bg-transparent">
+                                                                        <img src="{% static  '../static/assets/images/icon.svg' %}" class="rounded mr-3 w40" alt="">
+                                                                    </div>
+                                                                    <div>
+                                                                        <h6 class="mb-0">ID: {{listofstudents.USN}}</h6>
+                                                                        <span>{{listofstudents.name}}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="form-group">
+                                                                    <textarea rows="4" name="message"  class="form-control no-resize" value="Dear {{listofstudents}}, " >Dear {{listofstudents}}, </textarea>
+                                                                </div>
+
+                                                           
+                                                                <div class="align-right">
+                                                                    <!-- <button class="btn btn-link"><i class="icon-paper-clip text-muted"></i></button>
+                                                                    <button class="btn btn-link"><i class="icon-camera text-muted"></i></button>
+                                                                    <button class="btn btn-link"><i class="icon-pointer text-muted"></i></button>
+                                                                  -->   <input type="submit" class="btn btn-danger" value="Send">
+                                                                </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
                                         </tr>
-                                        {% endfor %}
-                                        <!-- <tr>
-                                            <td>2</td>
-                                            <td>Mark Hay</td>
-                                            <td> Mark</td>
-                                            <td>26/05/2018</td>
-                                            <td>
-                                                <span class="label label-sm label-warning">unpaid</span>
-                                            </td>
-                                            <td>Science</td>
-                                            <td>
-                                                <a href="javascript:void(0)"><i class="fa fa-check"></i></a>
-                                                <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>3</td>
-                                            <td>Anthony Davie</td>
-                                            <td>Cinnabar</td>
-                                            <td>21/05/2018</td>
-                                            <td>
-                                                <span class="label label-sm label-success ">paid</span>
-                                            </td>
-                                            <td>Commerce</td>
-                                            <td>
-                                                <a href="javascript:void(0)"><i class="fa fa-check"></i></a>
-                                                <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>David Perry</td>
-                                            <td>Felix </td>
-                                            <td>20/04/2019</td>
-                                            <td>
-                                                <span class="label label-sm label-danger">unpaid</span>
-                                            </td>
-                                            <td>Mechanical</td>
-                                            <td>
-                                                <a href="javascript:void(0)"><i class="fa fa-check"></i></a>
-                                                <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Anthony Davie</td>
-                                            <td>Beryl</td>
-                                            <td>24/05/2017</td>
-                                            <td>
-                                                <span class="label label-sm label-success ">paid</span>
-                                            </td>
-                                            <td>M.B.A.</td>
-                                            <td>
-                                                <a href="javascript:void(0)"><i class="fa fa-check"></i></a>
-                                                <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Alan Gilchrist</td>
-                                            <td>Joshep</td>
-                                            <td>22/05/2017</td>
-                                            <td>
-                                                <span class="label label-sm label-warning ">unpaid</span>
-                                            </td>
-                                            <td>Science</td>
-                                            <td>
-                                                <a href="javascript:void(0)"><i class="fa fa-check"></i></a>
-                                                <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td>Mark Hay</td>
-                                            <td>Jayesh</td>
-                                            <td>18/06/2018</td>
-                                            <td>
-                                                <span class="label label-sm label-success ">paid</span>
-                                            </td>
-                                            <td>Commerce</td>
-                                            <td>
-                                                <a href="javascript:void(0)"><i class="fa fa-check"></i></a>
-                                                <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>8</td>
-                                            <td>Sue Woodger</td>
-                                            <td>Sharma</td>
-                                            <td>17/05/2019</td>
-                                            <td>
-                                                <span class="label label-sm label-danger">unpaid</span>
-                                            </td>
-                                            <td>Mechanical</td>
-                                            <td>
-                                                <a href="javascript:void(0)"><i class="fa fa-check"></i></a>
-                                                <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
-                                            </td>
-                                        </tr> -->
+                  
+
                                     </tbody>
                                 </table>
                             </div>  
                         </div>
+
+
+
                     </div>                    
                 </div>
             </div>
@@ -881,7 +838,6 @@
     </div>
     
 </div>
-
 <canvas id="pie-chart"></canvas>
 
 <!-- Javascript -->
@@ -890,12 +846,25 @@
 
 <script src="{% static '../static/html/assets/bundles/flotscripts.bundle.js' %}"></script><!-- flot charts Plugin Js --> 
 <script src="{% static '../static/html/assets/bundles/c3.bundle.js' %}"></script>
-
+<!-- <script src="{% static '../static/html/assets/js/pages/forms/form-wizard.js' %}"></script> -->
 <script src="{% static '../static/html/assets/bundles/mainscripts.bundle.js' %}"></script>
 <script src="{% static '../static/html/assets/js/index10.js' %}"></script>
+<script src="{% static '../static/assets/vendor/toastr/toastr.js' %}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 <script>
-    console.log("{{  students }}")
+var modalDiv = $("#modal-div");
+$(".feed-modal").on("click", function() {
+  $.ajax({
+    url: $(this).attr("data-url"),
+    success: function(data) {
+      modalDiv.html(data);
+      $("#fade_modal").modal();
+    }
+  });
+});
+
+
+
     var chart = c3.generate({
         
         bindto: '#chart-donut', // id of chart wrapper
@@ -927,7 +896,7 @@
             top: 0
         },
     });
-
+   
 
 </script>
 </body>

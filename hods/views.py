@@ -8,14 +8,14 @@ from student.models import Student
 from users.models import Users
 from django.contrib.auth import logout as auth_logout
 from django.http import HttpResponseRedirect
-from django.urls import reverse
 from teacher.views import teacher_index
 from teacher.urls import *
 from department.models import *
 from hods.models import *
 from django.contrib.auth.decorators import login_required
-from django.http import JsonResponse
-from django.http import HttpResponse
+from django.urls import reverse
+from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
+
 
 # Create your views here.
 
@@ -56,11 +56,14 @@ def hods(request):
 def wfhod(request,listofstudents):
     student = Student.objects.get(USN=listofstudents)
     warning_from = request.user.username
-    warning_message = "Dear, ",student," Warning: Apki Attendance Low hain Kindly Ap Apni Attedance Sahi Karay Warna Drop Hgy"
+    warning_message = request.POST.get('message')
 
     query = warning.objects.create(warning_from=warning_from,warning_message=warning_message, student=student)
     if query:
-        return HttpResponse("Warning From HOD Sent to "+str(query))
+        message = "Warning From HOD Sent to "+str(student)
+        context = {"message":message}
+        messages.success(request, "ASDASDS")    
+        return HttpResponseRedirect(reverse('hods'),message)
     else:
         return HttpResponse("ERROR")
 
