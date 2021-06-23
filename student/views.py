@@ -151,7 +151,12 @@ def show_attendence(request):
 	today = datetime.date.today()
 	s  = Attendance.objects.filter(attendance_date=today)
 	perc_attendance  = attendence.count()
-	total_perc_attendance  = perc_attendance / 48 * 100 
+	for sad in attendence:
+		if sad.status == 'Absent':
+			total_perc_attendance  = (perc_attendance -1) / 48 * 100 
+		else:
+			total_perc_attendance  = perc_attendance / 48 * 100 
+
 
 	print(s)
 
