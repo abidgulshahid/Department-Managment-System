@@ -133,9 +133,6 @@ def courses(request):
 @login_required(login_url='login')
 def show_attendance(request):
 
-	student = Student.objects.get(user=request.user.id)
-	warnings = warning.objects.filter(student=student)
-	print(warnings)
 
 	course = Class.objects.get(student=student)
 	assign = Assign.objects.filter(class_id = course)
@@ -223,7 +220,10 @@ def upload_assignment(request):
 
 @login_required(login_url='login')
 def show_warnings(request):
-	pass
+	student = Student.objects.get(user=request.user.id)
+	warnings = warning.objects.filter(student=student)
+	context={"warning":warnings}
+	return render(request, 'warnings.html', context)
 
 def fee(request):
 	pass
