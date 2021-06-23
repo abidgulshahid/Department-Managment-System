@@ -25,15 +25,7 @@
         .account-link:hover { background: #3d68ff; }
     </style>
 </head>
-<div class="page-loader-wrapper">
-    <div class="loader">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-        <div class="bar4"></div>
-        <div class="bar5"></div>
-    </div>
-</div>
+
 <body class="bg-gray-100 font-family-karla flex">
   
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
@@ -145,65 +137,40 @@
                     <i class="fas fa-arrow-circle-up mr-3"></i> Logout!
                 </button>
             </nav>
-            <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button> -->
+       
         </header>
     
         <div class="w-full overflow-x-hidden border-t flex flex-col">
             <main class="w-full flex-grow p-6">
                 <h1 class="text-3xl text-black pb-6">Dashboard</h1>
     
-                <!-- <div class="flex flex-wrap mt-6">
-                    <div class="w-full lg:w-1/2 pr-0 lg:pr-2">
-                        <p class="text-xl pb-3 flex items-center">
-                            <i class="fas fa-plus mr-3"></i> Monthly Reports
-                        </p>
-                        <div class="p-6 bg-white">
-                            <canvas id="chartOne" width="400" height="200"></canvas>
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
-                        <p class="text-xl pb-3 flex items-center">
-                            <i class="fas fa-check mr-3"></i> Resolved Reports
-                        </p>
-                        <div class="p-6 bg-white">
-                            <canvas id="chartTwo" width="400" height="200"></canvas>
-                        </div>
-                    </div>
-                </div> -->
     
                 <div class="w-full mt-12">
                     <p class="text-xl pb-3 flex items-center">
                         <i class="fas fa-list mr-3"></i> Your Students
                     </p>
                     <div class="bg-white overflow-auto">
-                        <table class="min-w-full bg-white">
+                        <table class="min-w-full bg-white border-b">
                             <thead class="bg-gray-800 text-white">
                                 <tr>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Student Name</th>
+                                    <th class="w-1/3 text-left py-2 px-2 uppercase font-semibold text-sm">Student Name</th>
                                     <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Batch</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Current Semester</th>
-                                    <th>Attendence</th>
-                                    <th></th>
-                                    <th>Marks</th>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Current Semester</th>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Attendence</th>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm"></th>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Marks</th>
+                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm"></th>
                                     
                                 </tr>
                             </thead>
-
-                    
-                            <!--  -->
-                    
-                
-                               <!--  -->
                                {% for stud in s.class_id.student_set.filter %}
 
                             <tbody class="text-gray-700">
-                                <tr>
+                                <tr >
                                  
-                                    <td class="w-1/3 text-left py-3 px-4"><a class="hover:text-blue-600 hover:underline font-bold" href="{% url 'each_student_info' stud.USN %}">{{stud.name}} </a></td>
-                                    <td class="w-1/3 text-left py-3 px-4"> {{stud.class_id.id}} </td>
-                                    <td class="text-left py-3 px-4">{{stud.class_id.sem}}</td>
+                                    <td class="w-3/3 text-left py-3 px-4"><a class="hover:text-blue-600 hover:underline font-bold" href="{% url 'each_student_info' stud.USN %}">{{stud.name}} </a></td>
+                                    <td class="w-3/3 text-left py-3 px-4"> {{stud.class_id.id}} </td>
+                                    <td class="w-3/3 text-left py-3 px-4">{{stud.class_id.sem}}</td>
                                     <form class="w-full max-w-lg" action="{% url 'student_attendence' stud.USN course.id teach.id %}" method="POST"> 
                                        {% csrf_token %}
                                         <td> <select name="status" class="w-full border bg-white rounded px-3 py-2 outline-none">                                            
@@ -213,54 +180,12 @@
                                     </td>
                                     <td><input type="submit" class="h-8 px-3 text-indigo-100 transition-colors duration-150 bg-black rounded-full focus:shadow-outline hover:bg-red-600"/> </td>
                                 </form>
-                                    <td> <a href="{% url 'teacher_view_marks' stud.USN course.id teach.id %} "><button class="h-8 px-3 text-indigo-100 transition-colors duration-150 bg-black rounded-full focus:shadow-outline hover:bg-red-600">Take Marks</button></a> </td>
+                                    <td> <a href="{% url 'teacher_view_marks' stud.USN course.id teach.id %} "><button class="h-12 px-12 text-indigo-100 transition-colors duration-150 bg-black rounded-full focus:shadow-outline hover:bg-red-600">Take Marks</button></a> </td>
                                  
                                     </tr>
                                     {% endfor %} 
-                                <!-- <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Lian</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Smith</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Emma</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Johnson</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr>
-                                    <td class="w-1/3 text-left py-3 px-4">Oliver</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Williams</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="w-1/3 text-left py-3 px-4">Isabella</td>
-                                    <td class="w-1/3 text-left py-3 px-4">Brown</td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="text-left py-3 px-4"><a class="hover:text-blue-500" href="mailto:jonsmith@mail.com">jonsmith@mail.com</a></td>
-                                </tr> -->
+                                
                             </tbody>
-                         
                         </table>
                     </div>
                 </div>
@@ -277,85 +202,7 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
     <!-- Font Awesome -->
     <script src="{% static '../static/assets/font_awesome_all.js' %}" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-    <!-- ChartJS -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script> -->
 
-    <script>
-        // var chartOne = document.getElementById('chartOne');
-        // var myChart = new Chart(chartOne, {
-        //     type: 'bar',
-        //     data: {
-        //         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        //         datasets: [{
-        //             label: '# of Votes',
-        //             data: [12, 19, 3, 5, 2, 3],
-        //             backgroundColor: [
-        //                 'rgba(255, 99, 132, 0.2)',
-        //                 'rgba(54, 162, 235, 0.2)',
-        //                 'rgba(255, 206, 86, 0.2)',
-        //                 'rgba(75, 192, 192, 0.2)',
-        //                 'rgba(153, 102, 255, 0.2)',
-        //                 'rgba(255, 159, 64, 0.2)'
-        //             ],
-        //             borderColor: [
-        //                 'rgba(255, 99, 132, 1)',
-        //                 'rgba(54, 162, 235, 1)',
-        //                 'rgba(255, 206, 86, 1)',
-        //                 'rgba(75, 192, 192, 1)',
-        //                 'rgba(153, 102, 255, 1)',
-        //                 'rgba(255, 159, 64, 1)'
-        //             ],
-        //             borderWidth: 1
-        //         }]
-        //     },
-        //     options: {
-        //         scales: {
-        //             yAxes: [{
-        //                 ticks: {
-        //                     beginAtZero: true
-        //                 }
-        //             }]
-        //         }
-        //     }
-        // });
 
-        // var chartTwo = document.getElementById('chartTwo');
-        // var myLineChart = new Chart(chartTwo, {
-        //     type: 'line',
-        //     data: {
-        //         labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        //         datasets: [{
-        //             label: '# of Votes',
-        //             data: [12, 19, 3, 5, 2, 3],
-        //             backgroundColor: [
-        //                 'rgba(255, 99, 132, 0.2)',
-        //                 'rgba(54, 162, 235, 0.2)',
-        //                 'rgba(255, 206, 86, 0.2)',
-        //                 'rgba(75, 192, 192, 0.2)',
-        //                 'rgba(153, 102, 255, 0.2)',
-        //                 'rgba(255, 159, 64, 0.2)'
-        //             ],
-        //             borderColor: [
-        //                 'rgba(255, 99, 132, 1)',
-        //                 'rgba(54, 162, 235, 1)',
-        //                 'rgba(255, 206, 86, 1)',
-        //                 'rgba(75, 192, 192, 1)',
-        //                 'rgba(153, 102, 255, 1)',
-        //                 'rgba(255, 159, 64, 1)'
-        //             ],
-        //             borderWidth: 1
-        //         }]
-        //     },
-        //     options: {
-        //         scales: {
-        //             yAxes: [{
-        //                 ticks: {
-        //                     beginAtZero: true
-        //                 }
-        //             }]
-        //         }
-        //     }
-        // });
-    </script>
 </body>
 </html>

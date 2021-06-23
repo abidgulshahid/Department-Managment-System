@@ -80,9 +80,9 @@ class Class(models.Model):
 
 
 class Assign(models.Model):
-    class_id = models.ForeignKey(Class, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    teacher = models.ForeignKey('teacher.Teacher', on_delete=models.CASCADE)
+    class_id = models.ForeignKey(Class, models.SET_NULL,null=True)
+    course = models.ForeignKey(Course, models.SET_NULL,null=True)
+    teacher = models.ForeignKey('teacher.Teacher', models.SET_NULL,null=True)
 
     class Meta:
         unique_together = (('course', 'class_id', 'teacher'),)
@@ -189,7 +189,8 @@ class MarksClass(models.Model):
 class Semester(models.Model):
     student = models.ForeignKey('student.Student', on_delete=models.CASCADE)
     classes = models.ForeignKey(Class, on_delete=models.CASCADE)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
-    mark  = models.ForeignKey(Markss, on_delete=models.CASCADE)
-
+    course = models.ManyToManyField(Course)
+    mark  = models.ManyToManyField(Markss)
+    attendance = models.ManyToManyField(Attendance)
+    semester = models.IntegerField(default=0)
 
