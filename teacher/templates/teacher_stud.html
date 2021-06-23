@@ -185,6 +185,7 @@
                                     <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Batch</th>
                                     <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Current Semester</th>
                                     <th>Attendence</th>
+                                    <th></th>
                                     <th>Marks</th>
                                     
                                 </tr>
@@ -203,8 +204,15 @@
                                     <td class="w-1/3 text-left py-3 px-4"><a class="hover:text-blue-600 hover:underline font-bold" href="{% url 'each_student_info' stud.USN %}">{{stud.name}} </a></td>
                                     <td class="w-1/3 text-left py-3 px-4"> {{stud.class_id.id}} </td>
                                     <td class="text-left py-3 px-4">{{stud.class_id.sem}}</td>
-                                    <td> <a href="{% url 'student_attendence' stud.USN course.id teach.id %}  "><button class="h-8 px-3 text-indigo-100 transition-colors duration-150 bg-black rounded-full focus:shadow-outline hover:bg-red-600">Attendence</button></a> </td>
-        
+                                    <form class="w-full max-w-lg" action="{% url 'student_attendence' stud.USN course.id teach.id %}" method="POST"> 
+                                       {% csrf_token %}
+                                        <td> <select name="status" class="w-full border bg-white rounded px-3 py-2 outline-none">                                            
+                                           <option value="Present">Present</option>
+                                            <option value="Absent">Absent</option>
+                                        </select>
+                                    </td>
+                                    <td><input type="submit" class="h-8 px-3 text-indigo-100 transition-colors duration-150 bg-black rounded-full focus:shadow-outline hover:bg-red-600"/> </td>
+                                </form>
                                     <td> <a href="{% url 'teacher_view_marks' stud.USN course.id teach.id %} "><button class="h-8 px-3 text-indigo-100 transition-colors duration-150 bg-black rounded-full focus:shadow-outline hover:bg-red-600">Take Marks</button></a> </td>
                                  
                                     </tr>

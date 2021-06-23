@@ -76,6 +76,7 @@ def each_student_info(request,student):
     assi = Assign.objects.filter(teacher= request.user.teacher)
     for ax in assi:
         atnd  = ax.attendance_set.filter(student=student)
+        at_count = atnd.count()
 
     each_attendance = Attendance.objects.filter(assign__in=assi,student=student)
     print(each_attendance)
@@ -89,7 +90,7 @@ def each_student_info(request,student):
     for st in student:
         at = st.attendance_set.filter(assign__in=assi, student__in=student)
 
-    return render(request,'each_student_info.html', {"student":st,'at':each_attendance,'assi':assi, 'perc_atnd': int(perc_atnd)})
+    return render(request,'each_student_info.html', {"student":st,'at':each_attendance,'assi':assi, 'count_atnd':count_atnd ,'perc_atnd': int(perc_atnd)})
 
 
 # def teacher_view_students(request,id):
@@ -133,6 +134,7 @@ def view_student_attendence(request,stud,course,teach):
     teacher = Teacher.objects.get(user=request.user.id)
     student = Student.objects.get(USN=stud)
     
+    status= request.POST.get('status')
     assign = Assign.objects.filter(class_id=student.class_id,course=course,teacher=teacher)
 
 
@@ -143,7 +145,7 @@ def view_student_attendence(request,stud,course,teach):
         return HttpResponse("Already TAKE the attendence")
 
     else:
-        att = Attendance.objects.create(assign=ax, student=student, attendance_date=today)
+        att = Attendance.objects.create(assign=ax, student=student, status=status, attendance_date=today)
         att.save()
     # stud_ass = Assign.objects.filter(teacher_id=teach)
     # context  = {"stud":'Attendence Taken','student':student, 's':stud_ass}

@@ -133,6 +133,7 @@ def courses(request):
 @login_required(login_url='login')
 def show_attendance(request):
 
+	student = Student.objects.get(user=request.user.id)
 
 	course = Class.objects.get(student=student)
 	assign = Assign.objects.filter(class_id = course)
@@ -160,7 +161,7 @@ def show_attendence(request):
 		status = "Absent "
 
 
-	context = {'a': attendence, 'total_attendannce': int(total_perc_attendance), 'status':status}
+	context = {'a': attendence, 'total_attendannce': int(total_perc_attendance)}
 	return render(request, 'attendence.html', context)
 	
 @login_required(login_url='login')

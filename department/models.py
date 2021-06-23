@@ -38,6 +38,11 @@ test_name = (
     ('Terminal Exam', 'Terminal Exam'),
 )
 
+Attendance_status =(
+    ('Present', 'Present'),
+    ('Absent', 'Absent')
+)
+
 
 
 class Dept(models.Model):
@@ -102,6 +107,7 @@ class Attendance(models.Model):
     id  = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) 
     assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
     student=  models.ForeignKey('student.Student', on_delete=models.CASCADE)
+    status = models.CharField(max_length=50, choices=Attendance_status, default='Present')
     attendance_date = models.DateField()
     created_at = models.DateTimeField(auto_now_add=True)
 
