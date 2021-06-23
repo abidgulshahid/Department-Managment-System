@@ -6,12 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome , {{request.user.username}}</title>
-    <meta name="author" content="David Grzyb">
+    <meta name="author" content="Abid Gul Shahid">
     <meta name="description" content="">
 
     <!-- Tailwind -->
-    <link href="{% static '../static/assets/tailwind.css' %}" rel="stylesheet">
-
+    <link href="https://unpkg.com/tailwindcss/dist/tailwind.min.css" rel="stylesheet">
     <style>
         
         @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
@@ -23,26 +22,9 @@
         .active-nav-link { background: #ffffff; color:black;}
         .nav-item:hover { background:white; color: #000; }
         .account-link:hover { background: #3d68ff; }
-        /* .page-loader-wrapper{z-index:99999999;position:fixed;top:0;left:0;bottom:0;right:0;width:100%;height:100%;overflow:hidden;background:#22252a}
-        .page-loader-wrapper .loader{margin:0 auto;width:70px;height:50px;text-align:center;font-size:10px;position:absolute;top:50%;left:50%;-webkit-transform:translateY(-50%) translateX(-50%)}
-        .page-loader-wrapper .loader>div{height:100%;width:8px;display:inline-block;margin-left:2px;-webkit-animation:delay 0.9s infinite ease-in-out;animation:delay 0.9s infinite ease-in-out}
-        .page-loader-wrapper .loader .bar1{background-color:#fc3c5f}
-        .page-loader-wrapper .loader .bar2{background-color:#993cfc;-webkit-animation-delay:-0.8s;animation-delay:-0.8s}
-        .page-loader-wrapper .loader .bar3{background-color:#3ca9fc;-webkit-animation-delay:-0.7s;animation-delay:-0.7s}
-        .page-loader-wrapper .loader .bar4{background-color:#3cfc5f;-webkit-animation-delay:-0.6s;animation-delay:-0.6s}
-        .page-loader-wrapper .loader .bar5{background-color:#fcdf3c;-webkit-animation-delay:-0.5s;animation-delay:-0.5s}@-webkit-keyframes delay{0%,40%,100%{-webkit-transform:scaleY(0.05)}20%{-webkit-transform:scaleY(1)}}@keyframes delay{0%,40%,100%{transform:scaleY(0.05);-webkit-transform:scaleY(0.05)}20%{transform:scaleY(1);-webkit-transform:scaleY(1)}} */
-    </style>
+          </style>
 </head>
 
-<!-- <div class="page-loader-wrapper">
-    <div class="loader">
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
-        <div class="bar4"></div>
-        <div class="bar5"></div>
-    </div>
-  </div> -->
 <body class="bg-gray-100 font-family-karla flex">
   
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
@@ -271,6 +253,11 @@
         </div>
         
     </div>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <!-- Font Awesome -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
+    <!-- ChartJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
 
     <!-- AlpineJS -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>

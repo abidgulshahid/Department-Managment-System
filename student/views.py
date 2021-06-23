@@ -221,6 +221,10 @@ def update_student_profile(request, student):
 def upload_assignment(request):
 	pass
 
+@login_required(login_url='login')
+def show_warnings(request):
+	pass
+
 def fee(request):
 	pass
 
