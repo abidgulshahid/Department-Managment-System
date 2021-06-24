@@ -140,7 +140,7 @@ def show_attendance(request):
 	view_assignment = teacher_assignnment.objects.filter(assign__in=assign)
 
 	context = {"view_assignment":view_assignment}
-	return render(request, 'show_assignment.html', context)
+	return render(request, 'home/assignments.html', context)
 
 
 @login_required(login_url='login')
@@ -172,7 +172,7 @@ def show_attendence(request):
 
 
 	context = {'a': attendence, 'total_attendannce': int(total_perc_attendance), 'present':int(present), 'absent':int(absent)}
-	return render(request, 'attendence.html', context)
+	return render(request, 'home/attendance.html', context)
 	
 @login_required(login_url='login')
 def result(request):
@@ -193,7 +193,7 @@ def result(request):
 
 
 	context = {'mark':std_course}
-	return render(request,'marks.html', context)
+	return render(request,'home/result.html', context)
 
 @login_required(login_url='login')
 def student_profile(request):
@@ -202,7 +202,7 @@ def student_profile(request):
 	print(dir(student))
 	print(student.USN)
 	context = {'student':student}
-	return render(request, "student_profile.html", context)
+	return render(request, "home/user_profile.html", context)
 
 @login_required(login_url='login')
 def update_student_profile(request, student):
@@ -233,8 +233,10 @@ def upload_assignment(request):
 def show_warnings(request):
 	student = Student.objects.get(user=request.user.id)
 	warnings = warning.objects.filter(student=student)
+
 	context={"warning":warnings}
-	return render(request, 'warnings.html', context)
+
+	return render(request, 'home/warnings.html', context)
 
 def fee(request):
 	pass

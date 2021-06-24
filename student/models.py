@@ -13,5 +13,5 @@ class Student(models.Model):
     DOB = models.DateField(default='1998-01-01')
 
     def __str__(self):
-        return self.str(user)
+        return self.name
 

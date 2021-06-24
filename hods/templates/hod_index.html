@@ -596,7 +596,7 @@
                                 </div> -->
                                 <div class="col-lg-4 col-sm-12 pb-4 pt-4">
                                     <label class="mb-0">Teacher or Staff</label>
-                                    <h4 class="font-30 font-weight-bold text-col-blue">{{teachers}}</h4>
+                                    <h4 class="font-30 font-weight-bold text-col-blue">{{teacher_counts}}</h4>
                                 </div>
                             </div>
                             <hr>
@@ -722,7 +722,7 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <label class="mb-0">Teachers</label>
-                                    <h4 class="font-30">{{teachers}}</h4>
+                                    <h4 class="font-30">{{teacher_counts}}</h4>
                                 </div>
                             </div>
                             <div id="chart-donut" style="height: 275px"></div>
@@ -764,7 +764,6 @@
                                             <th>Attendance %</th>
                                             <th>Department</th>
                                             <th>Message</th>
-                                            <th>Total Warning Sent</th>
                                             <th>Edit</th>
                                         </tr>
                                     </thead>
@@ -781,8 +780,8 @@
                                                 <span class="label label-sm label-success">{{listofstudents.attendance_set.all.count}} %</span>
                                             </td>
                                             <td>{{listofstudents.class_id.dept}}</td>
-                                            <td><a   href=""  class="btn btn-danger btn-round" data-toggle="modal" data-target=".feed-post-modal{{listofstudents.USN}}" >Send a Warning</button></a>
-                                                <td>1<td>
+                                            <td><a   href=""  class="btn btn-danger btn-round" data-toggle="modal" data-target=".feed-post-modal{{listofstudents.USN}}" >Send a Warning <b>({{warning_counts}})</b></button></a></td>
+                                                <td>
                                                 <a href="javascript:void(0)"><i class="fa fa-check"></i></a>
                                                 <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
 
@@ -857,33 +856,32 @@
                                         <th>Attendance %</th>
                                         <th>Department</th>
                                         <th>Message</th>
-                                        <th>Total Warning Sent</th>
                                         <th>Edit</th>
                                     </tr>
                                 </thead>
-                                {% for listofstudents in los %}
+                                {% for teacher in teachers %}
                              
                                 <tbody>
                                     
                                     <tr>
-                                        <td>{{listofstudents.USN}}</td>
-                                        <td>{{listofstudents.user}}</td>
+                                        <td>{{teacher.id}}</td>
+                                        <td>{{teacher.user}}</td>
                                         <!-- <td>{{listofstudents.class_id.}}</td> -->
-                                        <td>{{listofstudents.user.date_joined}}</td>
+                                        <td>{{teacher.user.date_joined}}</td>
                                         <td>
-                                            <span class="label label-sm label-success">{{listofstudents.attendance_set.all.count}} %</span>
+                                            <span class="label label-sm label-success">Null %</span>
                                         </td>
-                                        <td>{{listofstudents.class_id.dept}}</td>
-                                        <td><a   href=""  class="btn btn-danger btn-round" data-toggle="modal" data-target=".feed-post-modal{{listofstudents.USN}}" >Send a Warning</button></a>
-                                            <td>1<td>
+                                        <td>{{teacher.dept}}</td>
+                                        <td><a   href=""  class="btn btn-info btn-round" data-toggle="modal" data-target=".feed-post-modal{{teacher.id}}" >Send a Message</button></a></td>
+                                            <td>
                                             <a href="javascript:void(0)"><i class="fa fa-check"></i></a>
                                             <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
 
                                         </td> 
                                         <div id="modal-div">                                                               
-                                            <form method="POST"  action="{% url 'wfhod' listofstudents.USN %}">
+                                            <form method="POST"  action="{% url 'messagefhod' teacher.id %}">
                                                 {% csrf_token %}
-                                            <div class="modal fade feed-post-modal{{listofstudents.USN}}"   tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+                                            <div class="modal fade feed-post-modal{{teacher.id}}"   tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
                                                 <div class="modal-dialog modal-dialog-centered" role="document">
                                                     <div class="modal-content">
                                                         <div class="modal-body">
@@ -892,12 +890,12 @@
                                                                     <img src="{% static  '../static/assets/images/icon.svg' %}" class="rounded mr-3 w40" alt="">
                                                                 </div>
                                                                 <div>
-                                                                    <h6 class="mb-0">ID: {{listofstudents.USN}}</h6>
-                                                                    <span>{{listofstudents.user}}</span>
+                                                                    <h6 class="mb-0">ID: {{teacher.id}}</h6>
+                                                                    <span>{{teacher.user}}</span>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
-                                                                <textarea rows="4" name="message"  class="form-control no-resize" value="Dear {{listofstudents.user}}, " >Dear {{listofstudents.user}}, </textarea>
+                                                                <textarea rows="4" name="message"  class="form-control no-resize" value="Dear {{listofstudents.user}}, " >Dear {{teacher.user}}, </textarea>
                                                             </div>
 
                                                        

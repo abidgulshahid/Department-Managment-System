@@ -82,15 +82,35 @@ def each_student_info(request,student):
     print(each_attendance)
 
     # Calculating the Total Attendance By the Individual Student
-    count_atnd  = each_attendance.count()
-    perc_atnd = count_atnd / 48 * 100
-    print(int(perc_atnd))
+    perc_attendance  = each_attendance.count()
+    present = 0
+    absent =0
+    for stat in each_attendance:
+        if stat.status == 'Absent':
+            total_perc_attendance  = (perc_attendance -1) / 48 * 100 
+            bsent  = (perc_attendance -1) / 48 * 100 
+        else:
+            total_perc_attendance  = perc_attendance / 48 * 100 
+
+            present  = perc_attendance / 48 * 100 
+            
+    perc_atnd = perc_attendance / 48 * 100
+    print('asd',int(perc_atnd))
 
     student = Student.objects.filter(USN=student)
     for st in student:
         at = st.attendance_set.filter(assign__in=assi, student__in=student)
 
-    return render(request,'each_student_info.html', {"student":st,'at':each_attendance,'assi':assi, 'count_atnd':count_atnd ,'perc_atnd': int(perc_atnd)})
+    context = {
+        "student":st,
+        'at':each_attendance,
+        'assi':assi,
+         'present':int(present),
+          'absent':int(absent),
+          'perc_atnd':int(perc_atnd)
+          
+          }
+    return render(request,'each_student_info.html',context)
 
 
 # def teacher_view_students(request,id):
