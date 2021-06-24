@@ -115,7 +115,7 @@ def student(request):
 		attendence = "NOT AVAILABLE AT THE MOMENT"
 #	d = department.objects.get(batches=batch_no.objects.get(student=Student.objects.get(students=request.user))).first()
 	context = {'u':user_info, 'b':batches,'sem':sem,'a':attendence}
-	return render(request, 'home.html', context)
+	return render(request, 'home/index.html', context)
 
 
 @login_required(login_url='login')
@@ -128,7 +128,7 @@ def courses(request):
 		for i in a.assigntime_set.all():
 			print(i.day)
 	context = {"course":ass, 'time':'ass_time'}
-	return render(request, 'courses.html', context)
+	return render(request, 'home/course.html', context)
 
 @login_required(login_url='login')
 def show_attendance(request):

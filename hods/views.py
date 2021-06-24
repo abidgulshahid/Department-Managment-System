@@ -35,6 +35,7 @@ def hods(request):
         teachers = Teacher.objects.all().count()
         courses = Course.objects.all().count()
         for s in students:
+            print(dir(s.user))
             attendance = s.attendance_set.all().count()
             print(attendance)
         dep = Dept.objects.filter()
@@ -60,12 +61,12 @@ def wfhod(request,listofstudents):
 
     query = warning.objects.create(warning_from=warning_from,warning_message=warning_message, student=student)
     if query:
-        message = "Warning From HOD Sent to "+str(student)
-        context = {"message":message}
         messages.success(request, "ASDASDS")    
-        return HttpResponseRedirect(reverse('hods'),message)
+        return HttpResponseRedirect(reverse('hods'))
     else:
         return HttpResponse("ERROR")
+
+
 
 def logOut(request):
     auth_logout(request)

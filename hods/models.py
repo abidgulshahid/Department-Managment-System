@@ -19,6 +19,12 @@ from users.models import Users
 # 		return str(self.department_name)
 
 class warning(models.Model):
-    warning_from  = models.CharField(max_length=200)
-    warning_message = models.CharField(max_length=3000)
+    warning_from  = models.CharField(max_length=200,null=True,blank=True)
+    warning_message = models.CharField(max_length=3000,null=True,blank=True)
     student = models.ForeignKey('student.Student', on_delete=models.CASCADE)
+
+
+class messagetoteacher(models.Model):
+    message_from  = models.CharField(max_length=200,null=True,blank=True)
+    message = models.CharField(max_length=3000,null=True,blank=True)
+    teacher = models.ForeignKey('teacher.Teacher', on_delete=models.CASCADE)
