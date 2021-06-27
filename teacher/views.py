@@ -10,26 +10,40 @@ from department.models import *
 from student.models import *
 from users.models import Users
 from django.contrib.auth import logout as auth_logout
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, response
 from django.urls import reverse
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 import datetime
-# from hods.models import hod
+from hods.models import *
 from .models import Teacher, teacher_assignnment
+
+
 # Create your views here.
 
 # Showing The Home Page of Teacher and Showing Their Students As Well
 global ax
 @login_required(login_url='login')
 def teacher_index(request):
+    absent = 0 
+    present = 0
     teacher1 = get_object_or_404(Teacher, user=request.user.id)
     ass = Assign.objects.filter(teacher=request.user.teacher)
+    teacher_att = Teacher_Attendance.objects.filter(teacher=teacher1)
+    perc_attendance  = teacher_att.count()
+    for teacher_attendance in teacher_att:
+        if teacher_attendance.status == 'Absent':
+            total_perc_attendance  = (perc_attendance -1) / 48 * 100 
+            absent  = (perc_attendance -1) / 48 * 100 
+        else:
+            total_perc_attendance  = perc_attendance / 48 * 100 
+
+            present  = perc_attendance / 48 * 100 
     for x in ass:
         print(dir(x))
         print(x.assigntime_set.all())
  
-    return render(request, 'teacher.html', {'teacher1': ass, 't':teacher1})
+    return render(request, 'teacher.html', {'teacher1': ass, 't':teacher1, 'present':int(present),'absent':int(absent)})
     # t =Assign.objects.filter(teacher_id=request.user.teacher).all()
     # print(dir(t))
 
@@ -226,7 +240,8 @@ def view_assignments_page(request,class_id,course):
 
 @login_required(login_url='login')
 def add_assigment(request,class_id,course):
-    if request.method == "POST":
+    if request.method == "POST" and request.FILES['assignment_file']:
+        assignment_file = request.FILES['assignment_file']
         today = datetime.date.today()
         teach = Teacher.objects.get(user=request.user.id)
         assi = Assign.objects.filter(class_id=class_id,course=course,teacher=teach)
@@ -236,7 +251,7 @@ def add_assigment(request,class_id,course):
         t = request.POST.get('teacher')
         deadline = request.POST.get('datetime')
         print(today, teach, assi, assignment, t)
-        insert_query=  teacher_assignnment.objects.create(assign=ax, assignnment=assignment, assignment_date=today, deadline_date=deadline)
+        insert_query=  teacher_assignnment.objects.create(assign=ax,assignnment_file=assignment_file,  assignnment=assignment, assignment_date=today, deadline_date=deadline)
         if insert_query:
             return HttpResponse("Assignment Created")
         else:
@@ -266,6 +281,23 @@ def delete_assignments(request,ta):
     del_query = teacher_assignnment.objects.get(id=d_ass.id).delete()
     return HttpResponse("HERE"+ str(del_query))
     
+
+
+@login_required(login_url='login')
+def messages_from_hod(request):
+    teach = Teacher.objects.get(user=request.user.id)
+    msgtoteacherr   = messagetoteacher.objects.filter(teacher=teach)
+    context = {'msg':msgtoteacherr}
+    return render(request, 'teacher_messages.html',context)
+    
+@login_required(login_url='login')
+def pdf_report(request):
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename=DMS' + \
+        str(datetime.datetime.now())+'.pdf' 
+    response['Content-Transfer-Encoding'] = 'binary'
+
+
 
 
 @login_required(login_url='login')

@@ -1,3 +1,4 @@
+from os import name
 from django.urls import path
 #from .views import HomePageView
 from . import views
@@ -22,6 +23,7 @@ urlpatterns = [
 
 
     path('promote/', views.promote_students, name='promote_students'),
+    path('msgfromhod/',views.messages_from_hod, name='messages_from_hod'),
     # Marks Routes
     path('marks/<slug:stud>/<slug:course>/<slug:teach>/', views.teacher_view_marks, name='teacher_view_marks'),
     path('marks/<slug:stud>/<slug:teach>/take', views.take_marks, name='take_marks'),

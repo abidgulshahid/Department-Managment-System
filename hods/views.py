@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login as auth_login
@@ -49,7 +50,18 @@ def hods(request):
             'total': int(student_counts)
         }
   
-        context  = {'students':student_counts,'warning_counts':warning_counts,'each_perc':int(perc_atnd), 'teacher_counts':teacher_counts ,'teachers':teachers, 'courses':courses, 'dep':dep, 'los':students}
+        context  = {
+            
+            'students':student_counts,
+            'warning_counts':warning_counts,
+            'each_perc':int(perc_atnd), 
+            'teacher_counts':teacher_counts ,
+            'teachers':teachers, 
+            'courses':courses, 
+            'dep':dep, 
+            'los':students
+            
+            }
         return render(request, 'hod_index.html',context)
     else:
         return HttpResponse("<h2 style='color:red;'>Your Not Autorized To View This Page. </h2><p> Please Contact the Administrator</p>")
@@ -83,6 +95,26 @@ def messagefhod(request,teacher):
         return HttpResponseRedirect(reverse('hods'))
     else:
         return HttpResponse("ERROR")
+
+
+login_required(login_url='login')
+def teacher_attendance(request,teacher):
+    today = datetime.date.today()
+    admin = Users.objects.get(id=request.user.id)
+    status= request.POST.get('status')
+    teachr = Teacher.objects.get(id=teacher)
+    if Teacher_Attendance.objects.filter(assign=admin, teacher=teachr,attendance_date=today).exists():
+        print ("Already Exist")
+        return HttpResponse("Already TAKE the attendence")
+
+    else:
+        att = Teacher_Attendance.objects.create(assign=admin, teacher=teachr, status=status, attendance_date=today)
+        att.save()
+
+    return HttpResponse('Attendance Taken'+str(admin))
+
+
+    #Teacher_Attendance
 
 
 

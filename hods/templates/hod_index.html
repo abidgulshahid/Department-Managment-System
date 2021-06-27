@@ -869,7 +869,7 @@
                                         <!-- <td>{{listofstudents.class_id.}}</td> -->
                                         <td>{{teacher.user.date_joined}}</td>
                                         <td>
-                                            <span class="label label-sm label-success">Null %</span>
+                                            <span class="label label-sm label-success"><a   href=""  class="btn btn-success btn-round" data-toggle="modal" data-target=".feed-post-modals{{teacher.id}}" >Take Attendance</button></a></span>
                                         </td>
                                         <td>{{teacher.dept}}</td>
                                         <td><a   href=""  class="btn btn-info btn-round" data-toggle="modal" data-target=".feed-post-modal{{teacher.id}}" >Send a Message</button></a></td>
@@ -904,6 +904,45 @@
                                                                 <button class="btn btn-link"><i class="icon-camera text-muted"></i></button>
                                                                 <button class="btn btn-link"><i class="icon-pointer text-muted"></i></button>
                                                               -->   <input type="submit" class="btn btn-danger" value="Send">
+                                                            </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Attendance -->
+
+                                        <div id="modal-div">                                                               
+                                            <form method="POST"  action="{% url 'teacher_attendance' teacher.id %}">
+                                                {% csrf_token %}
+                                            <div class="modal fade feed-post-modals{{teacher.id}}"   tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-body">
+                                                            <div class="d-flex mb-3">
+                                                                <div class="icon bg-transparent">
+                                                                    <img src="{% static  '../static/assets/images/icon.svg' %}" class="rounded mr-3 w40" alt="">
+                                                                </div>
+                                                                <div>
+                                                                    <h6 class="mb-0">ID: {{teacher.id}}  </h6>
+                                                                    <span>{{teacher.user}}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                    <select name="status" class="form-select" aria-label="Default select example">
+                                                                        <option selected>Open this select menu</option>
+                                                                        <option value="Present">Present</option>
+                                                                        <option value="Absent">Absent</option>
+                                                                      </select>
+
+                                                       
+                                                            <div class="align-right">
+                                                                <!-- <button class="btn btn-link"><i class="icon-paper-clip text-muted"></i></button>
+                                                                <button class="btn btn-link"><i class="icon-camera text-muted"></i></button>
+                                                                <button class="btn btn-link"><i class="icon-pointer text-muted"></i></button>
+                                                              -->   <input type="submit" class="btn btn-danger" value="Take Attendance">
                                                             </form>
                                                             </div>
                                                         </div>

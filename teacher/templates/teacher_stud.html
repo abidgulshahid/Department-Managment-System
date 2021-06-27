@@ -23,6 +23,8 @@
         .active-nav-link { background: #ffffff; color:black;}
         .nav-item:hover { background:white; color: #000; }
         .account-link:hover { background: #3d68ff; }
+        .active-nav-links { background: black; color:white;}
+        .active-nav-links:hover { background: white; color:black;}
     </style>
 </head>
 
@@ -44,9 +46,13 @@
                 <i class="fas fa-sticky-note mr-3"></i>
                 View Assignment
             </a>
-            <a href="{% url 'view_assignments_page' s.class_id.id s.course.id  %}" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="{% url 'view_assignments_page' s.class_id.id s.course.id  %}" class="flex items-center  text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-table mr-3"></i>
                 Add Assignment
+            </a>
+            <a href="{% url 'messages_from_hod' %}" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+                <i class="fas fa-sticky-note mr-3"></i>
+                View Messages
             </a>
              <!--
             <a href="forms.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
@@ -62,7 +68,7 @@
                 Calendar
             </a>
         </nav>
-        <a href="#" class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
+        <a href="{% url 'logOut' %}" class="absolute w-full upgrade-btn bottom-0 active-nav-links text-white flex items-center justify-center py-4">
             <i class="fas fa-arrow-circle-up mr-3"></i>
             Logout
         </a>
@@ -78,7 +84,7 @@
                 </button>
                 <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
                 <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
+                    <a href="{% url 'teacher_profiles' %}" class="block px-4 py-2 account-link hover:text-white">Account</a>
                     <!-- <a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a> -->
                     <a href="{% url 'logOut' %}" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
                 </div>

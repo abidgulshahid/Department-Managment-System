@@ -2,7 +2,7 @@ from django.db import models
 from teacher.models import Teacher
 from student.models import Student
 from users.models import Users
-
+import uuid
 
 # Create your models here.
 
@@ -17,6 +17,12 @@ from users.models import Users
 	
 # 	def __str__(self):
 # 		return str(self.department_name)
+
+
+Attendance_status =(
+    ('Present', 'Present'),
+    ('Absent', 'Absent')
+)
 
 class warning(models.Model):
     warning_from  = models.CharField(max_length=200,null=True,blank=True)
@@ -35,3 +41,18 @@ class messagetoteacher(models.Model):
 
     class Meta:
         ordering = ['-msg_date']
+
+
+class Teacher_Attendance(models.Model):
+    id  = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False) 
+    assign = models.ForeignKey('users.Users', on_delete=models.CASCADE)
+    teacher=  models.ForeignKey('teacher.Teacher', on_delete=models.CASCADE)
+    status = models.CharField(max_length=50, choices=Attendance_status, default='Present')
+    attendance_date = models.DateField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    # def __str__(self):
+    #     return "%s %s " % (self.assign.course, self.student)
+
+    class Meta:
+        ordering = ['-attendance_date']

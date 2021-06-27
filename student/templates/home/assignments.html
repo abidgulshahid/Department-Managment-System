@@ -1,4 +1,4 @@
-<html :class="{ 'theme-dark': dark }" x-data="data()" class="" lang="en"><head>
+<html  x-data="data()" class="" lang="en"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
@@ -336,6 +336,7 @@
                 <table class="w-full whitespace-no-wrap">
                   <thead>
                     <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                     
                       <th class="px-4 py-3">Assignment</th>
                       <th class="px-4 py-3">Date</th>
                       <th class="px-4 py-3">Deadline</th>
@@ -350,11 +351,14 @@
                           <!-- Avatar with inset shadow -->
                         
                           <div>
-                            <p class="font-semibold">{{view_assignments.assignnment}}</p>
-                           
+                          <p class="font-semibold">{{view_assignments.assignnment}}</p>
+
                           </div>
                         </div>
                       </td>
+                  
+
+
                       <td class="px-4 py-3 text-sm">
                         {{view_assignments.assignment_date}}
                       </td>
@@ -365,6 +369,10 @@
                       {{view_assignments.assign.teacher}}
                       </td>
                    
+                      <td class="px-4 py-3 text-xs">
+                        <a href="{{view_assignments.assignnment_file.url}} " download><p class="font-semibold">Cick Here To Download</p></a>
+                      </td>
+                     
                     </tr>
                     {% endfor %}
 
