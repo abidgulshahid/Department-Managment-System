@@ -780,7 +780,7 @@
                                                 <span class="label label-sm label-success">{{listofstudents.attendance_set.all.count}} %</span>
                                             </td>
                                             <td>{{listofstudents.class_id.dept}}</td>
-                                            <td><a   href=""  class="btn btn-danger btn-round" data-toggle="modal" data-target=".feed-post-modal{{listofstudents.USN}}" >Send a Warning <b>({{warning_counts}})</b></button></a></td>
+                                            <td><a   href=""  class="btn btn-danger btn-round" data-toggle="modal" data-target=".feed-post-modal{{listofstudents.USN}}" >Send a Warning <b>({{listofstudents.warning_set.all.count}})</b></button></a></td>
                                                 <td>
                                                 <a href="javascript:void(0)"><i class="fa fa-check"></i></a>
                                                 <a href="javascript:void(0)"><i class="fa fa-trash"></i></a>
@@ -849,11 +849,11 @@
                             <table class="table table-striped mb-0">
                                 <thead>
                                     <tr>
-                                        <th>USN</th>
+                                        <!-- <th>USN</th> -->
                                         <th>Name</th>
                                         <!-- <th>Assigned Professor</th> -->
                                         <th>Date Of Admit</th>
-                                        <th>Attendance %</th>
+                                        <th>Take Attendance </th>
                                         <th>Department</th>
                                         <th>Message</th>
                                         <th>Edit</th>
@@ -864,12 +864,12 @@
                                 <tbody>
                                     
                                     <tr>
-                                        <td>{{teacher.id}}</td>
+                                        <!-- <td>{{teacher.id}}</td> -->
                                         <td>{{teacher.user}}</td>
                                         <!-- <td>{{listofstudents.class_id.}}</td> -->
                                         <td>{{teacher.user.date_joined}}</td>
                                         <td>
-                                            <span class="label label-sm label-success"><a   href=""  class="btn btn-success btn-round" data-toggle="modal" data-target=".feed-post-modals{{teacher.id}}" >Take Attendance</button></a></span>
+                                            <span class="label label-sm label-success"><a   href=""  class="btn btn-success btn-round" data-toggle="modal" data-target=".feed-post-modals{{teacher.id}}" >Take Attendance {{teacher.teacher_attendance_set.all.count}} % </button></a></span>
                                         </td>
                                         <td>{{teacher.dept}}</td>
                                         <td><a   href=""  class="btn btn-info btn-round" data-toggle="modal" data-target=".feed-post-modal{{teacher.id}}" >Send a Message</button></a></td>
@@ -1003,7 +1003,7 @@ $(".feed-modal").on("click", function() {
             columns: [
                 // each columns data
                 ['data1', "{{ students }}"],
-                ['data2', "{{ teachers }}"]
+                ['data2', "{{ teacher_counts }}"]
             ],
             type: 'donut', // default type of chart
             colors: {

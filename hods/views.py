@@ -32,16 +32,18 @@ def hods(request):
         perc_atnd = student_counts / 48 * 100
         each_attendance = Attendance.objects.filter(student__in=students)
         teachers = Teacher.objects.all()
-
+        each_teacher_attendance = Teacher_Attendance.objects.filter(teacher__in=teachers)
+        for e in each_teacher_attendance:
+            print(dir(e))
+            print(e)
 
         teacher_counts = teachers.count()
         courses = Course.objects.all().count()
 
         for eta in teachers:
-            print(dir(eta))
+            each_teacher_attendances = eta.teacher_attendance_set.all().count()
 
         for s in students:
-            print(dir(s))
             attendance = s.attendance_set.all().count()
             warning_counts = s.warning_set.all().count()
 
@@ -62,6 +64,7 @@ def hods(request):
             'each_perc':int(perc_atnd), 
             'teacher_counts':teacher_counts ,
             'teachers':teachers, 
+            'eta':each_teacher_attendance,
             'courses':courses, 
             'dep':dep, 
             'los':students
@@ -120,6 +123,10 @@ def teacher_attendance(request,teacher):
 
 
     #Teacher_Attendance
+
+login_required(login_url='login')
+def Assign_classes(request):
+    pass
 
 
 
