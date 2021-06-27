@@ -31,10 +31,15 @@ def hods(request):
         student_counts = students.count()
         perc_atnd = student_counts / 48 * 100
         each_attendance = Attendance.objects.filter(student__in=students)
-        print(each_attendance)
         teachers = Teacher.objects.all()
+
+
         teacher_counts = teachers.count()
         courses = Course.objects.all().count()
+
+        for eta in teachers:
+            print(dir(eta))
+
         for s in students:
             print(dir(s))
             attendance = s.attendance_set.all().count()
@@ -51,7 +56,7 @@ def hods(request):
         }
   
         context  = {
-            
+
             'students':student_counts,
             'warning_counts':warning_counts,
             'each_perc':int(perc_atnd), 
