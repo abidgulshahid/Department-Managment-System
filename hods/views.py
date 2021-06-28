@@ -32,23 +32,27 @@ def hods(request):
         perc_atnd = student_counts / 48 * 100
         each_attendance = Attendance.objects.filter(student__in=students)
         teachers = Teacher.objects.all()
+        classes  = Class.objects.all()
+        courses = Course.objects.all()
         each_teacher_attendance = Teacher_Attendance.objects.filter(teacher__in=teachers)
         for e in each_teacher_attendance:
             print(dir(e))
             print(e)
 
         teacher_counts = teachers.count()
-        courses = Course.objects.all().count()
+        courses_count = Course.objects.all().count()
 
         for eta in teachers:
             each_teacher_attendances = eta.teacher_attendance_set.all().count()
+            print(dir(eta))
+            print(eta.dept)
 
         for s in students:
             attendance = s.attendance_set.all().count()
             warning_counts = s.warning_set.all().count()
 
             print(attendance)
-        dep = Dept.objects.filter()
+        dep = Dept.objects.all()
         for d in dep:
             s = d.teacher_set.all()
             print(s)
@@ -64,10 +68,12 @@ def hods(request):
             'each_perc':int(perc_atnd), 
             'teacher_counts':teacher_counts ,
             'teachers':teachers, 
-            'eta':each_teacher_attendance,
-            'courses':courses, 
+            'eta':eta,
+            'courses':courses_count, 
             'dep':dep, 
-            'los':students
+            'los':students,
+            'classes': classes,
+            'courseses':courses
             
             }
         return render(request, 'hod_index.html',context)
@@ -119,14 +125,17 @@ def teacher_attendance(request,teacher):
         att = Teacher_Attendance.objects.create(assign=admin, teacher=teachr, status=status, attendance_date=today)
         att.save()
 
-    return HttpResponse('Attendance Taken'+str(admin))
+    return HttpResponse('Attendance Taken by '+str(admin))
 
 
     #Teacher_Attendance
 
 login_required(login_url='login')
 def Assign_classes(request):
-    pass
+    teacher = Teacher.objects.all()
+    course = request.POST.get('')
+    class_id = request.POST.get('')
+
 
 
 

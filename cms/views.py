@@ -4,7 +4,7 @@ from .models import announcments
 def index(request):
     announce = announcments.objects.all().order_by('msg')
     context = {"announcments": announce}
-    return render(request, 'index.html', context)
+    return render(request, 'dms/index.html', context)
 
 def about(request):
     return render(request, 'about.html')

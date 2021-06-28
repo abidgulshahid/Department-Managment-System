@@ -868,9 +868,12 @@
                                         <td>{{teacher.user}}</td>
                                         <!-- <td>{{listofstudents.class_id.}}</td> -->
                                         <td>{{teacher.user.date_joined}}</td>
+                                      
                                         <td>
-                                            <span class="label label-sm label-success"><a   href=""  class="btn btn-success btn-round" data-toggle="modal" data-target=".feed-post-modals{{teacher.id}}" >Take Attendance {{teacher.teacher_attendance_set.all.count}} % </button></a></span>
+                                            <span class="label label-sm label-success"><a   href=""  class="btn btn-success btn-round" data-toggle="modal" data-target=".feed-post-modals{{teacher.id}}" >Take Attendance  </button></a></span>
                                         </td>
+
+                               
                                         <td>{{teacher.dept}}</td>
                                         <td><a   href=""  class="btn btn-info btn-round" data-toggle="modal" data-target=".feed-post-modal{{teacher.id}}" >Send a Message</button></a></td>
                                             <td>
@@ -914,7 +917,9 @@
 
                                         <!-- Attendance -->
 
-                                        <div id="modal-div">                                                               
+                                        <div id="modal-div">    
+                                            
+                                
                                             <form method="POST"  action="{% url 'teacher_attendance' teacher.id %}">
                                                 {% csrf_token %}
                                             <div class="modal fade feed-post-modals{{teacher.id}}"   tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
@@ -930,13 +935,15 @@
                                                                     <span>{{teacher.user}}</span>
                                                                 </div>
                                                             </div>
+
+                                                           
                                                             <div class="form-group">
                                                                     <select name="status" class="form-select" aria-label="Default select example">
                                                                         <option selected>Open this select menu</option>
                                                                         <option value="Present">Present</option>
                                                                         <option value="Absent">Absent</option>
                                                                       </select>
-
+                                                                            </div>
                                                        
                                                             <div class="align-right">
                                                                 <!-- <button class="btn btn-link"><i class="icon-paper-clip text-muted"></i></button>
@@ -958,15 +965,14 @@
                             </table>
                         </div>  
                     </div>
-
-
+                   
 
                 </div>                    
             </div>
         </div>
         </div>
     </div>
-    
+   
 </div>
 <canvas id="pie-chart"></canvas>
 

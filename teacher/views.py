@@ -298,7 +298,15 @@ def pdf_report(request):
     response['Content-Transfer-Encoding'] = 'binary'
 
 
+@login_required(login_url='login')
+def view_attendance(request):
+    teacher1 = get_object_or_404(Teacher, user=request.user.id)
+    teacher_att = Teacher_Attendance.objects.filter(teacher=teacher1)
 
+    context = {
+        "teacher_attendance":teacher_att
+    }
+    return render(request,'view_teacher_attendance.html',context)
 
 @login_required(login_url='login')
 def logOut(request):

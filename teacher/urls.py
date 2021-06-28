@@ -21,6 +21,7 @@ urlpatterns = [
     path('get_assignments_data/', views.get_submitted_assignments, name='view_assignments'),
     path('delete_assignmet/<slug:ta>/deleted', views.delete_assignments, name='delete_assignments'),
 
+    path('view_own_attendance',views.view_attendance,name='view_attendance'),
 
     path('promote/', views.promote_students, name='promote_students'),
     path('msgfromhod/',views.messages_from_hod, name='messages_from_hod'),
@@ -29,6 +30,7 @@ urlpatterns = [
     path('marks/<slug:stud>/<slug:teach>/take', views.take_marks, name='take_marks'),
 
     path('profile', views.teacher_profile, name='teacher_profiles'),
+
     path('profile/<slug:teacher>/update', views.update_profile, name='update_profile'),
     # path('teacher/<int:id>/teacher_view_students/',views.teacher_view_students, name='teacher_view_students'),
     path('logout/',views.logOut, name='logOut'),
