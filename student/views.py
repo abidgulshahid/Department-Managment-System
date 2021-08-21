@@ -179,10 +179,15 @@ def result(request):
 	student = Student.objects.get(user=request.user.id)
 	course = Class.objects.get(student=student)
 	ass = Assign.objects.filter(class_id=course)	
+
+	print(ass)
+	std = StudentCourse.objects.filter(student=student)
+	marksss = Marks.objects.filter(studentcourse__in=std)
+	print(marksss)
+
+
 	std_course = Markss.objects.filter(assign__in=ass, student=student)
-	print(std_course)
-	for std_x in std_course:
-		print(std_x)
+	
 
 	# mk = Marks.objects.filter(student_id = request.user.student)
 

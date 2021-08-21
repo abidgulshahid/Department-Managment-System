@@ -85,7 +85,7 @@
             <h2>Student <b>{{student.name}}</b> Marks </h2>
              
  <center>       
-<form method="POST", action='{% url 'take_marks' student.USN teacher.id %}'>
+<form method="POST", action='{% url 'take_marks' student.USN  teacher.id %}'>
     {% csrf_token %}
     <div class="uk-margin">
     <select class="uk-select uk-form-width-large" name="type">

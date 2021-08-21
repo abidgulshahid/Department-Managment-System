@@ -27,7 +27,7 @@ urlpatterns = [
     path('msgfromhod/',views.messages_from_hod, name='messages_from_hod'),
     # Marks Routes
     path('marks/<slug:stud>/<slug:course>/<slug:teach>/', views.teacher_view_marks, name='teacher_view_marks'),
-    path('marks/<slug:stud>/<slug:teach>/take', views.take_marks, name='take_marks'),
+    path('<slug:stud>/<slug:teach>/take', views.take_marks, name='take_marks'),
 
     path('profile', views.teacher_profile, name='teacher_profiles'),
 

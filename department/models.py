@@ -125,7 +125,8 @@ class Markss(models.Model):
     name = models.CharField(max_length=50, choices=test_name, default='Internal test 1')
     marks1 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
 
-
+    class Meta:
+        unique_together = (('name', 'student'),)
 
     @property
     def total_marks(self):

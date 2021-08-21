@@ -71,6 +71,19 @@ class StudentCourseAdmin(admin.ModelAdmin):
     ordering = ('student__class_id__dept__name', 'student__class_id__id', 'student__USN')
 
 
+class Class_marks(admin.TabularInline):
+    model = Markss
+    extra = 0
+
+
+class MarkingInline(admin.ModelAdmin):
+    inlines = [Class_marks]
+    list_display = ('assign', 'student')
+    ordering = ('student__USN')
+
+
+
+
 admin.site.register(Dept, DeptAdmin)
 admin.site.register(Class, ClassAdmin)
 admin.site.register(Student, StudentAdmin)

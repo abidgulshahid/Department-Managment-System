@@ -11,7 +11,7 @@ urlpatterns = [
 	# path('home/courses', views.courses, name='courses'),
 	# path('home/attendence',views.show_attendence, name='show_attendence'),
 	# path('home/fee',views.fee, name='fee'),
-	path('user', UserAPIView.as_view()),
+	path('users/', UserAPIView.as_view(),name='users'),
 
 	path('logout/', views.logOut, name='logOut'),
 

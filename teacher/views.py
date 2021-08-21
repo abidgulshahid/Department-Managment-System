@@ -190,9 +190,9 @@ def teacher_view_marks(request,stud,course,teach):
     today = datetime.date.today()
     teach = Teacher.objects.get(user=request.user.id)
     student = Student.objects.get(USN=stud)
-    std_course = StudentCourse.objects.filter()
-    print(std_course)
-    context = {"student":student, 'teacher':teach}
+    assign =  Assign.objects.filter(class_id=student.class_id ,teacher=teach)
+    print(assign)
+    context = {"student":student, 'teacher':teach,'assign':assign}
 
     return render(request, 'teacher_students_marks.html',context)
 

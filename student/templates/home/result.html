@@ -1,5 +1,5 @@
-<html :class="{ 'theme-dark': dark }" x-data="data()" class="" lang="en"><head>
-    <meta charset="UTF-8">
+<html  x-data="data()" class="" lang="en"><head>
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Dashboard</title>
     {% load static %}
@@ -333,15 +333,16 @@
             <!-- New Table -->
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
+                {% for marks in mark %}
                 <table class="w-full whitespace-no-wrap">
+                
                   <thead>
-                    <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                      <!-- <th class="px-4 py-3">Subject</th>
-                      <th class="px-4 py-3">Time</th>
-                      <th class="px-4 py-3">Status</th> -->
+                    <tr class="text-xs font-semibold tracking-wide text-center text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                  
                     </tr>
+                    
                   </thead>
-                  {% for marks in mark %}
+                
 
                   <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                     <tr class="text-gray-700 dark:text-gray-400">
@@ -349,8 +350,8 @@
                         <div class="flex items-center text-sm">
                           <!-- Avatar with inset shadow -->
                         
-                          <div>
-                            <p class="font-semibold">{{marks.assign.course}}</p>
+                          <div></div>
+                            <p class="font-semibold">{{marks.studentcourse.course}}</p>
                            
                           </div>
                         </div>
@@ -363,11 +364,13 @@
                       </td>
                    
                     </tr>
-                    {% endfor %}
+                   
 
              
                   </tbody>
+                  {% endfor %}
                 </table>
+              
               </div>
               
             </div>

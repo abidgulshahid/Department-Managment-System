@@ -185,13 +185,16 @@
                                         </select>
                                     </td>
                                     <td><input type="submit" class="h-8 px-3 text-indigo-100 transition-colors duration-150 bg-black rounded-full focus:shadow-outline hover:bg-red-600"/> </td>
+                              
                                 </form>
                                     <td> <a href="{% url 'teacher_view_marks' stud.USN course.id teach.id %} "><button class="h-12 px-12 text-indigo-100 transition-colors duration-150 bg-black rounded-full focus:shadow-outline hover:bg-red-600">Take Marks</button></a> </td>
                                  
                                     </tr>
-                                    {% endfor %} 
+                                   
                                 
                             </tbody>
+                       
+                        {% endfor %} 
                         </table>
                     </div>
                 </div>

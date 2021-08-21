@@ -166,13 +166,12 @@ def admin_dashboard(request):
 
 
 class UserAPIView(APIView):
-    def get(self, _):
-        users = Users.objects.all()
-        user = random.choice(users)
-        return Response({
-            'id': user.id
-        })
-
+    def get(self, request):
+        users  = 'Users.objects.all()'
+        context = {
+            'users': users
+        }
+        return Response(context)
 
 def logOut(request):
     auth_logout(request)
