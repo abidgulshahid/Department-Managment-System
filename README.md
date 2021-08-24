@@ -27,9 +27,9 @@ This is a College Management System Where Student can view their marks, attendan
 
 ### Technlogies Used
 
-> Backend: Python Django
-> Frontend: React | Material Design
-> Database: POSTGRESQL
-> Flutter For Mobile APP
+###### > Backend: Python Django
+###### > Frontend: React | Material Design
+###### > Database: POSTGRESQL
+###### > Flutter For Mobile APP
 
 **_Copyright By :_** Abid Gul Shahid
