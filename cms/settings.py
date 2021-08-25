@@ -49,7 +49,7 @@ INSTALLED_APPS = [
      'corsheaders',
 
 
-    # 'django_extensions',
+     'django_extensions',
 
 
    
