@@ -1,13 +1,13 @@
 **_NOTE:_** THIS IS IN BETA VERSION. THIS IS NOT THE STABLE AND COMPLETE VERSION.
 
-# Campus Management System
+# Department Management System
 
 ## Introduction
 
 
-This is a College Management System Where Student can view their marks, attendance and other activites.
+This is a Department Management System Where Student can view their marks, attendance and other activites.
 
-### Features of Campus Management System
+### Features of Department Management System
 
 #### Student:
 1. Can View Their Marks
