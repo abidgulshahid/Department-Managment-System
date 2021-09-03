@@ -122,7 +122,7 @@ class Markss(models.Model):
     assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
     student=  models.ForeignKey('student.Student', on_delete=models.CASCADE)
     marking_date = models.DateField()
-    name = models.CharField(max_length=50, choices=test_name, default='Internal test 1')
+    name = models.CharField(max_length=50, choices=test_name, default='Internal tes t 1')
     marks1 = models.IntegerField(default=0, validators=[MinValueValidator(0), MaxValueValidator(100)])
 
     class Meta:
@@ -194,4 +194,6 @@ class Semester(models.Model):
     mark  = models.ManyToManyField(Markss)
     attendance = models.ManyToManyField(Attendance)
     semester = models.IntegerField(default=0)
+
+
 

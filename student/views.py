@@ -182,7 +182,7 @@ def result(request):
 
 	print(ass)
 	std = StudentCourse.objects.filter(student=student)
-	marksss = Marks.objects.filter(studentcourse__in=std)
+	marksss = Markss.objects.filter(student=student)
 	print(marksss)
 
 
@@ -197,7 +197,7 @@ def result(request):
 	# 	print('teacher',m.assign.teacher, m.assign.course)
 
 
-	context = {'mark':std_course}
+	context = {'mark':std_course,'new_marks':marksss, 'ass':ass}
 	return render(request,'home/result.html', context)
 
 @login_required(login_url='login')

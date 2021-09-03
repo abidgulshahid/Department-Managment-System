@@ -27,20 +27,52 @@
        </style>
 </head>
 <body>
-<nav class="uk-navbar-container uk-margin" uk-navbar>
-	<div class="uk-navbar-center">
-		<a class="uk-navbar-item uk-logo" href="{% url 'login'  %}">Department Managment System</a>
-		</div>
-
-	</div>
-</nav>
+	<nav class="uk-navbar-toggle" uk-navbar id="nav" ">
+		<div class="uk-navbar-center">
+		
+				<div class="uk-navbar-center-left">
+				  <div>
+				  
+					<ul class="uk-navbar-nav">
+						<li ><a href="{% url 'about' %}">About Us </a></li>
+						<!-- <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li> -->
+						<li>
+							<a href="#">Programs</a>
+							<div class="uk-navbar-dropdown">
+								<ul class="uk-nav uk-navbar-dropdown-nav">
+									<li class="uk-active"><a style="color:black" class="dp"  href="{% url 'bscom' %}">BS Computer Science</a></li>
+									<!-- <li><a style="color:black"  href="#">Math</a></li>
+									<li><a style="color:black"  href="#">Political Science</a></li> -->
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div></div>
+				<a class="uk-navbar-item uk-logo" href="{% url 'login'  %}">Department Managment System</a>
+				<div class="uk-navbar-center-right"><div>
+					<ul class="uk-navbar-nav">
+	
+						<li><a href="#">Administration</a>
+						  <div class="uk-navbar-dropdown">
+							<ul class="uk-nav uk-navbar-dropdown-nav">
+								<li class="uk-active"></u><a class="dp" href="{% url 'facutly' %}" style="color:black">Faculty</a></li>
+								<li><a class="dp" href="{% url 'admissions' %}" style="color:black">Admissions</a></li>
+							</ul>
+						</div></li>
+						<li><a href="{% url 'contact' %}">Contact Us</a></li>
+					</ul>
+				</div></div>
+		
+			</div>
+		</nav>
+	
 <div class="uk-section uk-section-muted uk-flex uk-flex-left uk-animation-fade" uk-height-viewport >
 	<div class="uk-width-1-1">
 		<div class="uk-container">
 			<div class="uk-grid-margin uk-grid uk-grid-stack" uk-grid>
 				<div class="uk-width-1-1@m">
 					<div class="uk-margin uk-width-large uk-margin-auto uk-card uk-card-default uk-card-body uk-box-shadow-large"style="border-radius: 10px;">
-						<h3 class="uk-card-title uk-text-center">Welcome back!</h3>
+						<h4 class="uk-card-title uk-text-center">Welcome back!</h4>
 						<form method="POST">
 							{% csrf_token %}
 							<div class="uk-margin">
@@ -58,12 +90,23 @@
 							<div class="uk-margin">
 								<button class="uk-button uk-button-primary uk-button-large uk-width-1-1">Login</button>
 							</div>
+							<a href="#" onclick="admin()" class="admin">Forget Password?</a>
 						</form>
 					</div>
 				</div>
 			</div>
 		</div>
+		<hr class="uk-divider-icon">
+
 	</div>
+	
 </div>
+
 </body>
 </html>
+
+<script>
+	function admin(){
+		alert("Please Contact your Administrator For password queries.");
+	}
+</script>

@@ -3,179 +3,195 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us </title>
-    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
     {% load static %}
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <title>Document</title>
-<style type="text/css">
-body {
-  color: #8B9AA7;
-  font-family: Arial,sans-serif;
-}
-
-.carousel-inner{
-  height: 31em;
-}
-
-.navbar-custom{
-  background-color: #3f51b5;
-}
-
-a {
-  color: white;
-}
-a:hover {
-  color:white;
-  border-bottom: 1px solid #8B9AA7;
-
-}
-
-</style>
-</head>
-<body>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit-icons.min.js"></script>
+    <title>GPGC Lakki Marwat</title>
+   <style>
   
 
 
+       #nav {
+           background-color: #03244d;
+           color:white;
 
-          <nav class="navbar navbar-expand-lg" style="background-color:#03244d; color: white;">
-            <a class="navbar-brand" href="#">CMS</a>
-            <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon" ></span>
-            </button>
-          
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto" style="margin-left: 60%;">
-                <li class="nav-item active">
-                  <a class="nav-link" href="{% url 'index' %}">Home </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Admissions</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Academic
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'computer' %}">Computer Sciecne</a>
-                    <a class="dropdown-item" href="{% url 'math' %}">Math</a>
+       }
 
-                    <a class="dropdown-item" href="{% url 'political' %}">Political Science</a>
-                  </div>
-                </li>
-           
-                                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'contact' %}" >Contact Us <span class="sr-only">(current)</span></a>
-                </li>
+       #nav a{
+           color:white;
+       }
 
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login'  %}">Student Portal</a>
-                </li>
-              </ul>          
-        
-            </div>
-          </nav>
-     
+       #nav h3 {
+           color:white;
+       }
+
+       #title {
+           border: 1px solid  #03244d;
+           border-radius: 5px;
+       }
+
+       footer {
+           margin-top: 2em;
+           text-align: center;
+       }
+
+       footer p {
+           margin-top: 2em;
+       }
+       </style>
+
+</head>
 
 
+
+<body >
+  
+      
+  <nav class="uk-navbar-toggle" uk-navbar id="nav" ">
+    <div class="uk-navbar-center">
     
+            <div class="uk-navbar-center-left">
+              <div>
+              
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li>
+                    <!-- <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li> -->
+                    <li>
+                        <a href="#">Programs</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                              <li class="uk-active"><a style="color:black" class="dp"  href="{% url 'bscom' %}">BS Computer Science</a></li>
+                              <!-- <li><a style="color:black"  href="#">Math</a></li>
+                                <li><a style="color:black"  href="#">Political Science</a></li> -->
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div></div>
+            <a class="uk-navbar-item uk-logo" href="{% url 'login'  %}">Department Managment System</a>
+            <div class="uk-navbar-center-right"><div>
+                <ul class="uk-navbar-nav">
 
-          <div class="jumbotron jumbotron-fluid" style="background-color: white;">
-            <div class="container">
-              <div class="row">
-                <div class="col-6">
-               <h1>About the University</h1>
-               <h3>Vision :</h3>
-               <p>"To Be Among the Top Universities of the World through Education, Research and Innovation" </p>
-
-              <h3> Mission :</h3>
-
-<p>               "To produce highly qualified, well-rounded professionals through education who play a leading role in the society by powering and driving knowledge-based economy and offer research services and innovation for sustainable development"
-</p>               
-<p style="color:royalblue;"><b>Core Values :</b>
-       
-    <p align="justify">
-    1.&nbsp;&nbsp; Integrity <br>
-    2.&nbsp;&nbsp; Teamwork <br>  
-    3.&nbsp;&nbsp; Quality <br>
-    4.&nbsp;&nbsp; Tolerance <br>
-    5.&nbsp;&nbsp; Gender equality <br>
-    6.&nbsp;&nbsp; Social responsibility <br>
-    7.&nbsp;&nbsp; Collaboration <br>
-    8.&nbsp;&nbsp; Transparency <br>
-    9.&nbsp;&nbsp; Professionalism <br>
-    10.&nbsp; Sustainability <br>
+                    <li><a href="#">Administration</a>
+                      <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active"></u><a class="dp" href="{% url 'facutly' %}" style="color:black">Faculty</a></li>
+                            <li><a class="dp" href="{% url 'admissions' %}" style="color:black">Admissions</a></li>
+                            <li><a href="#">Item</a></li>
+                        </ul>
+                    </div></li>
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                </ul>
+            </div></div>
     
-    </p>
-  </div>
+        </div>
+    </nav>
 
 
-  <hr class="clearfix w-100 d-md-none pb-3">
-    <div class="col-6">
-    <h3>Campus Location</h3>
-                <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Govt%20Post%20Graduate%20College%20Lakki%20Marwat&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://2piratebay.org">uber0n</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
+
+  
+  <div class="uk-section uk-section-danger uk-preserve-color">
+    <div class="uk-container">
+
+        <div class="uk-panel uk-light uk-margin-medium">
+          <center><h1 style="color:#03244d;"> About US </h1></center>
+
+        </div>
+
+  <hr class="uk-divider-icon">
+  <div class="uk-container uk-container-expand">
+  <div class="uk-child-width-1-2@s" uk-grid>
+    <div>
+        <div class="uk-panel">
+          <h1>
+            Who We Are?
+          </h1>
+
+          <p>
+            Rapid intellectual advances over the past fifty years have created a new field of intellectual endeavor, called Computer Science in North America and Informatics in Europe. The field not only encompasses a large body of knowledge about algorithms, processes, information, communication, languages, and systems but also concerns a new paradigm for representing and acquiring knowledge.
+
+            Computer Science programs at CUI provide solid theoretical foundations by offering intellectually challenging courses designed by leading experts. Students are also exposed to strong hands on training by deploying cutting edge technologies. CUI Computer Science graduates are groomed to think independently, and provide solutions. They are encouraged to come up with new ideas, develop links with the industry, and engage in entrepreneurial activities. Computer Science graduates will be in an ideal position to find jobs in a wide range of IT areas both in Pakistan and internationally, including: application programming; systems development and administration, hardware development; computer networks, systems support; teaching; research, Information System development and management.
             
-              </div>
-            </div>
+            Why join Computer Science Department at CUI?
+            <ul>
+              <li>  The excellent university</li>
+               <li> Wide variety of subjects</li>
+                <li>Excellent equipment provision</li>
+               <li> Good research rating</li>
+                <li>Job fairs and placement cell</li>
+               <li> Quality degree</li>
+               <li> Friendly atmosphere</li>
+               <li> International linkages</li>
+                <li>Wide range of research interests</li>
+              </ul>
+            
+          </p>
 
-              </div>
-      </div>
+        </div>
+    </div>
+    
+    <div>
+      <div class="uk-column-1-2 uk-column-divider"></div>
 
-      <!-- Footer -->
-<footer class="page-footer font-small special-color-dark pt-4">
 
-  <!-- Footer Elements -->
-  <div class="container">
+        <div class="uk-panel" >
+          <div class="uk-column-1-2 uk-column-divider"></div>
 
-    <!-- Social buttons -->
-    <ul class="list-unstyled list-inline text-center">
-      <li class="list-inline-item">
-        <a class="btn-floating btn-fb mx-1">
-          <i class="fab fa-facebook-f"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-tw mx-1">
-          <i class="fab fa-twitter"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-gplus mx-1">
-          <i class="fab fa-google-plus-g"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-li mx-1">
-          <i class="fab fa-linkedin-in"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-dribbble mx-1">
-          <i class="fab fa-dribbble"> </i>
-        </a>
-      </li>
-    </ul>
-    <!-- Social buttons -->
 
-  </div>
-  <!-- Footer Elements -->
+          <h3>Campus Location</h3>
+          <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=Govt%20Post%20Graduate%20College%20Lakki%20Marwat&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://2piratebay.org">uber0n</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
+      
+        </div>
 
-  <!-- Copyright -->
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="#"> SADH</a>
-  </div>
-  <!-- Copyright -->
 
+        </div>
+    </div>
+    <!-- <div>
+        <div class="uk-panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+    </div> -->
+</div>
+</div>
+
+
+
+
+<!-- <a class="uk-button uk-button-default" href="#modal-center" uk-toggle>Open</a> -->
+
+<div id="modal-center" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+    </div>
+</div>
+
+</div>
+
+
+</div>
+<hr class="uk-divider-icon">
+
+<footer>
+  <p>MADE WITH LOVE BY ABID</p>
 </footer>
-<!-- Footer -->
+
+
 </body>
+
 </html>
+<script>
+  var util = UIkit.util;
 
- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+util.on(document, 'DOMContentLoaded', function () {
+  var modalEl = util.$('#modal-example');
+  UIkit.modal(modalEl).show();
+});
 
+
+</script>
 
 

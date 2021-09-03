@@ -15,6 +15,12 @@ def contact(request):
 def computer(request):
     return render(request, 'computer_science.html')
 
+def bscomp(request):
+    return render(request, 'bscom.html')
+
+def faculty(request):
+    return render(request, 'faculty.html')
+
 
 def math(request):
     return render(request, 'math.html')

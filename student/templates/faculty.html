@@ -10,7 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit-icons.min.js"></script>
     <title>GPGC Lakki Marwat</title>
    <style>
-      
+       
+  
 
 
   #nav {
@@ -61,51 +62,51 @@
 
 
 <body>
-  <nav class="uk-navbar-toggle" uk-navbar id="nav" ">
-    <div class="uk-navbar-center">
+    <nav class="uk-navbar-toggle" uk-navbar id="nav" ">
+        <div class="uk-navbar-center">
+        
+                <div class="uk-navbar-center-left">
+                  <div>
+                  
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li>
+                        <!-- <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li> -->
+                        <li>
+                            <a href="#">Programs</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"><a style="color:black" class="dp"  href="{% url 'bscom' %}">BS Computer Science</a></li>
+                                    <!-- <li><a style="color:black"  href="#">Math</a></li>
+                                    <li><a style="color:black"  href="#">Political Science</a></li> -->
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div></div>
+                <a class="uk-navbar-item uk-logo" href="{% url 'login'  %}">Department Managment System</a>
+                <div class="uk-navbar-center-right"><div>
+                    <ul class="uk-navbar-nav">
     
-            <div class="uk-navbar-center-left">
-              <div>
-              
-                <ul class="uk-navbar-nav">
-                    <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li>
-                    <!-- <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li> -->
-                    <li>
-                        <a href="#">Programs</a>
-                        <div class="uk-navbar-dropdown">
+                        <li><a href="#">Administration</a>
+                          <div class="uk-navbar-dropdown">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
-                              <li class="uk-active"><a style="color:black" class="dp"  href="{% url 'bscom' %}">BS Computer Science</a></li>
-                              <!-- <li><a style="color:black"  href="#">Math</a></li>
-                                <li><a style="color:black"  href="#">Political Science</a></li> -->
+                                <li class="uk-active"></u><a class="dp" href="{% url 'facutly' %}" style="color:black">Faculty</a></li>
+                                <li><a class="dp" href="{% url 'admissions' %}" style="color:black">Admissions</a></li>
+                                <li><a href="#">Item</a></li>
                             </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div></div>
-            <a class="uk-navbar-item uk-logo" href="{% url 'login'  %}">Department Managment System</a>
-            <div class="uk-navbar-center-right"><div>
-                <ul class="uk-navbar-nav">
-
-                    <li><a href="#">Administration</a>
-                      <div class="uk-navbar-dropdown">
-                        <ul class="uk-nav uk-navbar-dropdown-nav">
-                            <li class="uk-active"></u><a class="dp" href="{% url 'facutly' %}" style="color:black">Faculty</a></li>
-                            <li><a class="dp" href="{% url 'admissions' %}" style="color:black">Admissions</a></li>
-                            <li><a href="#">Item</a></li>
-                        </ul>
-                    </div></li>
-                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
-                </ul>
-            </div></div>
+                        </div></li>
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                    </ul>
+                </div></div>
+        
+            </div>
+        </nav>
     
-        </div>
-    </nav>
-
 
   <div class="uk-section uk-position-relative uk-overflow-hidden" uk-scrollspy="cls:uk-animation-fade; offset-top: 80px; delay: 300">
     
     <div class="uk-container uk-position-relative">
-      <h3>Our Team</h3>
+      <h3>Faculty of Computer Science Department</h3>
       <div class="uk-flex uk-flex-center" uk-grid uk-scrollspy="cls:uk-animation-fade; target: .team-member-item; delay: 300">
         <div class="uk-width-1-2 uk-width-1-4@m uk-transition-toggle team-member-item">
           <div class="uk-background-cover uk-transition-toggle uk-margin-bottom uk-position-relative cover-image" data-src="{% static '../static/ilyas.jpg'%}" uk-img>
@@ -119,24 +120,24 @@
             </div>
           </div>
           <span class="uk-display-block uk-text-bold">Muhammad Ilyas</span>
-          <span class="uk-display-block">Supervisor</span>
+          <span class="uk-display-block">Lecturur</span>
         </div>
         <div class="uk-width-1-2 uk-width-1-4@m uk-transition-toggle team-member-item">
-          <div class="uk-background-cover uk-transition-toggle uk-margin-bottom uk-position-relative cover-image" data-src="{% static '../static/abid.jpg'%}" uk-img>
+          <div class="uk-background-cover uk-transition-toggle uk-margin-bottom uk-position-relative cover-image" data-src="{% static '../static/ijaz.jpg'%}" uk-img>
             <div class="uk-transition-fade uk-position-cover uk-overlay-primary uk-overlay-dark uk-flex uk-flex-center uk-flex-middle">
               <ul class="uk-iconnav">
                 <li><a href="#"><span uk-icon="twitter"></span></a></li>
-                <li><a href="https://instagram.com/abidgulshahid"><span uk-icon="instagram"></span></a></li>
-                <li><a href="https://linkedin.com/abidgulshahid"><span uk-icon="linkedin"></span></a></li>
+                <li><a href="#"><span uk-icon="instagram"></span></a></li>
+                <li><a href="#"><span uk-icon="linkedin"></span></a></li>
               </ul>
             </div>
           </div>
-          <span class="uk-display-block uk-text-bold">Abid Gul Shahid</span>
-          <span class="uk-display-block">Backend Developer</span>
+          <span class="uk-display-block uk-text-bold">Muhammad Ijaz </span>
+          <span class="uk-display-block">Lecturur</span>
         </div>
      
         <div class="uk-width-1-2 uk-width-1-4@m uk-transition-toggle team-member-item">
-          <div class="uk-background-cover uk-transition-toggle uk-margin-bottom uk-position-relative cover-image" data-src="{% static '../static/danial.jpg'%}" uk-img>
+          <div class="uk-background-cover uk-transition-toggle uk-margin-bottom uk-position-relative cover-image" data-src="{% static '../static/shafqat.jpg'%}" uk-img>
             <div class="uk-transition-fade uk-position-cover uk-overlay-primary uk-overlay-dark uk-flex uk-flex-center uk-flex-middle">
               <ul class="uk-iconnav">
                 <li><a href="#"><span uk-icon="facebook"></span></a></li>
@@ -146,15 +147,15 @@
               </ul>
             </div>
           </div>
-          <span class="uk-display-block uk-text-bold">Muhammad Danial </span>
-          <span class="uk-display-block">Frontend Developer</span>
+          <span class="uk-display-block uk-text-bold">Muhammad Shafqat </span>
+          <span class="uk-display-block">Lecturur</span>
         </div>
       </div>
       
       <hr class="uk-divider-icon">
 
       <!-- LETS TALK -->
-      <div class="uk-container uk-container-large">
+      <!-- <div class="uk-container uk-container-large">
         <div class="uk-grid-large uk-margin" uk-grid>
           <div class="uk-grid-item-match uk-flex-middle uk-width-expand@m">
             <div class="uk-panel">
@@ -221,7 +222,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
     
   </div>

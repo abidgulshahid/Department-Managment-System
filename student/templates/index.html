@@ -11,9 +11,7 @@
     <title>GPGC Lakki Marwat</title>
    <style>
   
-       body {
-        background: #fafafa;;
-       }
+    
 
        #nav {
            background-color: #03244d;
@@ -23,19 +21,23 @@
 
        #nav a{
            color:white;
+          
        }
+
 
        #nav h3 {
            color:white;
        }
 
+      .dp:hover {
+        font-weight: bolder;
+      }
        #title {
            border: 1px solid  #03244d;
            border-radius: 5px;
        }
 
        footer {
-           border-top: 1px solid black;
            margin-top: 2em;
            text-align: center;
        }
@@ -52,19 +54,22 @@
 <body >
   
       
-  <nav class="uk-navbar-container" uk-navbar id="nav" ">
+  <nav class="uk-navbar-toggle" uk-navbar id="nav" ">
     <div class="uk-navbar-center">
     
-            <div class="uk-navbar-center-left"><div>
+            <div class="uk-navbar-center-left">
+              <div>
+              
                 <ul class="uk-navbar-nav">
                     <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li>
+                    <!-- <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li> -->
                     <li>
-                        <a href="#">Academic</a>
+                        <a href="#">Programs</a>
                         <div class="uk-navbar-dropdown">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
-                                <li class="uk-active"><a style="color:black"  href="#">Computer Science</a></li>
-                                <li><a style="color:black"  href="#">Math</a></li>
-                                <li><a style="color:black"  href="#">Political Science</a></li>
+                                <li class="uk-active"><a style="color:black" class="dp"  href="{% url 'bscom' %}">BS Computer Science</a></li>
+                                <!-- <li><a style="color:black"  href="#">Math</a></li>
+                                <li><a style="color:black"  href="#">Political Science</a></li> -->
                             </ul>
                         </div>
                     </li>
@@ -74,7 +79,14 @@
             <div class="uk-navbar-center-right"><div>
                 <ul class="uk-navbar-nav">
 
-                    <li><a href="{% url 'admissions' %}">Admission</a></li>
+                    <li><a href="#">Administration</a>
+                      <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active"></u><a class="dp" href="{% url 'facutly' %}" style="color:black">Faculty</a></li>
+                            <li><a class="dp" href="{% url 'admissions' %}" style="color:black">Admissions</a></li>
+                            <li><a href="#">Item</a></li>
+                        </ul>
+                    </div></li>
                     <li><a href="{% url 'contact' %}">Contact Us</a></li>
                 </ul>
             </div></div>
@@ -83,67 +95,11 @@
     </nav>
 
 
-    <!-- <div class="uk-visible-toggle" uk-slider="autoplay: false">
-			<div class="uk-position-relative">
-				<div class="uk-slider-container uk-box-shadow-medium uk-background-primary-light">
-					<ul class="uk-slider-items uk-child-width-1-1">
-						<li>
-							<div class="uk-grid-collapse" uk-grid>
-								<div class="uk-width-1-2@s">
-									<img src="https://source.unsplash.com/ELYUBrnvLtg/800x800" alt="Image">
-								</div>
-								<div class="uk-width-expand@s uk-flex uk-flex-middle">
-									<div class="uk-padding-large">
-										<h3 class="uk-text-uppercase uk-h5 uk-letter-spacing-small">Our Best Projects</h3>
-										<h2 class="uk-heading-small uk-margin-medium-top">Education</h2>
-										<div>
-											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-										</div>
-										<hr class="uk-margin-medium-top uk-separator-small">
-										<h3 class="uk-margin-remove uk-text-uppercase uk-h5 uk-letter-spacing-small">
-											<a href="#">View Details<span class="uk-margin-left" uk-icon="arrow-right"></span></a>
-										</h3>
-									</div>
-								</div> 
-							</div>
-						</li>
-						<li>
-							<div class="uk-grid-collapse" uk-grid>
-								<div class="uk-width-1-2@s">
-									<img src="https://source.unsplash.com/2LgJiWdDdO4/800x800" alt="Image">
-								</div>
-								<div class="uk-width-expand@s uk-flex uk-flex-middle">
-									<div class="uk-padding-large">
-										<h3 class="uk-text-uppercase uk-h5 uk-letter-spacing-small">Our Best Projects</h3>
-										<h2 class="uk-heading-small uk-margin-medium-top">Technology</h2>
-										<div>
-											<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-										</div>
-										<hr class="uk-margin-medium-top uk-separator-small">
-										<h3 class="uk-margin-remove uk-text-uppercase uk-h5 uk-letter-spacing-small">
-											<a href="#">View Details<span class="uk-margin-left" uk-icon="arrow-right"></span></a>
-										</h3>
-									</div>
-								</div> 
-							</div>
-						</li>
-					</ul>
-				</div>
-				<div class="uk-hidden@l">
-					<a class="uk-position-center-left uk-position-small" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-					<a class="uk-position-center-right uk-position-small" href="#" uk-slidenav-next uk-slider-item="next"></a>
-				</div>
-				<div class="uk-visible@l">
-					<a class="uk-position-center-left-out uk-slidenav-large" href="#" uk-slidenav-previous uk-slider-item="previous"></a>
-					<a class="uk-position-center-right-out uk-slidenav-large" href="#" uk-slidenav-next uk-slider-item="next"></a>
-				</div>
-			</div>
-    </div> -->
     <div id="modal-example" uk-modal>
       <div class="uk-modal-dialog uk-modal-body">
           <h2 class="uk-modal-title">Announcement</h2>
           {% for anon in announcments %}
-          <p>{{anon.msg}}<code>{{anon.date}}</code></p>
+          <p>{{anon.msg}} <br><code>{{anon.date}}</code></p>
           
           {% endfor %}
           <p class="uk-text-right">
@@ -155,7 +111,20 @@
       <div class="uk-position-relative uk-visible-toggle uk-light" tabindex="-1" uk-slideshow="ratio: 7:3; animation: push; autoplay:true;"> 
 <div class="uk-visible-toggle" uk-slider="autoplay: true">
       <ul class="uk-slideshow-items">
+
+        <li>
+          <img src="{% static '../static/6.jpg'%}" alt="" uk-cover>
+      </li>
+      <li>
+        <img src="{% static '../static/4.jpg'%}" alt="" uk-cover>
+    </li>
+
+    <li>
+      <img src="{% static '../static/5.jpg'%}" alt="" uk-cover>
+  </li>
+  
           <li>
+
               <img src="{% static '../static/1.jpg'%}" alt="" uk-cover>
           </li>
           <li>
@@ -164,6 +133,12 @@
           <li>
               <img src="{% static '../static/3.jpg'%}" alt="" uk-cover>
           </li>
+      
+
+        <li>
+          <img src="{% static '../static/5.jpg'%}" alt="" uk-cover>
+      </li>
+
       </ul>
   
       <a class="uk-position-center-left uk-position-small uk-hidden-hover" href="#" uk-slidenav-previous uk-slideshow-item="previous"></a>
@@ -172,65 +147,127 @@
   </div> 
 
 
-  <h1 class="uk-heading-line"><span>WHAT OUR</span></h1>
+  <!-- <h1 class="uk-heading-line"><span>WHAT OUR</span></h1>
 
   <h1 class="uk-heading-line uk-text-center"><span>Academic is </span></h1>
   
-  <h1 class="uk-heading-line uk-text-right"><span>OFFERING </span></h1>
+  <h1 class="uk-heading-line uk-text-right"><span>OFFERING </span></h1> -->
+  
+  
+  
+  <div class="uk-section uk-section-danger uk-preserve-color">
+    <div class="uk-container">
+
+        <div class="uk-panel uk-light uk-margin-medium">
+          <center><h2 style="color:#03244d;"> WELCOME TO THE COMPUTER SCIENCE DEPARTMENT <br>University of Science and Technology Bannu Lakki Marwat Campus </h2></center>
+
+        </div>
+
+        <div class="uk-child-width-1-2@s uk-grid-match" uk-grid>
+          <div>
+            <div class="uk-card uk-card-default uk-card-hover uk-card-body" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
+              <h3 class="uk-card-title">Apply Now</h3>
+              <p>You can apply now for the admission at our online admission portal. </p>
+              <a href="{% url 'admissions' %}"><button class="uk-button uk-button-danger">Click Here to Read More</button></a>
+
+          </div>
+          </div>
+          <div>
+              <div class="uk-card uk-card-default uk-card-hover uk-card-body" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
+                  <h3 class="uk-card-title">FACULTY & STAFF</h3>
+                  <p>Search the profiles of our faculty and staff members on our Faculty/Staff Portal. </p>
+                  
+                  
+                  <a href="{% url 'facutly' %}"><button class="uk-button uk-button-danger">Click Here to Read More</button></a>
+              </div>
+          </div>
+          <div>
+            <div class="uk-card uk-card-default uk-card-hover uk-card-body" uk-scrollspy="cls: uk-animation-slide-bottom; repeat: true">
+              <h3 class="uk-card-title">ACADEMIC RESOURCES</h3>
+              <p>Browse and search our complete list of excellent academic resources. .</p>
+              <a href="{% url 'bscom' %}"><button class="uk-button uk-button-danger">Click Here to Read More</button></a>
+
+          </div>  
+          </div>
+          <div>
+            <div class="uk-card uk-card-default uk-card-hover uk-card-body" uk-scrollspy="cls: uk-animation-slide-bottom; repeat: true">
+              <h3 class="uk-card-title">Default</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+              <a href="#"><button class="uk-button uk-button-danger">Click Here to Read More</button></a>
+
+          </div>
+          </div>
+      </div>
+    </div>
+</div>
 
   <hr class="uk-divider-icon">
+  <div class="uk-container uk-container-expand">
+  <div class="uk-child-width-1-2@s" uk-grid>
+    <div>
+        <div class="uk-panel">
+          <h3>
+            Who We Are?
+          </h3>
+
+          <p>
+            Rapid intellectual advances over the past fifty years have created a new field of intellectual endeavor, called Computer Science in North America and Informatics in Europe. The field not only encompasses a large body of knowledge about algorithms, processes, information, communication, languages, and systems but also concerns a new paradigm for representing and acquiring knowledge.
+
+Computer Science programs at CU provide solid theoretical foundations by offering intellectually challenging courses designed by leading experts.
+          </p>
+
+        </div>
+    </div>
+    <div>
+        <div class="uk-panel" >
+          
+          <article class="uk-comment">
+            <header class="uk-comment-header">
+                <div class="uk-grid-medium uk-flex-middle" uk-grid>
+                    <div class="uk-width-auto">
+                        <img class="uk-comment-avatar" src="images/avatar.jpg" width="80" height="80" alt="">
+                    </div>
+                    <div class="uk-width-expand">
+                        <h4 class="uk-comment-title uk-margin-remove"><a class="uk-link-reset" href="#">Message From HOD</a></h4>
+                        <ul class="uk-comment-meta uk-subnav uk-subnav-divider uk-margin-remove-top">
+                            <!-- <li><a href="#">12 days ago</a></li>
+                            <li><a href="#">Reply</a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </header>
+            <div class="uk-comment-body">
+                <p>
+                  Welcome to the Computer Science Department (CS) at Bannu University  (BUST), Lakki Marwat Campus. As Head of Department, I would like to share with you some highlights of our department - our world class faculty, flexible degree program options, successful alumni, and great job markets. Information, computing and communication technologies pervade nearly all aspects of today's digital society and will continue in the decades ahead to be of critical importance to the nation's technological infrastructure.                 </p>
+            </div>
+        </article>
 
 
-<div class="uk-child-width-1-3@m" uk-grid uk-scrollspy="cls: uk-animation-slide-bottom; target: .uk-card; delay: 300; repeat: true">
-  <div>
-      <div class="uk-card uk-card-default uk-card-body ">
-          <h3 class="uk-card-title">Bottom</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-  </div>
-  <div>
-      <div class="uk-card uk-card-default uk-card-body" uk-scrollspy-class="uk-animation-slide-top">
-          <h3 class="uk-card-title">Top</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-  </div>
-  <div>
-      <div class="uk-card uk-card-default uk-card-body">
-          <h3 class="uk-card-title">Bottom</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-  </div>
+        </div>
+    </div>
+    <!-- <div>
+        <div class="uk-panel">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+    </div> -->
 </div>
-<div class="uk-child-width-1-2@m uk-grid-match" uk-grid>
-  <div>
-      <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-left; repeat: true">
-          <h3 class="uk-card-title">Left</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-  </div>
-  <div>
-      <div class="uk-card uk-card-default uk-card-body" uk-scrollspy="cls: uk-animation-slide-right; repeat: true">
-          <h3 class="uk-card-title">Right</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-      </div>
-  </div>
 </div>
+<hr class="uk-divider-icon">
+
+
+
 <div class="uk-section uk-section-muted">
   <div class="uk-container">
 
-      <h3>Section</h3>
+      <h3>Latest Upates</h3>
 
-      <div class="uk-grid-match uk-child-width-1-3@m" uk-grid>
-          <div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-          </div>
-          <div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-          </div>
-          <div>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
-          </div>
-      </div>
+      <dl class="uk-description-list uk-description-list-divider">
+
+        {% for anon in announcments %}
+        
+       
+        <dt>{{anon.date}}</dt>
+        <dd>{{anon.msg}}.</dd>
+        {% endfor %}
+    </dl>
 
   </div>
 </div>
@@ -250,8 +287,10 @@
 
 
 </div>
+<hr class="uk-divider-icon">
+
 <footer>
-  <p>MADE WITH LOVE BY ABID</p>
+  <p>Copyright By HOD</p>
 </footer>
 
 
@@ -271,294 +310,3 @@ util.on(document, 'DOMContentLoaded', function () {
 
 
 
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CMS | INDEX</title>
-     <link rel="stylesheet" href="css/bootstrap.css"> 
-    {% load static %}
-
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-    <title>Document</title>
-    <script>
-      $(document).ready(function(){
-          $("#myModal").modal('show');
-      });
-  </script>
-<style type="text/css">
-body {
-  color: #8B9AA7;
-  font-family: Arial,sans-serif;
-}
-
-
-.carousel-inner{
-  height: 31em;
-}
-
-.navbar-custom{
-  background-color: #3f51b5;
-  color: black;
-}
-
-a {
-  color: white;
-}
-a:hover {
-  color:white;
-  border-bottom: 1px solid #8B9AA7;
-
-}
-
-</style>
-</head>
-<body>
-
-          <nav class="navbar navbar-expand-lg fixed-top" data-spy="affix" data-offset-top="205" style="opacity: 0.9;background-color: #03244d;">
-            <a class="navbar-brand" href="#">CMS</a>
-            <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon" style="color:white; border: #8B9AA7 1px solid;" >-_-</span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto" style="margin-left: 60%;">
-
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'about' %}" >About Us</a>
-                </li>
-
-                <li class="nav-item">
-                  <a class="nav-link" href="">Admissions</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Academic
-                  </a>
-                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{% url 'computer' %}">Computer Sciecne</a>
-                    <a class="dropdown-item" href="{% url 'math' %}">Math</a>
-
-                    <a class="dropdown-item" href="{% url 'political' %}">Political Science</a>
-                  </div>
-                </li>
-
-                                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'contact' %}" >Contact Us</a>
-                </li>
-
-
-
-
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login'  %}">Student Portal</a>
-                </li>
-              </ul>
-
-            </div>
-          </nav>
-          <div id="myModal" class="modal fade">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Announcement</h5>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    </div>
-                    <div class="modal-body">
-                      <table class='table table-sm' >
-                        <tr> 
-                          <th>Date </th>
-                          <th>Message </th>
-                        </tr>
-              
-                      {% for ann in announcments %}
-                      <tr>
-                        <td>{{ann.date}}</td>
-                        <td>{{ann.msg}}</td>
-                      </tr>
-                      {% endfor  %}
-                      </table>
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-          <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-              <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
-              <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-              <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="{% static '../static/1.jpg'%}" class="d-block w-100" alt="...">
-
-              </div>
-              <div class="carousel-item" >
-                <img src="{% static '../static/2.jpg'%}" class="d-block w-100" alt="...">
-
-              </div>
-              <div class="carousel-item">
-                <img src="{% static '../static/3.jpg'%}"  class="d-block w-100" alt="...">
-
-              </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
-
-
-
-
-          <div class="jumbotron jumbotron-fluid" style="background-color: white;">
-            <div class="container">
-              <center>              <h1 class="display-4">Why Academics Works</h1>
-              </center>
-              <br>
-
-              <div class="row">
-                <div class="col-sm-12">
-                  <div class="card-deck" >
-                    <div class="card">
-                 <img src="..." class="card-img-top" alt="..."> 
-                      <div class="card-body" >
-                        <h5 class="card-title">Personalized Learning</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam facere delectus soluta, tempora, voluptatibus architecto illum fugiat accusantium fuga distinctio pariatur quae perferendis harum quis neque omnis voluptatum iusto officia.</p>
-                      </div>
-                      <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <!-- <img src="..." class="card-img-top" alt="..."> 
-                      <div class="card-body">
-                        <h5 class="card-title">Trusted Courses</h5>
-                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae dolorum excepturi necessitatibus molestiae reiciendis consectetur amet fugit repellendus beatae laboriosam harum, est deserunt nesciunt reprehenderit eveniet rem mollitia rerum a.</p>
-                      </div>
-                      <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                      </div>
-                    </div>
-                    <div class="card">
-                      <!-- <img src="..." class="card-img-top" alt="..."> 
-                      <div class="card-body">
-                        <h5 class="card-title">Tools for Students
-                        </h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                      </div>
-                      <div class="card-footer">
-                        <small class="text-muted">Last updated 3 mins ago</small>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-       </div>
-       <div class="section-bg style-1">
-        <div class="container">
-          <div class="row">
-            <div class="col-lg-4">
-              <h2 class="section-title-underline style-2">
-                <span>About Our University</span>
-              </h2>
-            </div>
-            <div class="col-lg-8">
-              <p class="lead">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rem nesciunt quaerat ad reiciendis perferendis voluptate fugiat sunt fuga error totam.</p>
-              <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus assumenda omnis tempora ullam alias amet eveniet voluptas, incidunt quasi aut officiis porro ad, expedita saepe necessitatibus rem debitis architecto dolore? Nam omnis sapiente placeat blanditiis voluptas dignissimos, itaque fugit a laudantium adipisci dolorem enim ipsum cum molestias? Quod quae molestias modi fugiat quisquam. Eligendi recusandae officiis debitis quas beatae aliquam?</p>
-              <p><a href="#">Read more</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-      <!-- <div class="jumbotron jumbotron-fluid" style="background-color: #6fa1de12" >
-        <div class="container">
-          <a id="announcments"></a>
-          <h2>Announcement</h2>
-          <table class='table table-sm' >
-            <tr>
-              <th>Date </th>
-              <th>Message </th>
-            </tr>
-
-          {% for ann in announcments %}
-          <tr>
-            <td>{{ann.date}}</td>
-            <td>{{ann.msg}}</td>
-          </tr>
-          {% endfor  %}
-          </table>
-          </div>
-          </div> -->
-      <!-- Footer -
-<footer class="page-footer font-small special-color-dark pt-4">
-
-  <!-- Footer Elements 
-  <div class="container">
-
-    <!-- Social buttons
-    <ul class="list-unstyled list-inline text-center">
-      <li class="list-inline-item">
-        <a class="btn-floating btn-fb mx-1">
-          <i class="fab fa-facebook-f"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-tw mx-1">
-          <i class="fab fa-twitter"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-gplus mx-1">
-          <i class="fab fa-google-plus-g"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-li mx-1">
-          <i class="fab fa-linkedin-in"> </i>
-        </a>
-      </li>
-      <li class="list-inline-item">
-        <a class="btn-floating btn-dribbble mx-1">
-          <i class="fab fa-dribbble"> </i>
-        </a>
-      </li>
-    </ul>
-   Social buttons
-
-  </div>
- Footer Elements -->
-
-  <!-- Copyright
-  <div class="footer-copyright text-center py-3">© 2020 Copyright:
-    <a href="#"> SADH</a>
-  </div>
-   Copyright 
-
-</footer>
-< Footer
-</body>
-</html>
-
- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-<script>
-  $(document).ready(function(){
-        $(".Modal").modal('show');
-    });
-</script> -->

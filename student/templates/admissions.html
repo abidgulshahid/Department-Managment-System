@@ -1,216 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
 
-     <!DOCTYPE html>
-     <html lang="en">
-     <head>
-         <meta charset="UTF-8">
-         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <title>About Us </title>
-         <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
-         {% load static %}
-     
-         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-         <title>Document</title>
-     <style type="text/css">
-     body {
-       color: #8B9AA7;
-       font-family: Arial,sans-serif;
-     }
-     
-     .carousel-inner{
-       height: 31em;
-     }
-     
-     .navbar-custom{
-       background-color: #3f51b5;
-     }
-     
-     a {
-       color: white;
-     }
-     a:hover {
-       color:white;
-       border-bottom: 1px solid #8B9AA7;
-     
-     }
-     
-     </style>
-     </head>
-     <body>
-       
-     
-     
-     
-               <nav class="navbar navbar-expand-lg" style="background-color:#03244d; color: white;">
-                 <a class="navbar-brand" href="#">CMS</a>
-                 <button  class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                   <span class="navbar-toggler-icon" ></span>
-                 </button>
-               
-                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                   <ul class="navbar-nav mr-auto" style="margin-left: 60%;">
-                     <li class="nav-item active">
-                       <a class="nav-link" href="{% url 'index' %}">Home </a>
-                     </li>
-                     <li class="nav-item">
-                       <a class="nav-link" href="#">Admissions</a>
-                     </li>
-                     <li class="nav-item dropdown">
-                       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                         Academic
-                       </a>
-                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'computer' %}">Computer Sciecne</a>
-                        <a class="dropdown-item" href="{% url 'math' %}">Math</a>
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit-icons.min.js"></script>
+    <title>GPGC Lakki Marwat</title>
+   <style>
+  
     
-                        <a class="dropdown-item" href="{% url 'political' %}">Political Science</a>
-                       </div>
-                     </li>
-                
-                                     <li class="nav-item">
-                       <a class="nav-link" href="{% url 'contact' %}" >Contact Us <span class="sr-only">(current)</span></a>
-                     </li>
-     
-                     <li class="nav-item">
-                       <a class="nav-link" href="{% url 'login'  %}">Student Portal</a>
-                     </li>
-                   </ul>          
-             
-                 </div>
-               </nav>
-          
-     
-     
-         
-     
-               <div class="jumbotron jumbotron-fluid" style="background-color: white;">
-                 <div class="container">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                          <a class="nav-link active" style="color: black;"  id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="admission" aria-selected="true">ADMISSION PROCEDURE</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" style="color: black;"  id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">ADMISSION TEST
 
-                        </a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" style="color: black;"  id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false"> RE-ADMISSION
+       #nav {
+           background-color: #03244d;
+           color:white;
 
-                        </a>
-                        
-                        </li>
+       }
+
+       #nav a{
+           color:white;
+       }
+
+       #nav h3 {
+           color:white;
+       }
+
+       #title {
+           border: 1px solid  #03244d;
+           border-radius: 5px;
+       }
+
+       footer {
+           margin-top: 2em;
+           text-align: center;
+       }
+
+       footer p {
+           margin-top: 2em;
+       }
+       </style>
+
+</head>
 
 
 
-                          
-                      </ul>
-                      <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"><br>
-                           <h5> ADMISSION PROCEDURE</h5>
-
-<p>A). Upon the payment of prescribed admission processing fee, the applicant shall be given prospectus containing Admission Form. The applicant shall fill the form in his own handwriting and shall submit the same in admission section by due date along with the following attested pre-requisite.
-
-Four recent passport size photographs
-Certificates/degrees of academics along with DMCs
-Character certificate from the institution last attended
-Migration certificate for students who are not registered with the University (after admission)
-An undertaking on stamp paper duly signed and stamped by the Class Magistrate (after admission)
-Domicile certificate
-CNIC of applicant/Father/Guardian
-Undertaking on stamp paper duly signed by oath commissioner.<br><br>
-B). Incomplete forms shall not be entertained</p>
-
-                        </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <br>
-                          <h5>  ADMISSION TEST</h5>
-
-                      <p>     The candidate seeking admission in the UST Bannu will have to pass Entry Test for admission in all disciplines. The candidate shall fill in the test Registration Forms and shall send it along with a bank draft of prescribed fee and passport size photograph to Pakistan Testing Service, Islamabad.
-                            
-                            Entry shall be conduct by Pakistan Testing Service, Pakistan at the Main Campus of the UST Bannu.
-                            The duration of the test will be two hours.
-                            Applicant will be required to reach the test centre on the date and time specified on the Entry Test Card.
-                            Late corners will not be given permission.
-                            Entry to the test centre will only be allowed on the production of the Entry Test Roll No. Slip.
-                            Use of the calculators, clipboard, foot and other such materials are not allowed in the test.
-                        </p>
-
-                        </div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab"><br>
-                            <h5> RE-ADMISSION</h5>
-<p>
-   
-
-    The candidate aggrieved by the decision of the admission committee on any of the foregoing clauses may go on appeal to the Vice Chancellor whose decision shall be final, and he may in his discretion:
+<body >
+  
+      
+  <nav class="uk-navbar-toggle" uk-navbar id="nav" ">
+    <div class="uk-navbar-center">
     
-    Re-admit the applicant
-    Reject the appeal
-    Re-admit the applicant subject to the payment of fine, which may extend to Rs.15,000/- </p>
-                        </div>
-                      </div>
-                     </div>
-           </div>
-     
-           <!-- Footer -->
-     <footer class="page-footer font-small special-color-dark pt-4">
-     
-       <!-- Footer Elements -->
-       <div class="container">
-     
-         <!-- Social buttons -->
-         <ul class="list-unstyled list-inline text-center">
-           <li class="list-inline-item">
-             <a class="btn-floating btn-fb mx-1">
-               <i class="fab fa-facebook-f"> </i>
-             </a>
-           </li>
-           <li class="list-inline-item">
-             <a class="btn-floating btn-tw mx-1">
-               <i class="fab fa-twitter"> </i>
-             </a>
-           </li>
-           <li class="list-inline-item">
-             <a class="btn-floating btn-gplus mx-1">
-               <i class="fab fa-google-plus-g"> </i>
-             </a>
-           </li>
-           <li class="list-inline-item">
-             <a class="btn-floating btn-li mx-1">
-               <i class="fab fa-linkedin-in"> </i>
-             </a>
-           </li>
-           <li class="list-inline-item">
-             <a class="btn-floating btn-dribbble mx-1">
-               <i class="fab fa-dribbble"> </i>
-             </a>
-           </li>
-         </ul>
-         <!-- Social buttons -->
-     
-       </div>
-       <!-- Footer Elements -->
-     
-       <!-- Copyright -->
-       <div class="footer-copyright text-center py-3">© 2020 Copyright:
-         <a href="#"> SADH</a>
-       </div>
-       <!-- Copyright -->
-     
-     </footer>
-     <!-- Footer -->
-     </body>
-     </html>
-     
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
-     
-     
-     
+            <div class="uk-navbar-center-left">
+              <div>
               
-     
-       </div>
-     
-     
-     
+                <ul class="uk-navbar-nav">
+                    <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li>
+                    <!-- <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li> -->
+                    <li>
+                        <a href="#">Programs</a>
+                        <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                              <li class="uk-active"><a style="color:black" class="dp"  href="{% url 'bscom' %}">BS Computer Science</a></li>
+                              <!-- <li><a style="color:black"  href="#">Math</a></li>
+                                <li><a style="color:black"  href="#">Political Science</a></li> -->
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div></div>
+            <a class="uk-navbar-item uk-logo" href="{% url 'login'  %}">Department Managment System</a>
+            <div class="uk-navbar-center-right"><div>
+                <ul class="uk-navbar-nav">
+
+                    <li><a href="{% url 'admissions' %}">Faculty</a></li>
+                    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                </ul>
+            </div></div>
+    
+        </div>
+    </nav>
+
+
+
+  
+    <div class="uk-section">
+        <div class="uk-container">
+            <h1>Admissions Details</h1>
+            <br>
+            <ul class="uk-tab" data-uk-tab="{connect:'#my-id'}">
+              <li><a href="">ADMISSION PROCEDURE</a></li>
+              <li><a href="">ADMISSION TEST</a></li>
+              <li><a href="">RE-ADMISSION</a></li>
+            </ul>
+            <ul id="my-id" class="uk-switcher uk-margin">
+              <li><a href="#" id="autoplayer" data-uk-switcher-item="next"></a>
+                <h5> ADMISSION PROCEDURE</h5>
+
+                <p>A). Upon the payment of prescribed admission processing fee, the applicant shall be given prospectus containing Admission Form. The applicant shall fill the form in his own handwriting and shall submit the same in admission section by due date along with the following attested pre-requisite.
+                
+                Four recent passport size photographs
+                Certificates/degrees of academics along with DMCs
+                Character certificate from the institution last attended
+                Migration certificate for students who are not registered with the University (after admission)
+                An undertaking on stamp paper duly signed and stamped by the Class Magistrate (after admission)
+                Domicile certificate
+                CNIC of applicant/Father/Guardian
+                Undertaking on stamp paper duly signed by oath commissioner.<br><br>
+                B). Incomplete forms shall not be entertained</p>                </li>
+
+
+              <li>  <h5>  ADMISSION TEST</h5>
+
+                <p>     The candidate seeking admission in the UST Bannu will have to pass Entry Test for admission in all disciplines. The candidate shall fill in the test Registration Forms and shall send it along with a bank draft of prescribed fee and passport size photograph to Pakistan Testing Service, Islamabad.
+                      
+                      Entry shall be conduct by Pakistan Testing Service, Pakistan at the Main Campus of the UST Bannu.
+                      The duration of the test will be two hours.
+                      Applicant will be required to reach the test centre on the date and time specified on the Entry Test Card.
+                      Late corners will not be given permission.
+                      Entry to the test centre will only be allowed on the production of the Entry Test Roll No. Slip.
+                      Use of the calculators, clipboard, foot and other such materials are not allowed in the test.
+                  </p></li>
+
+
+              <li>
+
+                <h5> RE-ADMISSION</h5>
+                <p>
+                   
+                
+                    The candidate aggrieved by the decision of the admission committee on any of the foregoing clauses may go on appeal to the Vice Chancellor whose decision shall be final, and he may in his discretion:
+                    
+                    Re-admit the applicant
+                    Reject the appeal
+                    Re-admit the applicant subject to the payment of fine, which may extend to Rs.15,000/- </p>
+
+              </li>
+            </ul>
+           
+        </div>
+    </div>
+    
+    
+
+
+</div>
+<hr class="uk-divider-icon">
+
+<footer>
+  <p>MADE WITH LOVE BY ABID</p>
+</footer>
+
+
+</body>
+
+</html>
+<script>
+  var util = UIkit.util;
+
+util.on(document, 'DOMContentLoaded', function () {
+  var modalEl = util.$('#modal-example');
+  UIkit.modal(modalEl).show();
+});
+
+
+</script>
+
+

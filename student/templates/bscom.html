@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% load static %}
+
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/css/uikit.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.17/dist/js/uikit-icons.min.js"></script>
+    <title>GPGC Lakki Marwat</title>
+   <style>
+  
+
+       #nav {
+           background-color: #03244d;
+           color:white;
+
+       }
+
+       #nav a{
+           color:white;
+       }
+
+       #nav h3 {
+           color:white;
+       }
+
+       #title {
+           border: 1px solid  #03244d;
+           border-radius: 5px;
+       }
+
+       footer {
+           margin-top: 2em;
+           text-align: center;
+       }
+
+       footer p {
+           margin-top: 2em;
+       }
+       </style>
+
+</head>
+
+
+
+<body >
+  
+    <nav class="uk-navbar-toggle" uk-navbar id="nav" ">
+        <div class="uk-navbar-center">
+        
+                <div class="uk-navbar-center-left">
+                  <div>
+                  
+                    <ul class="uk-navbar-nav">
+                        <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li>
+                        <!-- <li class="uk-active"><a href="{% url 'about' %}">About Us </a></li> -->
+                        <li>
+                            <a href="#">Programs</a>
+                            <div class="uk-navbar-dropdown">
+                                <ul class="uk-nav uk-navbar-dropdown-nav">
+                                    <li class="uk-active"><a style="color:black" class="dp"  href="{% url 'bscom' %}">BS Computer Science</a></li>
+                                    <!-- <li><a style="color:black"  href="#">Math</a></li>
+                                    <li><a style="color:black"  href="#">Political Science</a></li> -->
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div></div>
+                <a class="uk-navbar-item uk-logo" href="{% url 'login'  %}">Department Managment System</a>
+                <div class="uk-navbar-center-right"><div>
+                    <ul class="uk-navbar-nav">
+    
+                        <li><a href="#">Administration</a>
+                          <div class="uk-navbar-dropdown">
+                            <ul class="uk-nav uk-navbar-dropdown-nav">
+                                <li class="uk-active"></u><a class="dp" href="{% url 'facutly' %}" style="color:black">Faculty</a></li>
+                                <li><a class="dp" href="{% url 'admissions' %}" style="color:black">Admissions</a></li>
+                                <li><a href="#">Item</a></li>
+                            </ul>
+                        </div></li>
+                        <li><a href="{% url 'contact' %}">Contact Us</a></li>
+                    </ul>
+                </div></div>
+        
+            </div>
+        </nav>
+    
+
+
+
+  
+    <div class="uk-section">
+        <div class="uk-container">
+            <h1>BS Computer Science</h1>
+            <h2>Program Overview</h2>
+
+            <p>
+
+                Computer Science is the study of the theoretical and practical aspects of computer technology and computer usage. The main purpose of BUST’s BS computer science is to provide students with a durable foundation, with a comprehensive set of electives so that computer scientists can be produced. Computer science major attracts students who are interested in both the mathematical theory and technical applications of computer science. Most employers look for students who are good computer scientists but also understand the tools and techniques of mathematics, science and industry and are able to communicate effectively. The BUST BS computer science program is also for the mathematically adept student who wishes to become a computing professional with knowledge of relevant applications areas. The degree path emphasizes problem solving using computer program design, analysis and implementation, and includes a theoretical foundation as well as “hand-on” experience.
+
+                Computer science covers a wide spectrum of areas within the field of computing, ranging from the theoretical to practical. Computer scientists can specialize in areas such as artificial intelligence, distributed systems, computer graphics, databases, human computer interaction and security.
+                
+                Students take a core of computer science courses that provide a solid foundation for advanced work. Building on this base, students explore a variety of specializations from 6th semester onwards. In addition, students develop a broad appreciation for computer applications and the effects of computers on society via program electives, general education courses, and various free electives, which can be used to complete minors.
+                
+                It is a four years program consisting of eight semesters. The maximum duration for completion of this degree is twelve semesters. The degree is awarded on completion of minimum 133 credit hours, including six credits for the project, with a passing CGPA of at least 2.0/4.0.
+            </p>
+
+            <b> Mission Statement</b>
+
+            <p>
+                The mission of the CS program is to provide high quality education in computer science that prepares students for professional careers and lifelong learning in developing / managing computational processes and systems, with emphasis on systems automation, information management, management of IT infrastructure and Intelligent Systems.
+            </p>
+
+            <h3> Program Educational Objectives</h3>
+            <p>
+                To meet the needs of our constituents, our Program Education Objectives state that within a few years of graduation our graduates will have:
+
+            </p>
+            <ol>
+                <li>Demonstrate a sound understanding of the main areas of the body of knowledge and the theories of computer science, with an ability to exercise critical judgment across a range of related issues.</li>
+            
+            <li>
+                Critically analyze and apply a range of concepts, principles, and practices in net-centric computing, information management, management of IT infrastructure and intelligent systems; showing a range of problem solving skills and effective judgment in the selection and use of corresponding tools and techniques.
+            </li>
+
+            <li>
+                Demonstrate the ability to work as an individual with minimum guidance and as a leader/member of a team.
+            </li>
+
+            <li>
+                Follow appropriate practices within a professional, legal, and ethical framework.
+            </li>
+
+           <li>
+            Identify mechanisms for continuing professional development and life-long learning.
+           </li>
+            </ol>
+            <h4>
+                Eligibility
+            </h4>
+            <p>
+
+
+Students are eligible for admission if they have Intermediate or equivalent (‘A’ Level) with minimum 50% marks from accredited institution and *NTS-NAT test score with minimum 50% marks. 
+                * Detailed information can be obtained from <a href="http://www.nts.org.pk">Click Here For Details</a>
+            </p>
+        </div>
+    </div>
+    
+    
+
+
+</div>
+<hr class="uk-divider-icon">
+
+<footer>
+  <p>MADE WITH LOVE BY ABID</p>
+</footer>
+
+
+</body>
+
+</html>
+<script>
+  var util = UIkit.util;
+
+util.on(document, 'DOMContentLoaded', function () {
+  var modalEl = util.$('#modal-example');
+  UIkit.modal(modalEl).show();
+});
+
+
+</script>
+
+
