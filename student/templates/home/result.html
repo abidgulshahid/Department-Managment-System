@@ -244,7 +244,7 @@
           <div class="container px-6 mx-auto grid">
             
             <h4 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
-              Dashboard
+              Marks
             </h4>
             <!-- CTA -->
             <!--  Dashboard-->
@@ -269,8 +269,11 @@
             <!-- New Table -->
             <div class="w-full overflow-hidden rounded-lg shadow-xs">
               <div class="w-full overflow-x-auto">
+                <h4 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+                  Internal Marks
+                </h4>
                 {% for marks in mark %}
-                <table class="w-full whitespace-no-wrap">
+                <!-- <table class="w-full whitespace-no-wrap">
                 
                   <thead>
                     <tr class="text-xs font-semibold tracking-wide text-center text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
@@ -284,7 +287,6 @@
                     <tr class="text-gray-700 dark:text-gray-400">
                       <td class="px-4 py-3">
                         <div class="flex items-center text-sm">
-                          <!-- Avatar with inset shadow -->
                         
                           <div></div>
                             <p class="font-semibold">{{marks.studentcourse.course}}</p>
@@ -305,23 +307,110 @@
              
                   </tbody>
                   {% endfor %}
-                </table>
+                </table> -->
+
+
+                <table class="w-full whitespace-no-wrap">
+                 
+                  <thead>
+                    <tr>
+                     <th>Subject</th>
+                     <th>Marks type</th>
+                     <th>Date</th>
+                     <th>Marks Date</th>
+                     
+                    </tr>
+                    {% for nm in new_marks %}
+                  </thead>
+                
+                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                  {% if 'Internal Test' in nm.name  %}
+                  <tr class="text-xs font-semibold tracking-wide text-center text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                    <td class="px-4 py-3">
+                      {{nm.assign.course}}  </td>
+                    
+                    <td class="px-4 py-3">{{nm.name}}</td>
+                    <td class="px-4 py-3">{{nm.marking_date}}</td>
+                    <td class="px-4 py-3">{{nm.marks1}}</td>
+                      {% endif %}
+                  </tr>
               
-                <table>
-                  <th></th>
-                  {% for mm in new_marks %}
-                  <tbody>
-                    {{mm}}
-                  </tbody>
-                  {% endfor %}
-                </table>
+                </tbody>
+                {% endfor %}
+              </table>
+            </div>
+
+              <!-- Final Marks -->
+              <h4 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+                Mid Marks
+              </h4>
+
+              <table class="w-full whitespace-no-wrap">
+                 
+                <thead>
+                  <tr>
+                   <th>Subject</th>
+                   <th>Marks type</th>
+                   <th>Date</th>
+                   <th>Marks Date</th>
+                   
+                  </tr>
+                  {% for nm in new_marks %}
+                </thead>
+              
+              <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+                {% if 'Mid' in nm.name  %}
+                <tr class="text-xs font-semibold tracking-wide text-center text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                  <td class="px-4 py-3">
+                    {{nm.assign.course}}  </td>
+                  
+                  <td class="px-4 py-3">{{nm.name}}</td>
+                  <td class="px-4 py-3">{{nm.marking_date}}</td>
+                  <td class="px-4 py-3">{{nm.marks1}}</td>
+                    {% endif %}
+                </tr>
+            
+              </tbody>
+              {% endfor %}
+            </table>
+            <h4 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+              Final Marks
+            </h4>
+
+            <table class="w-full whitespace-no-wrap">
+               
+              <thead>
+                <tr>
+                 <th>Subject</th>
+                 <th>Marks type</th>
+                 <th>Date</th>
+                 <th>Marks Date</th>
+                 
+                </tr>
+                {% for nm in new_marks %}
+              </thead>
+            
+            <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+              {% if 'Terminal Exam' in nm.name  %}
+              <tr class="text-xs font-semibold tracking-wide text-center text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                <td class="px-4 py-3">
+                  {{nm.assign.course}}  </td>
+                
+                <td class="px-4 py-3">{{nm.name}}</td>
+                <td class="px-4 py-3">{{nm.marking_date}}</td>
+                <td class="px-4 py-3">{{nm.marks1}}</td>
+                  {% endif %}
+              </tr>
+          
+            </tbody>
+            {% endfor %}
+          </table>
               </div>
               
             </div>
 
             <!-- Charts -->
 
-          </div>
         </main>
       </div>
     </div>

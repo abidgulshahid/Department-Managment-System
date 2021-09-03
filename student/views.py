@@ -185,7 +185,9 @@ def result(request):
 	marksss = Markss.objects.filter(student=student)
 	print(marksss)
 
-
+	for mk in marksss:
+		print(dir(mk))
+		print(mk.assign.course)
 	std_course = Markss.objects.filter(assign__in=ass, student=student)
 	
 

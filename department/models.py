@@ -127,6 +127,7 @@ class Markss(models.Model):
 
     class Meta:
         unique_together = (('name', 'student'),)
+        ordering = ['-marking_date']
 
     @property
     def total_marks(self):
