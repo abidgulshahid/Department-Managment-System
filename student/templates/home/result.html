@@ -314,24 +314,29 @@
                  
                   <thead>
                     <tr>
+                      <th>Teacher</th>
                      <th>Subject</th>
                      <th>Marks type</th>
                      <th>Date</th>
-                     <th>Marks Date</th>
+                     <th>Marks</th>
                      
                     </tr>
                     {% for nm in new_marks %}
                   </thead>
                 
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                  {% if 'Internal Test' in nm.name  %}
+                  {% if 'Internal Test' in nm.name or 'Presentation' in nm.name  %}
+
                   <tr class="text-xs font-semibold tracking-wide text-center text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                    <td class="px-4 py-3">{{nm.assign.teacher}}</td>
+
                     <td class="px-4 py-3">
                       {{nm.assign.course}}  </td>
                     
                     <td class="px-4 py-3">{{nm.name}}</td>
                     <td class="px-4 py-3">{{nm.marking_date}}</td>
                     <td class="px-4 py-3">{{nm.marks1}}</td>
+                   
                       {% endif %}
                   </tr>
               
@@ -349,10 +354,11 @@
                  
                 <thead>
                   <tr>
+                    <th>Teacher</th>
                    <th>Subject</th>
                    <th>Marks type</th>
                    <th>Date</th>
-                   <th>Marks Date</th>
+                   <th>Marks</th>
                    
                   </tr>
                   {% for nm in new_marks %}
@@ -361,8 +367,8 @@
               <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
                 {% if 'Mid' in nm.name  %}
                 <tr class="text-xs font-semibold tracking-wide text-center text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                  <td class="px-4 py-3">
-                    {{nm.assign.course}}  </td>
+                  <td class="px-4 py-3">{{nm.assign.teacher}}</td>
+                  <td class="px-4 py-3">{{nm.assign.course}}  </td>
                   
                   <td class="px-4 py-3">{{nm.name}}</td>
                   <td class="px-4 py-3">{{nm.marking_date}}</td>
@@ -381,10 +387,11 @@
                
               <thead>
                 <tr>
+                  <th>Teacherr</th>
                  <th>Subject</th>
                  <th>Marks type</th>
                  <th>Date</th>
-                 <th>Marks Date</th>
+                 <th>Marks </th>
                  
                 </tr>
                 {% for nm in new_marks %}
@@ -393,6 +400,8 @@
             <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
               {% if 'Terminal Exam' in nm.name  %}
               <tr class="text-xs font-semibold tracking-wide text-center text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                <td class="px-4 py-3">{{nm.assign.teacher}}</td>
+
                 <td class="px-4 py-3">
                   {{nm.assign.course}}  </td>
                 

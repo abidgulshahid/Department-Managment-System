@@ -523,8 +523,7 @@
                     <span><b>Welcome,</b> </span>
                     <a href="javascript:void(0);" class="dropdown-toggle user-name" data-toggle="dropdown"><strong>Back, {{request.user.get_full_name}} </strong></a>
                     <ul class="dropdown-menu dropdown-menu-right account vivify flipInY">
-                        <li><a href="page-profile.html"><i class="icon-user"></i>My Profile</a></li>
-                        <li><a href="app-inbox.html"><i class="icon-envelope-open"></i>Messages</a></li>
+                   
                         <li><a href="javascript:void(0);"><i class="icon-settings"></i>Settings</a></li>
                         <li class="divider"></li>
                         <li><a href="{% url 'logOut' %}"><i class="icon-power"></i>Logout</a></li>
@@ -538,25 +537,22 @@
                         <a href="#myPage" class="has-arrow"><i class="icon-speedometer"></i><span>Dashboard</span></a>
 
                     </li>
-                    <li><a href="index2.html"><i class="icon-speedometer"></i><span>View/Add Teacher</span></a></li>
-                    <li><a href="index3.html"><i class="icon-diamond"></i><span>View/Add Students</span></a></li>
+                    <li><a href="{% url 'admin:index' %}"><i class="icon-speedometer"></i><span>View/Add Teacher/Student</span></a></li>
+                    <!-- <li><a href="index3.html"><i class="icon-diamond"></i><span>View/Add Students</span></a></li>
                     <li><a href="../hrms/index.html"><i class="icon-rocket"></i><span>View/Add Classes</span></a></li>
                     <li><a href="../jobportal/index.html"><i class="icon-badge"></i><span>View/Add Courses</span></a></li>
-                    <li><a href="../landing/index.html"><i class="icon-cursor"></i><span>Landing Page</span></a></li>
-                    <li class="header">App</li>
-                    <li>
-                        <a href="#Contact" class="has-arrow"><i class="icon-book-open"></i><span>Contact</span></a>
-                        <ul>
-                            <li><a href="app-contact.html">List View</a></li>
-                            <li><a href="app-contact2.html">Grid View</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="app-inbox.html"><i class="icon-envelope"></i><span>Email</span></a></li>
+                    <li><a href="../landing/index.html"><i class="icon-cursor"></i><span>Landing Page</span></a></li> -->
+                    <!-- <li class="header">App</li> -->
+                    <!-- <li>
+                        <a href="{% url 'contact' %}" class="has-arrow"><i class="icon-book-open"></i><span>Contact</span></a>
+                       
+                    </li> -->
+                    <!-- <li><a href="app-inbox.html"><i class="icon-envelope"></i><span>Email</span></a></li>
                     <li><a href="app-chat.html"><i class="icon-bubbles"></i><span>Messenger</span></a></li>
               
-              
+               -->
                 
-                    <li><a href="../documentation/index.html"><i class="icon-doc"></i><span>Documentation</span></a></li>
+                    <!-- <li><a href="../documentation/index.html"><i class="icon-doc"></i><span>Documentation</span></a></li> -->
                 </ul>
             </nav>     
         </div>

@@ -62,8 +62,8 @@
                         <a href="#">Programs</a>
                         <div class="uk-navbar-dropdown">
                             <ul class="uk-nav uk-navbar-dropdown-nav">
-                              <li class="uk-active"><a style="color:black" class="dp"  href="{% url 'bscom' %}">BS Computer Science</a></li>
-                              <!-- <li><a style="color:black"  href="#">Math</a></li>
+                                <li class="uk-active"><a style="color:black" class="dp"  href="{% url 'bscom' %}">BS Computer Science</a></li>
+                                <!-- <li><a style="color:black"  href="#">Math</a></li>
                                 <li><a style="color:black"  href="#">Political Science</a></li> -->
                             </ul>
                         </div>
@@ -74,7 +74,14 @@
             <div class="uk-navbar-center-right"><div>
                 <ul class="uk-navbar-nav">
 
-                    <li><a href="{% url 'admissions' %}">Faculty</a></li>
+                    <li><a href="#">Administration</a>
+                      <div class="uk-navbar-dropdown">
+                        <ul class="uk-nav uk-navbar-dropdown-nav">
+                            <li class="uk-active"></u><a class="dp" href="{% url 'facutly' %}" style="color:black">Faculty</a></li>
+                            <li><a class="dp" href="{% url 'admissions' %}" style="color:black">Admissions</a></li>
+                            <li><a href="#">Item</a></li>
+                        </ul>
+                    </div></li>
                     <li><a href="{% url 'contact' %}">Contact Us</a></li>
                 </ul>
             </div></div>

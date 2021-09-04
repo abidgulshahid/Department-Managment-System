@@ -34,6 +34,7 @@ DAYS_OF_WEEK = (
 test_name = (
     ('Internal test 1', 'Internal test 1'),
     ('Internal test 2', 'Internal test 2'),
+    ('Presentation', 'Presentation'),
     ('Mid', 'Mid'),
     ('Terminal Exam', 'Terminal Exam'),
 )
