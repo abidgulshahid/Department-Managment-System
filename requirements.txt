@@ -98,7 +98,7 @@ rich==9.3.0
 ROPGadget==6.3
 scapy==2.4.2
 selenium==3.141.0
-sentry-sdk==1.0.0
+sentry-sdk==1.14.0
 setproctitle==1.1.10
 sgmllib3k==1.0.0
 simplejson==3.17.0
