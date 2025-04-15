@@ -21,7 +21,7 @@ defusedxml==0.6.0
 dicttoxml==1.7.4
 distlib==0.3.1
 dj-database-url==0.4.2
-Django==3.1.14
+Django==3.2.24
 django-3-jet==1.0.8
 django-cors-headers==3.5.0
 django-crispy-forms==1.8.1
